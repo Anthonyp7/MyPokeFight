@@ -40,6 +40,12 @@
     margin: 10px 10px 10px 0;
     border-radius: 5px;
 }
+.flying {
+    background-color: #ffd3d3;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
 .fire {
     background-color: #e93516;
     padding: 5px 10px;

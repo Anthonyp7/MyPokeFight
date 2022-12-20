@@ -14,8 +14,12 @@ export default function ListePokemon(){
   const [loading, setLoading] = useState(true);
 
   const [type, setType] = useState([]);
+  const [type2, setType2] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+
+  const [testbool, setTestBool] = useState(true);
+  // const testbool = true;
 
 
 
@@ -67,16 +71,39 @@ export default function ListePokemon(){
 
   useEffect(() => {
     pokemons.map((pokemon) => (
+      
         fetch(pokemon.url)
       .then((res) => res.json())
       .then((data) => {
         setImage((current) => [...current, data.sprites.front_default]);
         //versions.generation-v.black-white.animated.
         setImage2((current) => [...current, data.sprites.front_shiny]);
-        setType((current) => [...current, data.types[0].type.name]);
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
+        // setType((current) => [...current, data.types[0].type.name]);
+        
+        if((data.types).length === 1)
+        {
+          setType((current) => [...current, data.types[0].type.name]);
+          setTestBool(false);
+          console.log("faux");
+        }
+        else{
+          setType((current) => [...current, data.types[0].type.name]);
+          setType2((current) => [...current, data.types[1].type.name]);
+          setTestBool(true);
+          console.log("vrai");
+        }
+
+        console.log(testbool);
+        // {pokemon.types.map((typepoke, index) => {
+          
+        //   setType((current) => [...current, data.types[index].type.name]);
+        
+        // })}
+        console.log(data.types[1].type.name);
       })
+      
       // .then((data) => {
       //   setImage((next) => [...next, data.sprites.front_default]);
       // })
@@ -87,44 +114,10 @@ export default function ListePokemon(){
     ))
   }, [pokemons]);
 
-  
-  // setPokemons(pokemons)
 
-  // useEffect(() => {
-  //   pokemons.map((pokemon) => (
-  //       fetch(pokemon.url)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setType((current) => [...current, data.types.type.name]);
-  //     })
-  //     .catch((err) => console.error(err))
-  //   ))
-  // }, [pokemons]);
-
-
-
-
-  const loadPokemon = async (data) => {
-    let _pokemonData = await Promise.all(data.map(async pokemon => {
-      let pokemonRecord = await getPokemon(pokemon)
-      return pokemonRecord
-    }))
-    setPokemons(_pokemonData);
-  }
   
 
-  function getPokemon({ url }) {
-    return new Promise((resolve, reject) => {
-        fetch(url).then(res => res.json())
-            .then(data => {
-                resolve(data)
-            })
-            console.log(pokemons);
-    });
 
-
-    
-}
 
   return (
     <div>
@@ -147,17 +140,28 @@ export default function ListePokemon(){
                     <img className="img-poke" src={image2[index]} alt="{pokemon}" />
                   </div>
 
+
+
                   {/* INFO POKEMON */}
                   <div  className="type-li" >
                     <ul class={type[index]}>
                       <li class="list-group-item">{type[index]}</li>
-                      {/* id="typepoke" */}
+                    </ul>
+
+                {/* {testbool === true ? <div><ul class={type2[index]}>
+                      <li class="list-group-item">{type2[index]}</li>
+                    </ul></div> : <h4>test</h4> } */}
+
+                    {/* {console.log(testbool)} */}
+
+                    <ul class={type2[index]}>
+                      <li class="list-group-item">{type2[index]}</li>
                     </ul>
                   </div>
 
                     <ul class="">
-                      <li class="list-group-item">Height : {height[index]}</li>
-                      <li class="list-group-item">Weight : {weight[index]}</li>
+                      <li class="list-group-item">Height : {height[index]} cm</li>
+                      <li class="list-group-item">Weight : {weight[index]} kg</li>
                     </ul>
                     
               </div>
