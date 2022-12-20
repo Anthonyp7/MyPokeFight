@@ -1,0 +1,61 @@
+.rock {
+    background-color: rgb(148, 81, 81);
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.ghost {
+    background-color: rgb(247, 247, 247);
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.electric {
+    background-color: rgb(255, 255, 161);
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.bug {
+    background-color: #b2f883;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.poison {
+    background-color: #e0a7f6;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.normal {
+    background-color: #b8b5b5;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.fairy {
+    background-color: rgba(255, 192, 203, 0.863);
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.fire {
+    background-color: #e93516;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.grass {
+    border-radius: 5px;
+    background:#1ac914;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.water {
+    background-color:#007cd4;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}

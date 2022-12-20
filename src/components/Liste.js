@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import '../styles/Liste.css';
+import '../styles/PokemonColors.css';
 
 export default function ListePokemon(){
     const [pokemons, setPokemons] = useState([]);
@@ -10,7 +11,11 @@ export default function ListePokemon(){
   });
   const [image, setImage] = useState([]);
   const [image2, setImage2] = useState([]);
-  // const [type, setType] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [type, setType] = useState([]);
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
 
 
 
@@ -21,6 +26,13 @@ export default function ListePokemon(){
       previous: url.current,
       next: null,
     };
+
+    // let data = fetch(url.next)
+    // .then((res) => res.json())
+    // .then(data => {
+    //   setImage((next) => [...next, data.sprites.front_default]);
+    // })
+
     setUrl(newUrl);
   };
 
@@ -45,27 +57,38 @@ export default function ListePokemon(){
           next: data.next,
           previous: data.previous,
         });
-        console.log(data);
+        // console.log(data);
+        setLoading(false);//
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
   }, [url.current]);
   
+
   useEffect(() => {
     pokemons.map((pokemon) => (
         fetch(pokemon.url)
       .then((res) => res.json())
       .then((data) => {
         setImage((current) => [...current, data.sprites.front_default]);
+        //versions.generation-v.black-white.animated.
         setImage2((current) => [...current, data.sprites.front_shiny]);
+        setType((current) => [...current, data.types[0].type.name]);
+        setHeight((current) => [...current, data.height]);
+        setWeight((current) => [...current, data.weight]);
       })
+      // .then((data) => {
+      //   setImage((next) => [...next, data.sprites.front_default]);
+      // })
       // .then((data) => setImage((next) => [...next, data.sprites.front_default]))
+
+
       .catch((err) => console.error(err))
     ))
   }, [pokemons]);
 
   
-
+  // setPokemons(pokemons)
 
   // useEffect(() => {
   //   pokemons.map((pokemon) => (
@@ -77,11 +100,37 @@ export default function ListePokemon(){
   //     .catch((err) => console.error(err))
   //   ))
   // }, [pokemons]);
+
+
+
+
+  const loadPokemon = async (data) => {
+    let _pokemonData = await Promise.all(data.map(async pokemon => {
+      let pokemonRecord = await getPokemon(pokemon)
+      return pokemonRecord
+    }))
+    setPokemons(_pokemonData);
+  }
   
 
+  function getPokemon({ url }) {
+    return new Promise((resolve, reject) => {
+        fetch(url).then(res => res.json())
+            .then(data => {
+                resolve(data)
+            })
+            console.log(pokemons);
+    });
+
+
+    
+}
 
   return (
     <div>
+      {loading ? <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div> : <h1>Retest</h1>}
       <br></br>
       <ul>
       
@@ -90,18 +139,30 @@ export default function ListePokemon(){
           <div class="card text-bg-dark mb-3" id="test">
               <div class="card-body">
                   <h5 class="card-title" key={index}>{index+1} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
+
                   <div class="image">
                     <img className="img-poke" src={image[index]} alt="{pokemon}" />
                   </div>
                   <div class="image-hover">
                     <img className="img-poke" src={image2[index]} alt="{pokemon}" />
                   </div>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  
-                  
+
+                  {/* INFO POKEMON */}
+                  <div  className="type-li" >
+                    <ul class={type[index]}>
+                      <li class="list-group-item">{type[index]}</li>
+                      {/* id="typepoke" */}
+                    </ul>
+                  </div>
+
+                    <ul class="">
+                      <li class="list-group-item">Height : {height[index]}</li>
+                      <li class="list-group-item">Weight : {weight[index]}</li>
+                    </ul>
+                    
               </div>
-              {/* {console.log(pokemon.types[25].type.name)} */}
           </div>
+          
 
       
           
@@ -112,7 +173,7 @@ export default function ListePokemon(){
       {url.next && <button class="btn btn-outline-dark" onClick={next}>Next</button>}
 
       <br/>
-      <img src={image2[25]} alt="{pokemon}" />
+      <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} alt="{pokemon}" />
     </div>
   );
 }
