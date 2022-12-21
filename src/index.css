@@ -6,7 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:url(https://i.pinimg.com/564x/b1/7f/49/b17f4993bbcc0e298ac0adde429b06a2.jpg);
+  background-image:url(https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/pokemon/detective-pikachu.jpg);
+  background-size:auto;
   /* background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4217318a-13ed-4bc9-9389-e3a099855238/d9tlp39-395a7b85-8645-4381-9305-1d2182378386.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQyMTczMThhLTEzZWQtNGJjOS05Mzg5LWUzYTA5OTg1NTIzOFwvZDl0bHAzOS0zOTVhN2I4NS04NjQ1LTQzODEtOTMwNS0xZDIxODIzNzgzODYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J1vDBgSNdW8HogqGMTYM1p9eGnJ8i5qGOt48N1ls-aQ); */
 }
 
