@@ -52,9 +52,22 @@
     margin: 10px 10px 10px 0;
     border-radius: 5px;
 }
+.fireflying {
+    background-color: #e93516;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
 .grass {
     border-radius: 5px;
     background:#1ac914;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.grasspoison {
+    border-radius: 5px;
+    background:#4414c9;
     padding: 5px 10px;
     margin: 10px 10px 10px 0;
     border-radius: 5px;
