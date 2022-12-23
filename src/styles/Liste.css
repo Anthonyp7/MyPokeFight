@@ -3,6 +3,18 @@
     text-align: center;
 }
 
+#pokedex-button img{
+    margin-left: 250px;
+    width: 18%;
+}
+
+/* #pokedex-button {
+    margin-left: 150px;
+}
+#pokedex-button img{
+    width: 38%;
+} */
+
 #test {
     max-width: 21.5rem;
     float: left;

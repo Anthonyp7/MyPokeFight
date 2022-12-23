@@ -27,13 +27,6 @@ export default function ListePokemon(){
       previous: url.current,
       next: null,
     };
-
-    // let data = fetch(url.next)
-    // .then((res) => res.json())
-    // .then(data => {
-    //   setImage((next) => [...next, data.sprites.front_default]);
-    // })
-
     setUrl(newUrl);
   };
 
@@ -73,7 +66,8 @@ export default function ListePokemon(){
       .then((res) => res.json())
       .then((data) => {
         setImage((current) => [...current, data.sprites.front_default]);
-        //versions.generation-v.black-white.animated.
+        //data.sprites.other['official-artwork'].front_default
+        //data.sprites.versions['generation-v']['black-white'].animated.front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
@@ -84,7 +78,14 @@ export default function ListePokemon(){
   }, [pokemons]);
 
 
-  
+  // const changePokeball = () => {
+  //   pokeimg.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/net-ball.png";
+  // }
+  // var pokeimg = document.getElementById("pokedex-button");
+
+  //   pokeimg.addEventListener('click', function(){
+  //     changePokeball();
+  // });
 
 
 
@@ -122,6 +123,11 @@ export default function ListePokemon(){
                       <li class="list-group-item">Height : {height[index]} cm</li>
                       <li class="list-group-item">Weight : {weight[index]} kg</li>
                     </ul>
+
+                    {/* <a type="button" class="btn btn-outline-light" id="pokedex-button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png"></img>Add To pokédex</a> */}
+                    
+                    {/* eslint-disable-next-line */}
+                    <a type="button" id="pokedex-button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png" alt="PokeBall"></img></a>
                     
               </div>
           </div>
