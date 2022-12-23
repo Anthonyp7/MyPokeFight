@@ -71,7 +71,7 @@ export default function ListePokemon(){
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
-        setType((current) => [...current, data.types.map(type => type.type.name + " ")]);
+        setType((current) => [...current, data.types.map(type => " | "+ type.type.name + " | ")]);
       })
       .catch((err) => console.error(err))
     ))
