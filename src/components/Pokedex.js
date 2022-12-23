@@ -7,9 +7,7 @@ export default function Pokedex(){
     
       return (
         <div>
-          <h1>Pokedex</h1>
-          <h2>My Pokedex</h2>
-
+           <h1 className="load-h1">Mon Pokedex</h1>
         </div>
       );
 

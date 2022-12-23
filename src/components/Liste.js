@@ -109,7 +109,7 @@ export default function ListePokemon(){
           <div class={type[index]} id="test">
 
             <div class="card-body">
-              <h5 class="card-title" key={index}>{index+1} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
+              <h5 class="card-title" key={index}> # • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
               <div class="image">
                 <img className="img-poke" src={image[index]} alt="{pokemon}" />
@@ -126,15 +126,15 @@ export default function ListePokemon(){
                       </ul>
                     </div>
 
-                    <ul class="">
-                      <li class="list-group-item">Height : {height[index]} cm</li>
+                    <ul class="type-poids">
+                      <li class="list-group-item">Height : {height[index]} m</li>
                       <li class="list-group-item">Weight : {weight[index]} kg</li>
                     </ul>
 
                     {/* <a type="button" class="btn btn-outline-light" id="pokedex-button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png"></img>Add To pokédex</a> */}
                     
                     {/* eslint-disable-next-line */}
-                    <a type="button" id="pokedex-button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png" alt="PokeBall"></img></a>
+                    <a type="button" id="pokedex-addbutton"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png" alt="PokeBall"></img></a>
                     
               </div>
           </div>
@@ -145,8 +145,8 @@ export default function ListePokemon(){
         ))}
 
       </ul>
-      {url.previous && <button class="btn btn-outline-dark" onClick={previous}>Previous</button>}
-      {url.next && <button class="btn btn-outline-dark" onClick={next}>Next</button>}
+      {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
+      {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
 
       <br/>
       <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} alt="{pokemon}" />
