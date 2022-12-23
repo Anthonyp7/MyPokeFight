@@ -46,6 +46,12 @@
     margin: 10px 10px 10px 0;
     border-radius: 5px;
 }
+.psychic {
+    background-color: #ffd3d3;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
 .fire {
     background-color: #e93516;
     padding: 5px 10px;
@@ -64,14 +70,43 @@
     margin: 10px 10px 10px 0;
     border-radius: 5px;
 }
-/* .grass ,poison {
+.ground {
     border-radius: 5px;
-    background:#4414c9;
     padding: 5px 10px;
     margin: 10px 10px 10px 0;
     border-radius: 5px;
-} */
+}
+.fighting {
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
 .water {
+    background-color:#007cd4;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.dragon {
+    background-color:#007cd4;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.ice {
+    background-color:#007cd4;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.dark {
+    background-color:#007cd4;
+    padding: 5px 10px;
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+}
+.steel {
     background-color:#007cd4;
     padding: 5px 10px;
     margin: 10px 10px 10px 0;
