@@ -103,13 +103,15 @@ export default function ListePokemon(){
                   <span class="visually-hidden">Loading...</span>
                 </div> : <h1 className="load-h1">Liste Pokémon</h1>}
       <br></br>
+      <h2 className="load-h1">Passez la souris sur les pokemons pour voir les formes shinys</h2>
+      <br></br>
       <ul>
       
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
             <div class="card-body">
-              <h5 class="card-title" key={index}> # • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
+              <h5 className="pokemon-name"  key={index}> {index} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
               <div class="image">
                 <img className="img-poke" src={image[index]} alt="{pokemon}" />
