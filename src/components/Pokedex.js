@@ -1,9 +1,16 @@
+import React, { useState, useEffect } from 'react';
+
+
 export default function Pokedex(){
 
-
-    return(
+    
+    
+      return (
         <div>
-            <h1 className="titre"> Mon Pokédex</h1>
+          <h1>Pokedex</h1>
+          <h2>My Pokedex</h2>
+
         </div>
-    )
+      );
+
 }

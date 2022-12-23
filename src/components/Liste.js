@@ -9,7 +9,6 @@ export default function ListePokemon(){
     next: null,
     previous: null,
   });
-  
   const [image, setImage] = useState([]);
   const [image2, setImage2] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -110,7 +109,7 @@ export default function ListePokemon(){
           <div class={type[index]} id="test">
 
             <div class="card-body">
-              <h5 class="card-title" >{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
+              <h5 class="card-title" key={index}>{index+1} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
               <div class="image">
                 <img className="img-poke" src={image[index]} alt="{pokemon}" />
