@@ -102,8 +102,9 @@ export default function ListePokemon(){
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
+          {console.log("Tour Haut")}
             <div class="card-body">
-              <h5 className="pokemon-name"> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
+              <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
               <div class="image">
                 <img className="img-poke" src={image[index]} alt="{pokemon}" />
@@ -112,53 +113,53 @@ export default function ListePokemon(){
                 <img className="img-poke" src={image2[index]} alt="{pokemon}" />
               </div>
 
-                  {/* INFO POKEMON */}
-                  
-                    <div  className="type-li" >
-                      <ul class={type[index]}>
-                        <li class="list-group-item">{type[index]}</li>
-                      </ul>
-                    </div>
-
-                    <ul class="type-poids">
-                      <li class="list-group-item">Height : {height[index]/10} m</li>
-                      <li class="list-group-item">Weight : {weight[index]/10} kg</li>
+                {/* INFO POKEMON */}
+                
+                  <div  className="type-li" >
+                    <ul class={type[index]}>
+                      <li class="list-group-item">{type[index]}</li>
                     </ul>
+                  </div>
 
-                    {/* <a type="button" class="btn btn-outline-light" id="pokedex-button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/timer-ball.png"></img>Add To pokédex</a> */}
+                  <ul class="type-poids">
+                    <li class="list-group-item">Height : {height[index]/10} m</li>
+                    <li class="list-group-item">Weight : {weight[index]/10} kg</li>
+                  </ul>
                     
-                    
-              </div>
-             
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              See More
-            </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    {type[index]}
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
+                  {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    See More
+                  </button>
+
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body">
+                          {image[index]}
+                          {pokemon.name}
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> */}
+
+
             </div>
           </div>
-          
 
-      
-          
         ))}
 
       </ul>
+      
       {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
       {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
 

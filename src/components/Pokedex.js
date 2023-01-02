@@ -20,7 +20,9 @@ export default function Pokedex(){
         <div>
             <h1 className="load-h1">Mon Pokedex</h1>
 
-           
+            <p></p>
+
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Launch demo modal
             </button>
