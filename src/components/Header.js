@@ -18,7 +18,7 @@ export default function Header () {
                 <Link to="/"><a class="nav-link active" aria-current="page">Liste Pokémon</a></Link>
                 {/* eslint-disable-next-line */}
                 <Link to="/pokedex"><a class="nav-link active" aria-current="page">Pokédex</a></Link>
-                <Link to="/ls"><a class="nav-link active" aria-current="page">LocalStorage</a></Link>
+                {/* <Link to="/ls"><a class="nav-link active" aria-current="page">LocalStorage</a></Link> */}
             </div>
             </nav>
         </div>
