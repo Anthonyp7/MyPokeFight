@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import '../styles/Liste.css';
 import '../styles/PokemonColors.css';
+import ModalTest from "./Modal";
 
 export default function ListePokemon(){
     const [pokemons, setPokemons] = useState([]);
@@ -11,6 +12,7 @@ export default function ListePokemon(){
   });
   const [image, setImage] = useState([]);
   const [image2, setImage2] = useState([]);
+  const [imageani, setImageAni] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [type, setType] = useState([]);
@@ -64,6 +66,7 @@ export default function ListePokemon(){
 
     setImage([])
     setImage2([])
+    setImageAni([])
     setHeight([])
     setWeight([])
     setType([])
@@ -77,6 +80,7 @@ export default function ListePokemon(){
         //data.sprites.other['official-artwork'].front_default
         //data.sprites.versions['generation-v']['black-white'].animated.front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
+        setImageAni((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.front_default]);
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
         setType((current) => [...current, data.types.map(type => type.type.name + " ")]);
@@ -97,12 +101,12 @@ export default function ListePokemon(){
       <br></br>
       <h2 className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
+
       <ul>
-      
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
-          {console.log("Tour Haut")}
+          {/* {console.log("Tour Haut", [index])} */}
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
@@ -126,12 +130,13 @@ export default function ListePokemon(){
                     <li class="list-group-item">Weight : {weight[index]/10} kg</li>
                   </ul>
                     
-
-                  {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     See More
                   </button>
-
+                  
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -140,7 +145,10 @@ export default function ListePokemon(){
                         </div>
                         
                         <div class="modal-body">
-                          {image[index]}
+                          {
+                            console.log(pokemon.name,image[index])
+                          }
+                          <img src={imageani[index]} alt=""></img>
                           {pokemon.name}
                         </div>
                         
@@ -150,7 +158,9 @@ export default function ListePokemon(){
                         </div>
                       </div>
                     </div>
-                  </div> */}
+                  </div>
+
+                  <ModalTest/>
 
 
             </div>
