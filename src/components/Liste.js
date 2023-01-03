@@ -1,7 +1,11 @@
 import { useState, useEffect} from "react";
 import '../styles/Liste.css';
 import '../styles/PokemonColors.css';
-import ModalTest from "./Modal";
+import Modal from 'react-bootstrap/Modal';
+// import ModalTest from "./Modal";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+
 
 export default function ListePokemon(){
     const [pokemons, setPokemons] = useState([]);
@@ -15,12 +19,28 @@ export default function ListePokemon(){
   const [imageani, setImageAni] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [modalShow, setModalShow] = React.useState(false);
+
   const [type, setType] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
-    
+  // const [test, setTest] = useState("");
+  
 
+    
+  async function fetchData(){
+    return new Promise((resolve, reject) => { 
+       fetch ("https://pokeapi.co/api/v2/pokemon/1")
+        .then((res)=>res.json())
+        .then((data)=>{
+          resolve(data)
+          console.log(data)
+        })
+        })
+  }
+  
+  fetchData()
 
 
   //PAGE SUIVANTE
@@ -45,10 +65,12 @@ export default function ListePokemon(){
 
 
   useEffect(() => {
+    console.log(url)
     fetch(url.current)
       .then((res) => res.json())
       .then((data) => {
         setPokemons(data.results);
+        console.log(data)
         setUrl({
           current: url.current,
           next: data.next,
@@ -72,7 +94,7 @@ export default function ListePokemon(){
     setType([])
 
     pokemons.map((pokemon) => (
-      
+
         fetch(pokemon.url)
       .then((res) => res.json())
       .then((data) => {
@@ -90,6 +112,37 @@ export default function ListePokemon(){
   }, [pokemons]);
 
   
+  // const poke = this.props;
+
+  function ModalTest(props) {
+
+    return (
+      <Modal
+      {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* <h4>{pokemon.name}</h4> */}
+          <p>
+            {props.name + props.id}
+            <img src={image[props.name]} alt="" ></img>
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+
+
 
 
   return (
@@ -102,11 +155,12 @@ export default function ListePokemon(){
       <h2 className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
-      <ul>
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
+            
+            {/* {setTest(pokemon.name)} */}
 
-          {/* {console.log("Tour Haut", [index])} */}
+          
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
@@ -130,8 +184,20 @@ export default function ListePokemon(){
                     <li class="list-group-item">Weight : {weight[index]/10} kg</li>
                   </ul>
                     
+                  <Button variant="primary" onClick={() => setModalShow(true)}>
+                    See More
+                  </Button>
+
+                  <ModalTest
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    name={pokemon.name}
+                    id={pokemon.id}
+                  />
+
                   
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  
+                  {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     See More
                   </button>
                   
@@ -158,17 +224,17 @@ export default function ListePokemon(){
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  <ModalTest/>
+                  </div> */}
 
 
+                  {/* <ModalTest pokemon = {pokemon}/> */}
+
+
+                  
             </div>
+
           </div>
-
         ))}
-
-      </ul>
       
       {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
       {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
