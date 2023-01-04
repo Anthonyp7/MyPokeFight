@@ -97,15 +97,12 @@ opacity: 1;
     width: 60%;
 }
 
+
 #modal-col {
     text-align: center;
     margin-left: -20px;
 }
 
-/* .modal-info .test{
-    text-align: center;
-    bottom: 50px;
-} */
 
 .pagination-top, .pagination-bottom{
     text-align: center;

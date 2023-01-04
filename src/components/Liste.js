@@ -16,6 +16,7 @@ export default function ListePokemon(){
   const [image, setImage] = useState([]);
   const [image2, setImage2] = useState([]);
   const [imageani, setImageAni] = useState([]);
+  const [imageaniback, setImageAniBack] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [modalShow, setModalShow] = React.useState(false);
@@ -33,8 +34,10 @@ export default function ListePokemon(){
   // INFO POKEMON MODAL
   const [pokeModal, setPokeModal] = useState("");
   const [pokeModalImg, setPokeModalImg] = useState("");
+  const [pokeModalImg2, setPokeModalImg2] = useState("");
   const [pokeModalHeight, setPokeModalHeight] = useState("");
   const [pokeModalWeight, setPokeModalWeight] = useState("");
+  const [pokeModalType, setPokeModalType] = useState("");
 
   // INFO STATS POKEMON MODAL
   const [pokeModalHp, setPokeModalHp] = useState("");
@@ -118,6 +121,7 @@ export default function ListePokemon(){
         //data.sprites.versions['generation-v']['black-white'].animated.front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setImageAni((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.front_default]);
+        setImageAniBack((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.back_default]);
 
         // SET INFO
         setHeight((current) => [...current, data.height]);
@@ -154,8 +158,6 @@ export default function ListePokemon(){
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
-          {console.log("statsHp", pokemon.name, statsHp[index])}
-
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
@@ -177,11 +179,13 @@ export default function ListePokemon(){
                   <Button variant="primary" onClick={() => {setModalShow(true); 
                     setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); 
                     setPokeModalImg(imageani[index]); 
+                    setPokeModalImg2(imageaniback[index])
                     setPokeModalHeight(height[index]); 
                     setPokeModalWeight(weight[index]); 
                     setPokeModalHp(statsHp[index]); 
                     setPokeModalAttack(statsAttack[index]); 
-                    setPokeModalSpeed(statsSpeed[index])}}>
+                    setPokeModalSpeed(statsSpeed[index]); 
+                    setPokeModalType(type[index])}}>
                     See More
                   </Button>
                                     
@@ -192,11 +196,14 @@ export default function ListePokemon(){
                     onHide={() => setModalShow(false)}
                     name={pokeModal}
                     img={pokeModalImg}
+                    img2={pokeModalImg2}
                     stathp={pokeModalHp}
                     statattack={pokeModalAttack}
                     statspeed={pokeModalSpeed}
                     height={pokeModalHeight/10}
                     weight={pokeModalWeight/10}
+
+                    type={pokeModalType}
                   />
 
           </div>
