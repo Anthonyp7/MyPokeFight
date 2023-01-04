@@ -159,35 +159,21 @@ export default function ListePokemon(){
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {/* <Container>
-          <Row>
-            <Col xs={12} md={8}>
-              <img className="img-modal" src={props.img} alt=""></img>
-            </Col>
-            <Col xs={6} md={4}>
-            <p>Stats: {props.stat}</p>
-            
-            </Col>
-          </Row>
 
-          <Row>
-            <Col xs={6} md={4}>
-            
-            </Col>
-            <Col xs={6} md={4}>
-            <p>Height: {props.height} m</p>
-            <p>Weight: {props.weight} kg</p>
-            </Col>
-            <Col xs={6} md={4}>
-              .col-xs-6 .col-md-4
-            </Col>
-          </Row>
-        </Container> */}
-          <div>
-            <img className="img-modal" src={props.img} alt=""></img>  
-            <p>Stats: {props.stat}</p>
-            <p>Height: {props.height} m</p>
-            <p>Weight: {props.weight} kg</p>
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4" id="modal-col">
+                <img className="img-modal" src={props.img} alt=""></img>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Height: {props.height} m</p>
+                  <p class="card-text">Weight: {props.weight} kg</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -210,6 +196,11 @@ export default function ListePokemon(){
       <br></br>
       <h2 className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
+
+      <div className="pagination-top">
+        {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
+        {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
+      </div>
 
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
@@ -260,12 +251,12 @@ export default function ListePokemon(){
 
           </div>
 
-        ))
-        }
+        ))}
             
-      
-      {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
-      {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
+      <div className="pagination-bottom">
+        {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
+        {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
+      </div>
 
       <br/>
       <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} alt="{pokemon}" />
