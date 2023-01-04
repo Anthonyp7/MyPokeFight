@@ -23,7 +23,9 @@ export default function ListePokemon(){
   const [type, setType] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [stats, setStats] = useState([]);
+  const [statsHp, setStatsHp] = useState([]);
+  const [statsAttack, setStatsAttack] = useState([]);
+  const [statsSpeed, setStatsSpeed] = useState([]);
 
   const [stat, setStat] = useState([]);
 
@@ -42,7 +44,7 @@ export default function ListePokemon(){
         .then((res)=>res.json())
         .then((data)=>{
           resolve(data)
-          console.log(data)
+          // console.log(data)
         })
         })
   }
@@ -77,7 +79,7 @@ export default function ListePokemon(){
       .then((res) => res.json())
       .then((data) => {
         setPokemons(data.results);
-        console.log(data)
+        // console.log(data)
         setUrl({
           current: url.current,
           next: data.next,
@@ -134,7 +136,7 @@ export default function ListePokemon(){
 
         // setStats((current) => [...current, data.stats.map(stat => stat.stat['base_stat'])]);
 
-        setStats((current) => [...current, data.stats]);
+        setStatsHp((current) => [...current, data.stats[0]]);
 
         
       })
@@ -164,7 +166,14 @@ export default function ListePokemon(){
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
-          {console.log(stats)}
+          {/* {console.log("stat", stats.map((x)=>{
+            return x
+          }))} */}
+
+          {statsHp.map((statistique, index) => (
+            console.log("Hp",statistique.base_stat)
+          ))}
+          {/* {console.log("stat", stats)} */}
 
           {/* {setStat(stats[index])} */}
             <div class="card-body">
@@ -203,7 +212,7 @@ export default function ListePokemon(){
                     onHide={() => setModalShow(false)}
                     name={pokeModal}
                     img={pokeModalImg}
-                    stat={stats}
+                    stat={statsHp}
                     height={pokeModalHeight/10}
                     weight={pokeModalWeight/10}
                   />
