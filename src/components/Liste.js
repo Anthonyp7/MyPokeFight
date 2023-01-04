@@ -2,7 +2,7 @@ import { useState, useEffect} from "react";
 import '../styles/Liste.css';
 import '../styles/PokemonColors.css';
 import Modal from 'react-bootstrap/Modal';
-// import ModalTest from "./Modal";
+import ModalTest from "./Modal";
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -145,48 +145,7 @@ export default function ListePokemon(){
 
   
 
-  function ModalTest(props) {
-    return (
-      <Modal
-      {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-          {props.name}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-          <div class="card mb-3">
-            <div class="row g-0">
-              <div class="col-md-4" id="modal-col">
-                <img className="img-modal" src={props.img} alt=""></img>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Height: {props.height} m</p>
-                  <p class="card-text">Weight: {props.weight} kg</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
-
-
-
-
+  
   return (
     <div>
       <br></br>
@@ -204,10 +163,7 @@ export default function ListePokemon(){
 
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
-            
-            {/* {setTest(pokemon.name)} */}
 
-          
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
