@@ -159,8 +159,8 @@ export default function ListePokemon(){
       <br></br>
 
       <div className="pagination-top">
-        {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
-        {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
+        {url.previous && <button  class="btn btn-dark" onClick={previous}>Previous</button>}
+        {url.next && <button  class="btn btn-dark" onClick={next}>Next</button>}
       </div>
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">

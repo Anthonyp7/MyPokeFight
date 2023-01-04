@@ -10,7 +10,7 @@
 
 .load-h1{
     font-family:'pokemon_classicregular';
-    color:black;
+    color:rgb(128, 2, 2);
     text-align: center;
 }
 
@@ -109,4 +109,14 @@ opacity: 1;
 
 .pagination-top, .pagination-bottom{
     text-align: center;
+}
+
+.pagination-top button{
+    font-family: 'pokemon_classicregular';
+    color:rgb(128, 2, 2);
+}
+
+.pagination-bottom button{
+    font-family: 'pokemon_classicregular';
+    color:rgb(128, 2, 2);
 }
