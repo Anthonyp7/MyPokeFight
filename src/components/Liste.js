@@ -25,7 +25,7 @@ export default function ListePokemon(){
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
-  // const [test, setTest] = useState("");
+  const [pokeModal, setPokeModal] = useState("");
   
 
     
@@ -35,7 +35,7 @@ export default function ListePokemon(){
         .then((res)=>res.json())
         .then((data)=>{
           resolve(data)
-          console.log(data)
+          // console.log(data)
         })
         })
   }
@@ -65,7 +65,7 @@ export default function ListePokemon(){
 
 
   useEffect(() => {
-    console.log(url)
+    // console.log(url)
     fetch(url.current)
       .then((res) => res.json())
       .then((data) => {
@@ -125,13 +125,14 @@ export default function ListePokemon(){
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
+          {props.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* <h4>{pokemon.name}</h4> */}
           <p>
-            {props.name + props.id}
-            <img src={image[props.name]} alt="" ></img>
+
+            {console.log(props)}
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -183,58 +184,27 @@ export default function ListePokemon(){
                     <li class="list-group-item">Height : {height[index]/10} m</li>
                     <li class="list-group-item">Weight : {weight[index]/10} kg</li>
                   </ul>
+
+                  
                     
-                  <Button variant="primary" onClick={() => setModalShow(true)}>
+                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name)}}>
                     See More
                   </Button>
-
-                  <ModalTest
+                                    
+            </div>
+                <ModalTest
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-                    name={pokemon.name}
+                    name={pokeModal}
                     id={pokemon.id}
+                    img={imageani[index]}
                   />
 
-                  
-                  
-                  {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    See More
-                  </button>
-                  
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        
-                        <div class="modal-body">
-                          {
-                            console.log(pokemon.name,image[index])
-                          }
-                          <img src={imageani[index]} alt=""></img>
-                          {pokemon.name}
-                        </div>
-                        
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
-
-
-                  {/* <ModalTest pokemon = {pokemon}/> */}
-
-
-                  
-            </div>
-
           </div>
-        ))}
+
+        ))
+        }
+            
       
       {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
       {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
