@@ -12,7 +12,7 @@ export default function ModalTest(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        {props.name}
+        {/* {props.name} */}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -24,9 +24,10 @@ export default function ModalTest(props) {
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h3 class="card-title">{props.name}</h3>
                 <p class="card-text">Height: {props.height} m</p>
                 <p class="card-text">Weight: {props.weight} kg</p>
+                {/* <p class="card-text">Weight: {props.stat} kg</p> */}
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>

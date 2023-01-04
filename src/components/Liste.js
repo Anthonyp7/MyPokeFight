@@ -1,13 +1,9 @@
 import { useState, useEffect} from "react";
 import '../styles/Liste.css';
 import '../styles/PokemonColors.css';
-import Modal from 'react-bootstrap/Modal';
 import ModalTest from "./Modal";
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 
 export default function ListePokemon(){
@@ -28,6 +24,8 @@ export default function ListePokemon(){
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [stats, setStats] = useState([]);
+
+  const [stat, setStat] = useState([]);
 
   let {hp, attack, defense} = "";
 
@@ -119,8 +117,8 @@ export default function ListePokemon(){
         // setStats((current) => [...current, data.stats.map(stat => {
         //   switch (stat.stat.name) {
         //     case "hp":
-        //       const newHp = stat['base_stat'];
-        //       // hp = stat['base_stat'];
+        //       // const newHp = stat['base_stat'];
+        //       hp = stat['base_stat'];
         //       break;
         //     case "attack":
         //       const newAttack = stat['base_stat'];
@@ -134,7 +132,9 @@ export default function ListePokemon(){
         //   return stat;
         // })])
 
-        // setStats((current) => [...current, data.stats.map(stat => stat.stat.name)]);
+        // setStats((current) => [...current, data.stats.map(stat => stat.stat['base_stat'])]);
+
+        setStats((current) => [...current, data.stats]);
 
         
       })
@@ -145,7 +145,7 @@ export default function ListePokemon(){
 
   
 
-  
+
   return (
     <div>
       <br></br>
@@ -164,6 +164,9 @@ export default function ListePokemon(){
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
+          {console.log(stats)}
+
+          {/* {setStat(stats[index])} */}
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 

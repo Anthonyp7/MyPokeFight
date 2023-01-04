@@ -7,8 +7,8 @@ export default function Header () {
             <nav class="navbar bg-light">
             <div class="container">
             <a class="navbar-brand" href="/">
-      <img src="https://th.bing.com/th/id/R.a8ac405db924134aac996c1dee32d04b?rik=meWkR9FFbA%2fh4A&riu=http%3a%2f%2fpngimg.com%2fuploads%2fpokeball%2fpokeball_PNG8.png&ehk=Z9BCy3bFkiQjrYBDTFWVzy6mUx2cnp1%2bJDIV7zre0dI%3d&risl=&pid=ImgRaw&r=0" alt="" width="25" height="25" class="d-inline-block align-text-top"/>
-      PokeAPI
+      <img src="https://cdn.discordapp.com/attachments/956119709361774592/1060200881016016966/logoMyPokeFight.png" alt="" width="70" height="70" class="d-inline-block align-text-top"/>
+      <strong>MyPokéFight</strong>
     </a>
             
 
