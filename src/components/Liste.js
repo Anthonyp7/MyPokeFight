@@ -20,36 +20,41 @@ export default function ListePokemon(){
 
   const [modalShow, setModalShow] = React.useState(false);
 
+  // INFO POKEMON
   const [type, setType] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+
+  // INFO STATS POKEMON
   const [statsHp, setStatsHp] = useState([]);
   const [statsAttack, setStatsAttack] = useState([]);
   const [statsSpeed, setStatsSpeed] = useState([]);
 
-  const [stat, setStat] = useState([]);
-
-  let {hp, attack, defense} = "";
-
+  // INFO POKEMON MODAL
   const [pokeModal, setPokeModal] = useState("");
   const [pokeModalImg, setPokeModalImg] = useState("");
   const [pokeModalHeight, setPokeModalHeight] = useState("");
   const [pokeModalWeight, setPokeModalWeight] = useState("");
+
+  // INFO STATS POKEMON MODAL
+  const [pokeModalHp, setPokeModalHp] = useState("");
+  const [pokeModalAttack, setPokeModalAttack] = useState("");
+  const [pokeModalSpeed, setPokeModalSpeed] = useState("");
   
 
     
-  async function fetchData(){
-    return new Promise((resolve, reject) => { 
-       fetch ("https://pokeapi.co/api/v2/pokemon/1")
-        .then((res)=>res.json())
-        .then((data)=>{
-          resolve(data)
-          // console.log(data)
-        })
-        })
-  }
+  // async function fetchData(){
+  //   return new Promise((resolve, reject) => { 
+  //      fetch ("https://pokeapi.co/api/v2/pokemon/1")
+  //       .then((res)=>res.json())
+  //       .then((data)=>{
+  //         resolve(data)
+  //         // console.log(data)
+  //       })
+  //       })
+  // }
   
-  fetchData()
+  // fetchData()
 
 
   //PAGE SUIVANTE
@@ -85,8 +90,7 @@ export default function ListePokemon(){
           next: data.next,
           previous: data.previous,
         });
-        // console.log(data);
-        setLoading(false);//
+        setLoading(false);
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
@@ -107,38 +111,23 @@ export default function ListePokemon(){
         fetch(pokemon.url)
       .then((res) => res.json())
       .then((data) => {
+
+        //SET IMG
         setImage((current) => [...current, data.sprites.front_default]);
         //data.sprites.other['official-artwork'].front_default
         //data.sprites.versions['generation-v']['black-white'].animated.front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setImageAni((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.front_default]);
+
+        // SET INFO
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
         setType((current) => [...current, data.types.map(type => type.type.name + " ")]);
 
-        // setStats((current) => [...current, data.stats.map(stat => {
-        //   switch (stat.stat.name) {
-        //     case "hp":
-        //       // const newHp = stat['base_stat'];
-        //       hp = stat['base_stat'];
-        //       break;
-        //     case "attack":
-        //       const newAttack = stat['base_stat'];
-        //       break;
-        //     case "defense":
-        //       const newDefense = stat['base_stat'];
-        //       break;
-        //     default:
-        //       break;
-        //   }
-        //   return stat;
-        // })])
-
-        // setStats((current) => [...current, data.stats.map(stat => stat.stat['base_stat'])]);
-
-        setStatsHp((current) => [...current, data.stats[0]]);
-
-        
+        // SET STATS
+        setStatsHp((current) => [...current, data.stats[0].base_stat]);
+        setStatsAttack((current) => [...current, data.stats[1].base_stat]);
+        setStatsSpeed((current) => [...current, data.stats[5].base_stat]);
       })
       .catch((err) => console.error(err))
     ))
@@ -165,16 +154,8 @@ export default function ListePokemon(){
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 
-          {/* {console.log("stat", stats.map((x)=>{
-            return x
-          }))} */}
+          {console.log("statsHp", pokemon.name, statsHp[index])}
 
-          {statsHp.map((statistique, index) => (
-            console.log("Hp",statistique.base_stat)
-          ))}
-          {/* {console.log("stat", stats)} */}
-
-          {/* {setStat(stats[index])} */}
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
@@ -193,25 +174,27 @@ export default function ListePokemon(){
                     </ul>
                   </div>
 
-                  {/* <ul class="type-poids">
-                    <li class="list-group-item">Height : {height[index]/10} m</li>
-                    <li class="list-group-item">Weight : {weight[index]/10} kg</li>
-                   
-                  </ul> */}
-
-                  
-                    
-                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); setPokeModalImg(imageani[index]); setPokeModalHeight(height[index]); setPokeModalWeight(weight[index])}}>
+                  <Button variant="primary" onClick={() => {setModalShow(true); 
+                    setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); 
+                    setPokeModalImg(imageani[index]); 
+                    setPokeModalHeight(height[index]); 
+                    setPokeModalWeight(weight[index]); 
+                    setPokeModalHp(statsHp[index]); 
+                    setPokeModalAttack(statsAttack[index]); 
+                    setPokeModalSpeed(statsSpeed[index])}}>
                     See More
                   </Button>
                                     
             </div>
+            
                 <ModalTest
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     name={pokeModal}
                     img={pokeModalImg}
-                    stat={statsHp}
+                    stathp={pokeModalHp}
+                    statattack={pokeModalAttack}
+                    statspeed={pokeModalSpeed}
                     height={pokeModalHeight/10}
                     weight={pokeModalWeight/10}
                   />

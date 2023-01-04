@@ -27,7 +27,9 @@ export default function ModalTest(props) {
                 <h3 class="card-title">{props.name}</h3>
                 <p class="card-text">Height: {props.height} m</p>
                 <p class="card-text">Weight: {props.weight} kg</p>
-                {/* <p class="card-text">Weight: {props.stat} kg</p> */}
+                <p class="card-text">Stats Hp: {props.stathp}</p>
+                <p class="card-text">Stats Attack: {props.statattack}</p>
+                <p class="card-text">Stats Speed: {props.statspeed}</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
