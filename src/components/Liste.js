@@ -24,8 +24,12 @@ export default function ListePokemon(){
   const [type, setType] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [stats, setStats] = useState([]);
+
+  let {hp, attack, defense} = "";
 
   const [pokeModal, setPokeModal] = useState("");
+  const [pokeModalImg, setPokeModalImg] = useState("");
   
 
     
@@ -35,7 +39,7 @@ export default function ListePokemon(){
         .then((res)=>res.json())
         .then((data)=>{
           resolve(data)
-          // console.log(data)
+          console.log(data)
         })
         })
   }
@@ -106,16 +110,37 @@ export default function ListePokemon(){
         setHeight((current) => [...current, data.height]);
         setWeight((current) => [...current, data.weight]);
         setType((current) => [...current, data.types.map(type => type.type.name + " ")]);
+
+        // setStats((current) => [...current, data.stats.map(stat => {
+        //   switch (stat.stat.name) {
+        //     case "hp":
+        //       const newHp = stat['base_stat'];
+        //       // hp = stat['base_stat'];
+        //       break;
+        //     case "attack":
+        //       const newAttack = stat['base_stat'];
+        //       break;
+        //     case "defense":
+        //       const newDefense = stat['base_stat'];
+        //       break;
+        //     default:
+        //       break;
+        //   }
+        //   return stat;
+        // })])
+
+        // setStats((current) => [...current, data.stats.map(stat => stat.stat.name)]);
+
+        
       })
       .catch((err) => console.error(err))
     ))
+    
   }, [pokemons]);
 
   
-  // const poke = this.props;
 
   function ModalTest(props) {
-
     return (
       <Modal
       {...props}
@@ -129,11 +154,10 @@ export default function ListePokemon(){
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <h4>{pokemon.name}</h4> */}
-          <p>
-
-            {console.log(props)}
-          </p>
+          <div>
+            <img className="img-modal" src={props.img} alt=""></img>  
+            Stats: {props.stat}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -172,8 +196,8 @@ export default function ListePokemon(){
                 <img className="img-poke" src={image2[index]} alt="{pokemon}" />
               </div>
 
+
                 {/* INFO POKEMON */}
-                
                   <div  className="type-li" >
                     <ul class={type[index]}>
                       <li class="list-group-item">{type[index]}</li>
@@ -183,11 +207,12 @@ export default function ListePokemon(){
                   <ul class="type-poids">
                     <li class="list-group-item">Height : {height[index]/10} m</li>
                     <li class="list-group-item">Weight : {weight[index]/10} kg</li>
+                    {/* <li class="list-group-item">Stats : {this.state.stats.newHp}</li> */}
                   </ul>
 
                   
                     
-                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name)}}>
+                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); setPokeModalImg(imageani[index])}}>
                     See More
                   </Button>
                                     
@@ -196,8 +221,8 @@ export default function ListePokemon(){
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     name={pokeModal}
-                    id={pokemon.id}
-                    img={imageani[index]}
+                    img={pokeModalImg}
+                    stat={stats}
                   />
 
           </div>
