@@ -5,6 +5,9 @@ import Modal from 'react-bootstrap/Modal';
 // import ModalTest from "./Modal";
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 
 export default function ListePokemon(){
@@ -30,6 +33,8 @@ export default function ListePokemon(){
 
   const [pokeModal, setPokeModal] = useState("");
   const [pokeModalImg, setPokeModalImg] = useState("");
+  const [pokeModalHeight, setPokeModalHeight] = useState("");
+  const [pokeModalWeight, setPokeModalWeight] = useState("");
   
 
     
@@ -154,9 +159,35 @@ export default function ListePokemon(){
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        {/* <Container>
+          <Row>
+            <Col xs={12} md={8}>
+              <img className="img-modal" src={props.img} alt=""></img>
+            </Col>
+            <Col xs={6} md={4}>
+            <p>Stats: {props.stat}</p>
+            
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={6} md={4}>
+            
+            </Col>
+            <Col xs={6} md={4}>
+            <p>Height: {props.height} m</p>
+            <p>Weight: {props.weight} kg</p>
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+          </Row>
+        </Container> */}
           <div>
             <img className="img-modal" src={props.img} alt=""></img>  
-            Stats: {props.stat}
+            <p>Stats: {props.stat}</p>
+            <p>Height: {props.height} m</p>
+            <p>Weight: {props.weight} kg</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -204,15 +235,15 @@ export default function ListePokemon(){
                     </ul>
                   </div>
 
-                  <ul class="type-poids">
+                  {/* <ul class="type-poids">
                     <li class="list-group-item">Height : {height[index]/10} m</li>
                     <li class="list-group-item">Weight : {weight[index]/10} kg</li>
-                    {/* <li class="list-group-item">Stats : {this.state.stats.newHp}</li> */}
-                  </ul>
+                   
+                  </ul> */}
 
                   
                     
-                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); setPokeModalImg(imageani[index])}}>
+                  <Button variant="primary" onClick={() => {setModalShow(true); setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); setPokeModalImg(imageani[index]); setPokeModalHeight(height[index]); setPokeModalWeight(weight[index])}}>
                     See More
                   </Button>
                                     
@@ -223,6 +254,8 @@ export default function ListePokemon(){
                     name={pokeModal}
                     img={pokeModalImg}
                     stat={stats}
+                    height={pokeModalHeight/10}
+                    weight={pokeModalWeight/10}
                   />
 
           </div>
