@@ -155,14 +155,13 @@ export default function ListePokemon(){
                   <span class="visually-hidden">Loading...</span>
                 </div> : <h1 className="load-h1">Liste Pokémon</h1>}
       <br></br>
-      <h2 className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
+      <h2 font-family ="pokemon_classicregular,arial, sans-serif" className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
       <div className="pagination-top">
         {url.previous && <button class="btn btn-dark" onClick={previous}>Previous</button>}
         {url.next && <button class="btn btn-dark" onClick={next}>Next</button>}
       </div>
-
         {pokemons.map((pokemon, index) => (
           <div class={type[index]} id="test">
 

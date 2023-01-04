@@ -8,7 +8,7 @@ export default function Header () {
             <div class="container">
             <a class="navbar-brand" href="/">
       <img src="https://cdn.discordapp.com/attachments/956119709361774592/1060200881016016966/logoMyPokeFight.png" alt="" width="70" height="70" class="d-inline-block align-text-top"/>
-      <strong>MyPokéFight</strong>
+      <strong font-family="pokemon_classicregular,arial, sans-serif"className="">MyPokéFight</strong>
     </a>
             
 

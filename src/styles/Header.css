@@ -6,3 +6,18 @@
     
 }
  */
+
+ @font-face {
+    font-family: 'pokemon_classicregular';
+    src: url('pokemonclassic-webfont.woff2') format('woff2'),
+         url('pokemonclassic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+ .container strong{
+    font-family: 'pokemon_classicregular';
+    top:30px;
+    color:blue;
+    
+}
