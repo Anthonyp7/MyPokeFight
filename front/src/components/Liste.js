@@ -47,7 +47,7 @@ export default function ListePokemon(){
   // const [pokemonId, setPokemonId] = useState("");
 
 
-  const [pokemonUrl, setPokemonUrl] = useState("");
+  // const [pokemonUrl, setPokemonUrl] = useState("");
   
 
     
@@ -145,7 +145,7 @@ export default function ListePokemon(){
     
   }, [pokemons]);
 
-  
+
 
 
   return (
