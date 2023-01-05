@@ -7,6 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
+    "mongoose": "^6.8.2",
+    "nodemon": "^2.0.20",
     "pokemon-sprites": "github:PokeAPI/sprites",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
@@ -19,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon ./src/server.js"
   },
   "eslintConfig": {
     "extends": [

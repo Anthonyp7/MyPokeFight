@@ -43,6 +43,11 @@ export default function ListePokemon(){
   const [pokeModalHp, setPokeModalHp] = useState("");
   const [pokeModalAttack, setPokeModalAttack] = useState("");
   const [pokeModalSpeed, setPokeModalSpeed] = useState("");
+
+  // const [pokemonId, setPokemonId] = useState("");
+
+
+  // const [pokemonUrl, setPokemonUrl] = useState(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
   
 
     
@@ -52,7 +57,7 @@ export default function ListePokemon(){
   //       .then((res)=>res.json())
   //       .then((data)=>{
   //         resolve(data)
-  //         // console.log(data)
+  //         console.log(data)
   //       })
   //       })
   // }
@@ -115,6 +120,8 @@ export default function ListePokemon(){
       .then((res) => res.json())
       .then((data) => {
 
+        // console.log(data)
+
         //SET IMG
         setImage((current) => [...current, data.sprites.front_default]);
         //data.sprites.other['official-artwork'].front_default
@@ -155,17 +162,27 @@ export default function ListePokemon(){
         {url.previous && <button  class="btn btn-dark" onClick={previous}>Previous</button>}
         {url.next && <button  class="btn btn-dark" onClick={next}>Next</button>}
       </div>
+
+      
+      {/* {setPokemonId(pokemons.url.replace(/[^\d]/g, "").substring(1))} */}
+      {/* {console.log(pokemons[url.replace(/[^\d]/g, "").substring(1)])} */}
+      
         {pokemons.map((pokemon, index) => (
+          
+
           <div class={type[index]} id="test">
+
+        {/* {console.log(pokemonUrl)} */}
+        
 
             <div class="card-body">
               <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
               <div class="image">
-                <img className="img-poke" src={image[index]} alt="{pokemon}" />
+                <img className="img-poke" src={image[index]} alt="" />
               </div>
               <div class="image-hover">
-                <img className="img-poke" src={image2[index]} alt="{pokemon}" />
+                <img className="img-poke" src={image2[index]} alt="" />
               </div>
 
 
@@ -176,13 +193,22 @@ export default function ListePokemon(){
                     </ul>
                   </div>
 
+                  {/* {console.log(pokemon.name, pokemon.url.replace(/[^\d]/g, "").substring(1), statsHp[pokemon.url.replace(/[^\d]/g, "").substring(1)])} */}
+                  
+                  
+
+
+                  {/* {setPokemonId(pokemons[index].url.replace(/[^\d]/g, "").substring(1))} */}
+
+                  {/* {console.log(pokemons[index].url.replace(/[^\d]/g, "").substring(1))} */}
+
                   <Button variant="primary" onClick={() => {setModalShow(true); 
                     setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); 
                     setPokeModalImg(imageani[index]); 
-                    setPokeModalImg2(imageaniback[index])
+                    setPokeModalImg2(imageaniback[index]); 
                     setPokeModalHeight(height[index]); 
                     setPokeModalWeight(weight[index]); 
-                    setPokeModalHp(statsHp[index]); 
+                    setPokeModalHp(statsHp[pokemon.url.replace(/[^\d]/g, "").substring(1)]); 
                     setPokeModalAttack(statsAttack[index]); 
                     setPokeModalSpeed(statsSpeed[index]); 
                     setPokeModalType(type[index])}}>
