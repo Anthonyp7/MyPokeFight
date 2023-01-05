@@ -1,0 +1,19 @@
+body {
+  /* background-color: black; */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:url(../public/bgpokefight.PNG);
+  background-size: auto;
+  background-repeat: repeat;
+  /* background-size:100%; */
+  /* background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4217318a-13ed-4bc9-9389-e3a099855238/d9tlp39-395a7b85-8645-4381-9305-1d2182378386.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQyMTczMThhLTEzZWQtNGJjOS05Mzg5LWUzYTA5OTg1NTIzOFwvZDl0bHAzOS0zOTVhN2I4NS04NjQ1LTQzODEtOTMwNS0xZDIxODIzNzgzODYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J1vDBgSNdW8HogqGMTYM1p9eGnJ8i5qGOt48N1ls-aQ); */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

@@ -1,0 +1,119 @@
+
+@font-face {
+    font-family: 'pokemon_classicregular';
+    src: url('pokemonclassic-webfont.woff2') format('woff2'),
+         url('pokemonclassic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.load-h1{
+    font-family:'pokemon_classicregular';
+    color:rgb(128, 2, 2);
+    text-align: center;
+}
+
+#pokedex-addbutton img{
+    margin-left: 250px;
+    width: 18%;
+}
+
+/* #pokedex-button {
+    margin-left: 150px;
+}
+#pokedex-button img{
+    width: 38%;
+} */
+
+#test {
+    max-width: 21.5rem;
+    float: left;
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+
+}
+
+
+#test .card-title{
+    text-align: center;
+}
+
+.pokemon-name{
+    text-align: center;
+    color:ivory;
+}
+
+#test .img-poke{
+    display: block;
+    margin: 0px auto;
+    width: 60%;
+    
+}
+
+
+
+
+#test .image, .image-hover:hover {
+opacity: 1;
+} 
+
+#test .image:hover{
+    opacity: 0;
+}
+
+#test .image {
+    position:absolute;
+    left:24px;
+    width: 86%;
+    top:57px;
+    z-index:1;
+}
+
+#test .image-hover {
+    left:195px;
+    top:110px;
+    z-index:2;
+}
+
+
+
+.type-li {
+    display: flex;
+    justify-content: center; 
+}
+
+.list-group-item{
+    justify-content: center; 
+}
+
+.type-li li {
+    color:ivory;
+}
+
+
+.img-modal{
+    width: 60%;
+}
+
+
+#modal-col {
+    text-align: center;
+    margin-left: -20px;
+}
+
+
+.pagination-top, .pagination-bottom{
+    text-align: center;
+}
+
+.pagination-top button{
+    font-family: 'pokemon_classicregular';
+    color:rgb(128, 2, 2);
+}
+
+.pagination-bottom button{
+    font-family: 'pokemon_classicregular';
+    color:rgb(128, 2, 2);
+}
