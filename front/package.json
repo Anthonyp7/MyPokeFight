@@ -9,7 +9,6 @@
     "bootstrap": "^5.2.3",
     "mongoose": "^6.8.2",
     "nodemon": "^2.0.20",
-    "pokemon-sprites": "github:PokeAPI/sprites",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
