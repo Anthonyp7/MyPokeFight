@@ -47,22 +47,22 @@ export default function ListePokemon(){
   // const [pokemonId, setPokemonId] = useState("");
 
 
-  // const [pokemonUrl, setPokemonUrl] = useState(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
+  const [pokemonUrl, setPokemonUrl] = useState("");
   
 
     
-  // async function fetchData(){
-  //   return new Promise((resolve, reject) => { 
-  //      fetch ("https://pokeapi.co/api/v2/pokemon/1")
-  //       .then((res)=>res.json())
-  //       .then((data)=>{
-  //         resolve(data)
-  //         console.log(data)
-  //       })
-  //       })
-  // }
+  async function fetchData(){
+    return new Promise((resolve, reject) => { 
+       fetch ("https://pokeapi.co/api/v2/pokemon")
+        .then((res)=>res.json())
+        .then((data)=>{
+          resolve(data)
+          // console.log(data)
+        })
+        })
+  }
   
-  // fetchData()
+  fetchData()
 
 
   //PAGE SUIVANTE
@@ -173,6 +173,8 @@ export default function ListePokemon(){
           <div class={type[index]} id="test">
 
         {/* {console.log(pokemonUrl)} */}
+        {/* {setPokemonUrl(pokemon)} */}
+        {/* {console.log(pokemon.url)} */}
         
 
             <div class="card-body">
