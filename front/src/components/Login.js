@@ -1,22 +1,31 @@
 import React, { useState } from "react"
 import axios from "axios"
+import '../styles/Login.css';
+
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
-import '../styles/Login.css';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 
 export default function Login() {
-    // const navigate = useNavigate()
-    const [username, setUsername] = useState("Username")
-    const [password, setPassword] = useState("Password")
+    const [username, setUsername] = useState("Username");
+    const [password, setPassword] = useState("Password");
 
     const [signin, setSignin] = useState(false);
 
+    const [show, setShow] = useState(false);
+
+    const [pokeAvatar, setPokeAvatar] = useState("");
+    const [randnmbr, setRandnmbr] = useState("");
+    const [pokeimg, setPokeimg] = useState("");
+    // const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
+//"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randnmbr}.png"
+
     const handleSubmit = () => {
-      alert("User Created!");
       console.log(username, password)
 
       axios.post('http://localhost:3080/login',
@@ -43,15 +52,14 @@ export default function Login() {
           }).catch(err => {
               console.log(err)
         })
-        
-        return (
-          <>
-            <Alert variant="info">
-              This is a  alert—check it out!
-            </Alert>
-          </>
-        )
+        setShow(true);
 
+
+        setRandnmbr(Math.floor(Math.random() * 905) + 1);
+        setPokeimg(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randnmbr}.png`)
+
+        console.log(randnmbr);
+        console.log(pokeimg);
     }
 
     const changeSigninForm = () => {
@@ -62,10 +70,21 @@ export default function Login() {
         setSignin(false);
     }
 
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Header as="h3">Poké Avatar</Popover.Header>
+          <Popover.Body>
+            <img src={pokeimg}/>
+          </Popover.Body>
+        </Popover>
+    );
+
     return (
         <div className="body" style={{backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)"}}>
         {/* <div className="test" style={{backgroundImage: "url(https://i.pinimg.com/originals/ba/e4/9c/bae49c28470b4d0878cf12528bbd540c.jpg)", backgroundSize: "75%"}}> */}
-        {/* <div className="test" style={{backgroundImage: "url(https://i.imgur.com/NPoGuXG.gif)", backgroundSize: "contain"}}> */}
+
+            
+
             <br></br>
             <h1>Register</h1> <br></br>
             <br></br>
@@ -101,7 +120,9 @@ export default function Login() {
                             </Form>
                         </Card.Text> 
                         <br></br>
-                        <Button variant="primary" className="btn-signup" onClick={handleSubmit} >Create</Button>
+                        <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
+                            <Button variant="primary" className="btn-signup" onClick={handleSubmit} >Create</Button>
+                        </OverlayTrigger>
                     </>
                     : 
                     <>
@@ -123,6 +144,10 @@ export default function Login() {
             <img style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="{pokemon}" />
 
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
+
+            <Alert show={show} variant="info" className="alert-login" onClick={() => setShow(false)} dismissible>
+                Your Account is created !
+            </Alert>
         </div>
     )
 }
