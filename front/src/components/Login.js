@@ -63,7 +63,9 @@ export default function Login() {
     }
 
     return (
-        <div className="test">
+        <div className="body" style={{backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)"}}>
+        {/* <div className="test" style={{backgroundImage: "url(https://i.pinimg.com/originals/ba/e4/9c/bae49c28470b4d0878cf12528bbd540c.jpg)", backgroundSize: "75%"}}> */}
+        {/* <div className="test" style={{backgroundImage: "url(https://i.imgur.com/NPoGuXG.gif)", backgroundSize: "contain"}}> */}
             <br></br>
             <h1>Register</h1> <br></br>
             <br></br>
@@ -113,6 +115,14 @@ export default function Login() {
                     </Card.Body>
                 </Card>
             </div>
+            <img style={{ position: "absolute", top: "150px", right: "600px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/384.gif"} alt="rayquaza" />
+            <img style={{ position: "absolute", top: "400px", left: "350px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/250.gif"} alt="{pokemon}" />
+            <img style={{ position: "absolute", top: "600px", right: "400px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/334.gif"} alt="{pokemon}" />
+            <img style={{ width:"2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="{pokemon}" />
+            <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="{pokemon}" />
+            <img style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="{pokemon}" />
+
+            {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
         </div>
     )
 }
