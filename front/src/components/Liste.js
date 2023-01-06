@@ -53,7 +53,7 @@ export default function ListePokemon(){
     
   async function fetchData(){
     return new Promise((resolve, reject) => { 
-       fetch ("https://pokeapi.co/api/v2/pokemon")
+       fetch ("https://pokeapi.co/api/v2/pokemon/1")
         .then((res)=>res.json())
         .then((data)=>{
           resolve(data)
@@ -125,7 +125,7 @@ export default function ListePokemon(){
         //SET IMG
         setImage((current) => [...current, data.sprites.front_default]);
         //data.sprites.other['official-artwork'].front_default
-        //data.sprites.versions['generation-v']['black-white'].animated.front_default
+        //data.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setImageAni((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.front_default]);
         setImageAniBack((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.back_default]);

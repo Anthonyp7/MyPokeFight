@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import '../styles/Login.css';
-// import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
