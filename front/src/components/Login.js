@@ -63,57 +63,57 @@ export default function Login() {
     }
 
     return (
-        <>
+        <div className="test">
             <br></br>
             <h1>Register</h1> <br></br>
             <br></br>
             <div className="outcard">
 
-            <Card style={{ width: '30rem' }} className="card-login">
-                <Card.Header>
-                <Nav variant="pills" defaultActiveKey="#first">
-                    <Nav.Item>
-                    <Nav.Link href="#signup" onClick={changeSignupForm}>SignUp</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                    <Nav.Link href="#signin" onClick={changeSigninForm}>SignIn</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-                </Card.Header>
-                <Card.Body>
+                <Card style={{ width: '30rem' }} className="card-login">
+                    <Card.Header>
+                    <Nav variant="pills" defaultActiveKey="#first">
+                        <Nav.Item>
+                        <Nav.Link href="#signup" onClick={changeSignupForm}>SignUp</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                        <Nav.Link href="#signin" onClick={changeSigninForm}>SignIn</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    </Card.Header>
+                    <Card.Body>
 
-                    {/* SI ON CLIQUE SUR SIGNIN OU SIGNUP */}
-                {signin === false ? 
-                <>
-                    <Card.Title style={{ textAlign: "center" }}>Create an Account</Card.Title> <br></br>
-                    <Card.Text>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formGroupEmail">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text"  placeholder="Username"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Password"/>
-                            </Form.Group>
-                        </Form>
-                    </Card.Text> 
-                    <br></br>
-                    <Button variant="primary" className="btn-signup" onClick={handleSubmit} >Create</Button>
-                </>
-                : 
-                <>
-                    <Card.Title style={{ textAlign: "center" }}>SignIn</Card.Title>
-                    <Card.Text>
-                        Signin
-                    </Card.Text>
-                </>
-                }
-                
-                </Card.Body>
-            </Card>
+                        {/* SI ON CLIQUE SUR SIGNIN OU SIGNUP */}
+                    {signin === false ? 
+                    <>
+                        <Card.Title style={{ textAlign: "center" }}>Create an Account</Card.Title> <br></br>
+                        <Card.Text>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formGroupEmail">
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text"  placeholder="Username"/>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formGroupPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Password"/>
+                                </Form.Group>
+                            </Form>
+                        </Card.Text> 
+                        <br></br>
+                        <Button variant="primary" className="btn-signup" onClick={handleSubmit} >Create</Button>
+                    </>
+                    : 
+                    <>
+                        <Card.Title style={{ textAlign: "center" }}>SignIn</Card.Title>
+                        <Card.Text>
+                            Signin
+                        </Card.Text>
+                    </>
+                    }
+                    
+                    </Card.Body>
+                </Card>
             </div>
-        </>
+        </div>
     )
 }
 
