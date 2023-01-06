@@ -9,6 +9,7 @@ export default function Header () {
                 <a class="navbar-brand" href="/">
                     <img src="https://cdn.discordapp.com/attachments/956119709361774592/1060200881016016966/logoMyPokeFight.png" alt="" width="70" height="70" class="d-inline-block align-text-top"/>
                     <strong font-family="pokemon_classicregular,arial, sans-serif" className="title-pokefight">MyPokéFight</strong>
+                    <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} className="poke-img" alt="{pokemon}" />
 
                 </a>
             
