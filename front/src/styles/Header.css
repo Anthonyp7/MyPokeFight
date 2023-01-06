@@ -27,4 +27,9 @@
     padding-left: 10px;
 }
 
+.navbar-brand {
+    text-align: left;
+    margin-right: 300px;
+    margin-left: -250px;
+}
 

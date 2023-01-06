@@ -1,48 +1,14 @@
-// import { useState } from "react";
-
-// export default function SignUp() {
-//   const [username, setUsername] = useState("Username");
-//   const [password, setPassword] = useState("Password");
-
-//   const handleSubmit = async () => {
-//     console.log(username, password);
-
-
-//     fetch("http://localhost:3080/login",
-//      {
-//       mode: 'no-cors',
-//       method: "POST",
-//       body: JSON.stringify({
-//         username: username,
-//         password: password,
-//       })
-//     })
-//     .then((res) => res.json())
-//     .catch((err) => console.log(err));
-//   };
-
-//   return (
-//       <>
-//       <h1>Sign Up</h1>
-//       <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder={username}/>
-//       <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder={password}/>
-//           <input type="button" value="Random Number!" onClick={handleSubmit}/>
-//       </>
-//   )
-// }
-
-
-
 import React, { useState } from "react"
 import axios from "axios"
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
 // import { Link, useNavigate } from 'react-router-dom'
 
 
-function SignUp() {
+export default function Login() {
     // const navigate = useNavigate()
     const [username, setUsername] = useState("Username")
     const [password, setPassword] = useState("Password")
@@ -88,7 +54,7 @@ function SignUp() {
 
     }
 
-    const changeForm = () => {
+    const changeSigninForm = () => {
       // if (signin === true)
       // {
       //   setSignin(false);
@@ -100,9 +66,21 @@ function SignUp() {
       
     }
 
+    const changeSignupForm = () => {
+        // if (signin === true)
+        // {
+        //   setSignin(false);
+        // }
+        // else{
+        //   setSignin(true);
+        // }
+        setSignin(false);
+        
+      }
+
     return (
     <>
-        <h1>Sign Up</h1>
+        <h1>Register</h1>
         <div className="outcard">
 
             {/* <Link style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}
@@ -114,10 +92,10 @@ function SignUp() {
             <Card.Header>
               <Nav variant="pills" defaultActiveKey="#first">
                 <Nav.Item>
-                  <Nav.Link href="#signup" >SignUp</Nav.Link>
+                  <Nav.Link href="#signup" onClick={changeSignupForm}>SignUp</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="#signin" onClick={changeForm}>SignIn</Nav.Link>
+                  <Nav.Link href="#signin" onClick={changeSigninForm}>SignIn</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link href="#disabled" disabled>
@@ -127,27 +105,33 @@ function SignUp() {
               </Nav>
             </Card.Header>
             <Card.Body>
-              <Card.Title>Special title treatment</Card.Title>
-                {console.log(signin)}
-              {signin === false ? <Card.Text>
-                Signup
-                Username
-                <input onChange={(e) => { setUsername(e.target.value) }} value={username} className="inputs" type="text"  placeholder={username}/> <br /> <br />
-                Password
-                <input onChange={(e) => { setPassword(e.target.value) }} value={password} className="inputs" type="password" placeholder={password}/> <br /> <br />
-              </Card.Text> : <Card.Text>
-                Signin
-                
-              </Card.Text>
-              
+
+              {signin === false ? 
+              <>
+                <Card.Title>SignUp</Card.Title> <br></br>
+                <Card.Text>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text"  placeholder="Username"/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formGroupPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Password"/>
+                        </Form.Group>
+                    </Form>
+                </Card.Text> 
+              </>
+              : 
+              <>
+                <Card.Title>SignIn</Card.Title>
+                <Card.Text>
+                    Signin
+                    
+                </Card.Text>
+              </>
               }
-              
-              {/* <Card.Text>
-                Username
-                <input onChange={(e) => { setUsername(e.target.value) }} value={username} className="inputs" type="text"  placeholder={username}/> <br /> <br />
-                Password
-                <input onChange={(e) => { setPassword(e.target.value) }} value={password} className="inputs" type="password" placeholder={password}/> <br /> <br />
-              </Card.Text> */}
+              <br></br>
               <Button variant="primary" onClick={handleSubmit} >Submit</Button>
             </Card.Body>
           </Card>
@@ -158,5 +142,3 @@ function SignUp() {
     )
 }
 
-
-export default SignUp
