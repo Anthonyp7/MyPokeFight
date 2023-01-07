@@ -15,6 +15,13 @@ app.post(
     dto.dtoCreateUser
 );
 
+app.post(
+    '/signin',
+    controllers.GetUser
+);
+
+
+
 app.listen(3080, () => {
     console.log('Server running');
 });

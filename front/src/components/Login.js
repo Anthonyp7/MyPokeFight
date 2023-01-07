@@ -68,6 +68,27 @@ export default function Login() {
         setTab(pokeAvatar.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
     }
 
+
+    const SignIn = () => {
+  
+        axios.post('http://localhost:3080/signin',
+            {
+                mode: 'no-cors',
+                username: username,
+                password: password,
+                pokeavatar: pokeAvatar[i]
+            })
+            .then(res => {
+                console.log(res.data)
+
+            }).catch(err => {
+                console.log(err)
+            })
+            console.log(username, password)
+    }
+
+
+
     const changeSigninForm = () => {
       setSignin(true);
     }
@@ -143,7 +164,7 @@ export default function Login() {
                             <Form>
                                 <Form.Group className="mb-3" controlId="formGroupEmail">
                                     <Form.Label>Username</Form.Label>
-                                    <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text"  placeholder="Username"/>
+                                    <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text" value={username} placeholder="Username"/>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formGroupPassword">
                                     <Form.Label>Password</Form.Label>
@@ -152,21 +173,21 @@ export default function Login() {
                             </Form>
                         </Card.Text> 
                         <br></br>
-                        <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
+                        {/* <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose> */}
                             {/* disabled */}
-                            <Button variant="primary" className="btn-signup" >Connect</Button>
-                        </OverlayTrigger>
+                            <Button variant="primary" className="btn-signup"  onClick={() => {SignIn(); }} >Connect</Button>
+                        {/* </OverlayTrigger> */}
                     </>
                     }
                     
                     </Card.Body>
                 </Card>
             </div>
-            <img style={{ position: "absolute", top: "150px", right: "600px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/384.gif"} alt="rayquaza" />
-            <img style={{ position: "absolute", top: "400px", left: "350px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/250.gif"} alt="{pokemon}" />
-            <img style={{ position: "absolute", top: "600px", right: "400px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/334.gif"} alt="{pokemon}" />
-            <img style={{ width:"2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="{pokemon}" />
-            <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="{pokemon}" />
+            <img style={{ position: "absolute", top: "150px", right: "600px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/491.gif"} alt="darkrai" />
+            <img style={{ position: "absolute", top: "400px", left: "350px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/250.gif"} alt="oh-ho" />
+            <img style={{ position: "absolute", top: "600px", right: "400px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/334.gif"} alt="altaria" />
+            <img style={{ width:"2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="wailord" />
+            <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="boreas" />
             <img style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="{pokemon}" />
 
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
