@@ -3,6 +3,7 @@ const { model, Schema} = require('mongoose');
 const User = new Schema({
     username:String,
     password:String,
+    pokeavatar:String,
     createdAt: {
         type: Date,
         default: Date.now,

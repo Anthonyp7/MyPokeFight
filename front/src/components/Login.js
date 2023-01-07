@@ -12,30 +12,40 @@ import Popover from 'react-bootstrap/Popover';
 
 
 export default function Login() {
-    const [username, setUsername] = useState("Username");
-    const [password, setPassword] = useState("Password");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const [signin, setSignin] = useState(false);
 
     const [show, setShow] = useState(false);
 
     const [pokeAvatar, setPokeAvatar] = useState("");
-    const [randnmbr, setRandnmbr] = useState("");
-    const [pokeimg, setPokeimg] = useState("");
-    // const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}/`;
-//"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randnmbr}.png"
+
 
     const handleSubmit = () => {
       console.log(username, password)
+
+      const pokeimg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`;
+
+      console.log("pokeImg", pokeimg);
+      console.log("pokeAvatar", pokeAvatar);
+
+      setPokeAvatar(pokeimg);
+      console.log("pokeAvatar", pokeAvatar);
 
       axios.post('http://localhost:3080/login',
           {
               mode: 'no-cors',
               username: username,
-              password: password
+              password: password,
+              pokeavatar: pokeAvatar
           })
           .then(res => {
               console.log(res.data)
+
+              if (!username || !password) {
+                  alert('Missing');
+              }
 
               // if (res.data.code === 500) {
               //     alert('User Not Found')
@@ -54,12 +64,10 @@ export default function Login() {
         })
         setShow(true);
 
+        console.log("pokeAvatar", pokeAvatar);
 
-        setRandnmbr(Math.floor(Math.random() * 905) + 1);
-        setPokeimg(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randnmbr}.png`)
+        
 
-        console.log(randnmbr);
-        console.log(pokeimg);
     }
 
     const changeSigninForm = () => {
@@ -74,10 +82,11 @@ export default function Login() {
         <Popover id="popover-basic">
           <Popover.Header as="h3">Poké Avatar</Popover.Header>
           <Popover.Body>
-            <img src={pokeimg}/>
+            <img src={pokeAvatar} alt=""/>
           </Popover.Body>
         </Popover>
     );
+    
 
     return (
         <div className="body" style={{backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)"}}>
@@ -121,6 +130,7 @@ export default function Login() {
                         </Card.Text> 
                         <br></br>
                         <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
+                            {/* disabled */}
                             <Button variant="primary" className="btn-signup" onClick={handleSubmit} >Create</Button>
                         </OverlayTrigger>
                     </>

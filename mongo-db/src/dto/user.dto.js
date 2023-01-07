@@ -2,12 +2,11 @@ const User = require('../models/User');
 
 const dtoCreateUser = (req,res,next) => {
     try {
-        const user = req.body.user;  //NOM
         const username = req.body.username;  //USERNAME
 
-        console.log(user, username); //AFFICHER NOM + USERNAME
+        console.log(username); //AFFICHER NOM + USERNAME
 
-        if (!user || !username) {
+        if (!username) {
             res.status(400).send("Name or Username Missing");
             return;
         }
