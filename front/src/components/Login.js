@@ -40,29 +40,24 @@ export default function Login() {
               pokeavatar: pokeAvatar[i]
           })
           .then(res => {
-              console.log(res.data)
-            //   console.log("1", showError);
-              if (!username) {
-                  alert('Missing');
-                  setShowError(true);
-                  console.log(showError);
-                  return;
+            console.log("data", res.data)              
+
+            
+              // VERIFICATION CREATE SUCCESS OU ERROR
+              if (res.data.code === 201) {
+                  setShowSuccess(true);
               }
+              if (res.data.code === 400) {
+                  setShowError(true);
+              }
+            //   if (res.data.code === 200) {
+            //       // move to home
+            //       navigate('/')
+            //       localStorage.setItem('TOKEN', res.data.token)
+            //       localStorage.setItem('EMAIL', res.data.email)
+            //   }
 
-              setShowSuccess(true);
 
-              // if (res.data.code === 500) {
-              //     alert('User Not Found')
-              // }
-              // if (res.data.code === 404) {
-              //     alert('Password is wrong')
-              // }
-              // if (res.data.code === 200) {
-              //     // move to home
-              //     navigate('/')
-              //     localStorage.setItem('TOKEN', res.data.token)
-              //     localStorage.setItem('EMAIL', res.data.email)
-              // }
           }).catch(err => {
               console.log(err)
         })
@@ -86,7 +81,7 @@ export default function Login() {
                 pokeavatar: pokeAvatar[i]
             })
             .then(res => {
-                console.log(res.data)
+                console.log("data", res.data)
 
             }).catch(err => {
                 console.log(err)
@@ -109,7 +104,7 @@ export default function Login() {
     //     console.log("pokeAvatar func", pokeAvatar);
     // }
 
-      const popover = (
+    const popover = (
         <Popover id="popover-basic">
           <Popover.Header as="h3">Poké Avatar</Popover.Header>
           <Popover.Body>
@@ -202,8 +197,9 @@ export default function Login() {
             <Alert show={showSuccess} variant="info" className="alert-login" onClick={() => setShowSuccess(false)} dismissible>
                 Your Account is created !
             </Alert>
+            {/* ERROR CREATE */}
             <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
-                Your Account is created !
+                Username or Password Missing !
             </Alert>
         </div>
     )

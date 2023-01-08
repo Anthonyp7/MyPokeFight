@@ -14,7 +14,11 @@ const CreateUser = async (req,res) =>{
 
         await newUser.save();
         
-        res.status(201).send("Utilisateur créé");
+        
+        res.send({
+            code: 201,
+            message: "Utilisateur créé"
+        });
         req.username = username;
         req.pokeavatar = pokeavatar;
         req.password = password;
@@ -27,25 +31,29 @@ const CreateUser = async (req,res) =>{
 
 const GetUser = async (req,res) =>{
     try {
-        console.log("username", req.body.username);
-        
+        // console.log("username", req.body.username);
 
-        
         User.findOne({username : req.body.username})
-        .then(res => {
-            console.log("test", res);
+        .then(result => {
+            // console.log("test", res);
+
+            if(result.password === req.body.password){
+                console.log("password : ", req.body.password);
+                res.send({
+                    code : 200,
+                    message: "Connection OK"
+                });
+                console.log("Found!");
+            }
+
+            else {
+                res.send({
+                    code: 404, 
+                    message: "Error Connection"
+                })
+                console.log("Not Found!");
+            }
         })
-
-        res.status(200).send("User found");
-
-        // User.findOne({username : req.body.username})
-        // .then(res => {
-        //     console.log("test", res);
-        //     if(res.password === req.body.password){
-        //         res.status(200).send("User found");
-        //         console.log("Found!");
-        //     }
-        // })
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
