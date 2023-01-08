@@ -27,7 +27,7 @@ const CreateUser = async (req,res) =>{
 
 const GetUser = async (req,res) =>{
     try {
-        console.log("a", req.body.username);
+        console.log("username", req.body.username);
         
 
         

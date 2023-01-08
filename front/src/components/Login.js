@@ -17,7 +17,9 @@ export default function Login() {
 
     const [signin, setSignin] = useState(false);
 
-    const [show, setShow] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [showError, setShowError] = useState(false);
+
     // eslint-disable-next-line
     const [pokeAvatar, setPokeAvatar] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
 
@@ -39,10 +41,15 @@ export default function Login() {
           })
           .then(res => {
               console.log(res.data)
-
-              if (!username || !password) {
+            //   console.log("1", showError);
+              if (!username) {
                   alert('Missing');
+                  setShowError(true);
+                  console.log(showError);
+                  return;
               }
+
+              setShowSuccess(true);
 
               // if (res.data.code === 500) {
               //     alert('User Not Found')
@@ -62,7 +69,7 @@ export default function Login() {
         // console.log("pokeAvatar-mongo", pokeAvatar);
         // console.log("pokeAvatar-mongo-user", pokeAvatar[i]);
         
-        setShow(true);
+        
 
         setI(i+1);
         setTab(pokeAvatar.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
@@ -192,7 +199,10 @@ export default function Login() {
 
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
 
-            <Alert show={show} variant="info" className="alert-login" onClick={() => setShow(false)} dismissible>
+            <Alert show={showSuccess} variant="info" className="alert-login" onClick={() => setShowSuccess(false)} dismissible>
+                Your Account is created !
+            </Alert>
+            <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
                 Your Account is created !
             </Alert>
         </div>

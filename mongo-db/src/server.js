@@ -11,8 +11,9 @@ app.use(cors());
 // USER
 app.post(
     '/login',
-    controllers.CreateUser, 
-    dto.dtoCreateUser
+    dto.dtoCreateUser,
+    controllers.CreateUser
+    
 );
 
 app.post(
