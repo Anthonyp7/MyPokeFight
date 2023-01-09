@@ -55,7 +55,7 @@ const GetUser = async (req,res) =>{
         // })
 
         res.send({
-            code : 200,
+            code : 201,
             message: "Connection OK"
         });
     }

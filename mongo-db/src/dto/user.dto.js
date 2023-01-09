@@ -54,9 +54,16 @@ const dtoGetUser = async (req, res, next) => {
             //     console.log("Found!");
             //     return;
             // }
+            if (!username || !password) {
+                res.send({
+                    code: 400,
+                    message: "Name or Username Missing"
+                });
+                return;
+            }
             if (!user || result.password !== password) {
                 res.send({
-                    code: 401, 
+                    code: 402, 
                     message: " Username or Password is Incorrect"
                 })
                 return;

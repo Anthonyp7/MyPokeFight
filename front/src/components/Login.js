@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
+import { Navigate, useNavigate } from "react-router-dom";
 import '../styles/Login.css';
 
 import Alert from 'react-bootstrap/Alert';
@@ -16,10 +17,13 @@ export default function Login() {
     const [password, setPassword] = useState("");
 
     const [signin, setSignin] = useState(false);
+    const navigate = useNavigate();
 
     const [showSuccess, setShowSuccess] = useState(false);
+    const [showSuccess2, setShowSuccess2] = useState(false);
     const [showError, setShowError] = useState(false);
     const [showError2, setShowError2] = useState(false);
+    const [showError3, setShowError3] = useState(false);
 
     // eslint-disable-next-line
     const [pokeAvatar, setPokeAvatar] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
@@ -45,14 +49,14 @@ export default function Login() {
 
             
               // VERIFICATION CREATE SUCCESS OU ERROR
-              if (res.data.code === 201) {
-                  setShowSuccess(true);
-              }
-              if (res.data.code === 400) {
-                  setShowError(true);
-              }
-              if (res.data.code === 401) {
-                  setShowError2(true);
+            if (res.data.code === 201) {
+                setShowSuccess(true);
+            }
+            else if (res.data.code === 400) {
+                setShowError(true);
+            }
+            else if (res.data.code === 401) {
+                setShowError2(true);
             }
             //   if (res.data.code === 200) {
             //       // move to home
@@ -86,6 +90,17 @@ export default function Login() {
             })
             .then(res => {
                 console.log("data", res.data)
+
+                if (res.data.code === 201) {
+                    setShowSuccess2(true);
+                    navigate('/')
+                }
+                else if (res.data.code === 400) {
+                    setShowError(true);
+                }
+                else if (res.data.code === 402) {
+                    setShowError3(true);
+                }
 
             }).catch(err => {
                 console.log(err)
@@ -207,6 +222,10 @@ export default function Login() {
 
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
 
+            {/* SUCCESS */}
+            <Alert show={showSuccess2} variant="info" className="alert-login" onClick={() => setShowSuccess2(false)} dismissible>
+                Login Successful  !
+            </Alert>
             <Alert show={showSuccess} variant="info" className="alert-login" onClick={() => setShowSuccess(false)} dismissible>
                 Your Account is created !
             </Alert>
@@ -214,8 +233,12 @@ export default function Login() {
             <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
                 Username or Password Missing !
             </Alert>
-            <Alert show={showError2} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
+            <Alert show={showError2} variant="danger" className="alert-login" onClick={() => setShowError2(false)} dismissible>
                 Username Already Chosen !
+            </Alert>
+            {/* ERROR CONNECTION */}
+            <Alert show={showError3} variant="danger" className="alert-login" onClick={() => setShowError3(false)} dismissible>
+                Username or Password is Incorrect !
             </Alert>
         </div>
     )
