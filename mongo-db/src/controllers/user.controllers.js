@@ -31,29 +31,33 @@ const CreateUser = async (req,res) =>{
 
 const GetUser = async (req,res) =>{
     try {
-        // console.log("username", req.body.username);
 
-        User.findOne({username : req.body.username})
-        .then(result => {
-            // console.log("test", res);
+        // User.findOne({username : req.body.username})
+        // .then(result => {
+        //     // console.log("test", res);
 
-            if(result.password === req.body.password){
-                console.log("password : ", req.body.password);
-                res.send({
-                    code : 200,
-                    message: "Connection OK"
-                });
-                console.log("Found!");
-            }
+        //     if(result.password === req.body.password){
+        //         console.log("password : ", req.body.password);
+        //         res.send({
+        //             code : 200,
+        //             message: "Connection OK"
+        //         });
+        //         console.log("Found!");
+        //     }
 
-            else {
-                res.send({
-                    code: 404, 
-                    message: "Error Connection"
-                })
-                console.log("Not Found!");
-            }
-        })
+        //     else {
+        //         res.send({
+        //             code: 404, 
+        //             message: "Error Connection"
+        //         })
+        //         console.log("Not Found!");
+        //     }
+        // })
+
+        res.send({
+            code : 200,
+            message: "Connection OK"
+        });
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");

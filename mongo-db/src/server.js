@@ -18,6 +18,7 @@ app.post(
 
 app.post(
     '/signin',
+    dto.dtoGetUser,
     controllers.GetUser
 );
 
