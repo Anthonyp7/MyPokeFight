@@ -109,12 +109,12 @@ export default function Login() {
     // }
 
     const popover = (
-        <Popover id="popover-basic">
-          <Popover.Header as="h3">Poké Avatar</Popover.Header>
-          <Popover.Body>
-            <img src={pokeAvatar[i-1]} alt=""/>
-          </Popover.Body>
-        </Popover>
+<Popover id="popover-basic">
+                <Popover.Header as="h3">Poké Avatar</Popover.Header>
+                <Popover.Body>
+                    <img src={pokeAvatar[i-1]} alt=""/>
+                </Popover.Body>
+            </Popover>
     );
     
 
