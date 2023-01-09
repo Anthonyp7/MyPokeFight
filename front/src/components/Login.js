@@ -19,6 +19,7 @@ export default function Login() {
 
     const [showSuccess, setShowSuccess] = useState(false);
     const [showError, setShowError] = useState(false);
+    const [showError2, setShowError2] = useState(false);
 
     // eslint-disable-next-line
     const [pokeAvatar, setPokeAvatar] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
@@ -50,6 +51,9 @@ export default function Login() {
               if (res.data.code === 400) {
                   setShowError(true);
               }
+              if (res.data.code === 401) {
+                  setShowError2(true);
+            }
             //   if (res.data.code === 200) {
             //       // move to home
             //       navigate('/')
@@ -200,6 +204,9 @@ export default function Login() {
             {/* ERROR CREATE */}
             <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
                 Username or Password Missing !
+            </Alert>
+            <Alert show={showError2} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
+                Username Already Chosen !
             </Alert>
         </div>
     )

@@ -1,13 +1,19 @@
 const User = require('../models/User');
 
-const dtoCreateUser = (req,res,next) => {
+const dtoCreateUser = async (req,res,next) => {
     try {
         const username = req.body.username;  //USERNAME
         const password = req.body.password;  //PASSWORD
 
-        console.log("username", username, "req.body.username", req.body.username, "res.username", res.username);
-        console.log("test", User.findOne({username : req.body.username}))
+        const userExist = await User.findOne({ username: username });
 
+        if (userExist) {
+            res.send({
+                    code : 401,
+                    message: "Username already chosen"
+                });
+            return;
+          }
 
         if (!username || !password) {
             res.send({
@@ -16,15 +22,10 @@ const dtoCreateUser = (req,res,next) => {
             });
             return;
         }
-        if (User.findOne({username : req.body.username})) {
-            res.send({
-                code: 401,
-                message: "Username already chosen"
-            });
-            return;
-        }
-        // User.find
+        
         next();
+
+        
     } catch (error) {
         res.status(500).send("Une erreur est survenue");
         console.log("error", error);

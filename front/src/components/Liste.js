@@ -206,10 +206,10 @@ export default function ListePokemon(){
 
                   <Button variant="primary" onClick={() => {setModalShow(true); 
                     setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1)); 
-                    // setPokeModalImg(imageani[index]); 
+                    setPokeModalImg(imageani[index]); 
                     setPokeModalImg2(imageaniback[index]); 
-                    {index < 650 ? setPokeModalImg(imageani[index]) 
-                      : setPokeModalImg(image[index])};
+                    // {index < 650 ? setPokeModalImg(imageani[index]) 
+                    //   : setPokeModalImg(image[index])};
                     setPokeModalHeight(height[index]); 
                     setPokeModalWeight(weight[index]); 
                     setPokeModalHp(statsHp[pokemon.url.replace(/[^\d]/g, "").substring(1)]); 
