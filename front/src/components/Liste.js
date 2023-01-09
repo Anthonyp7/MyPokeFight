@@ -88,12 +88,10 @@ export default function ListePokemon() {
 
   useEffect(() => {
 
-    console.log(url)
     fetch(url.current)
       .then((res) => res.json())
       .then((data) => {
         setPokemons(data.results);
-        console.log(data)
         setUrl({
           current: url.current,
           next: data.next,
@@ -137,21 +135,8 @@ export default function ListePokemon() {
         setStatsAttack((current) => [...current, data.stats[1].base_stat]);
         setStatsSpeed((current) => [...current, data.stats[5].base_stat]);
 
+        // console.log(data)
       }))
-    // .then((data) =>
-    //   console.log(data))
-
-
-    // pokemons.map((pokemon) => (
-
-    //   fetch(pokemon.url)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-
-    //       // console.log(data)
-    //     })
-    //     .catch((err) => console.error(err))
-    // ))
 
   }, [pokemons]);
 
@@ -169,8 +154,8 @@ export default function ListePokemon() {
       <br></br>
 
       <div className="pagination-top">
-        {url.previous && <button className="btn btn-dark" onClick={previous}>Previous</button>}
-        {url.next && <button className="btn btn-dark" onClick={next}>Next</button>}
+        {url.previous && <button className="btn btn-dark" onClick={previous}>Précédent</button>}
+        {url.next && <button className="btn btn-dark" onClick={next}>Suivant</button>}
       </div>
 
 
@@ -224,12 +209,12 @@ export default function ListePokemon() {
               //   : setPokeModalImg(image[index])};
               setPokeModalHeight(height[index]);
               setPokeModalWeight(weight[index]);
-              setPokeModalHp(statsHp[pokemon.url.replace(/[^\d]/g, "").substring(1)]);
+              setPokeModalHp(statsHp[index]);
               setPokeModalAttack(statsAttack[index]);
               setPokeModalSpeed(statsSpeed[index]);
               setPokeModalType(type[index])
             }}>
-              See More
+              Voir plus
             </Button>
 
           </div>
@@ -254,8 +239,8 @@ export default function ListePokemon() {
       ))}
 
       <div className="pagination-bottom">
-        {url.previous && <button className="btn btn-dark" onClick={previous}>Previous</button>}
-        {url.next && <button className="btn btn-dark" onClick={next}>Next</button>}
+        {url.previous && <button className="btn btn-dark" onClick={previous}>Précédent</button>}
+        {url.next && <button className="btn btn-dark" onClick={next}>Suivant</button>}
       </div>
 
       <br />

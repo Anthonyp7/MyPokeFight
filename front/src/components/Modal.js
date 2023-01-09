@@ -7,6 +7,7 @@ import '../styles/Liste.css'
 export default function ModalTest(props) {
 
   return (
+
     <Modal
       {...props}
       size="lg"
@@ -14,6 +15,7 @@ export default function ModalTest(props) {
       centered
 
     >
+      {console.log(props)}
       <div className={props.type}>
 
 
@@ -33,18 +35,19 @@ export default function ModalTest(props) {
               <div className="col-md-8">
                 <div className="card-body">
                   <h3 className="card-title">{props.name}</h3>
-                  <p className="card-text">Height: {props.height} m <br></br>
-                    Weight: {props.weight} kg</p>
+                  <p className="card-text">Taille: {props.height} m <br></br>
+                    Poids: {props.weight} kg</p>
                   <br></br>
 
                   <div className='progress-stats'>
-                    {/* <p>Hp</p> */}
+                    <p>Hp:</p>
                     <ProgressBar animated variant='success' now={props.stathp} label={`${props.stathp}`} />
+
                     <br></br>
-                    {/* <p>Attack</p> */}
-                    <ProgressBar animated variant='danger' now={props.stathp} label={`${props.statattack}`} />
+                    <p>Attaque:</p>
+                    <ProgressBar animated variant='danger' now={props.statattack} label={`${props.statattack}`} />
                     <br></br>
-                    {/* <p>Speed</p> */}
+                    <p>Speed:</p>
                     <ProgressBar animated variant='info' now={props.statspeed} label={`${props.statspeed}`} />
                   </div>
                 </div>
