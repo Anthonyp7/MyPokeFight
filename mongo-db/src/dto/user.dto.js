@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 const dtoCreateUser = async (req,res,next) => {
     try {
@@ -39,6 +40,8 @@ const dtoGetUser = async (req, res, next) => {
         const username = req.body.username;  //USERNAME
         const password = req.body.password;  //PASSWORD
 
+
+
         const user = await User.findOne({ username: username });
 
         User.findOne({username : username})
@@ -61,7 +64,7 @@ const dtoGetUser = async (req, res, next) => {
                 });
                 return;
             }
-            if (!user || result.password !== password) {
+            if (!user || bcrypt.compareSync(password, result.password) === false) {
                 res.send({
                     code: 402, 
                     message: " Username or Password is Incorrect"
@@ -69,13 +72,13 @@ const dtoGetUser = async (req, res, next) => {
                 return;
             }
 
-            // if(result.password !== password) {
-            //     res.send({
-            //         code: 404, 
-            //         message: "Error Connection"
-            //     })
-                
-            // }
+        //    if (!user || result.password !== password) {
+        //         res.send({
+        //             code: 402, 
+        //             message: " Username or Password is Incorrect"
+        //         })
+        //         return;
+        //     }
             else{
                 next();
             }

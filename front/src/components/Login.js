@@ -1,7 +1,9 @@
 import React, { useState } from "react"
+// const bcrypt = require('bcrypt');
 import axios from "axios"
 import { Navigate, useNavigate } from "react-router-dom";
 import '../styles/Login.css';
+
 
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
@@ -18,6 +20,9 @@ export default function Login() {
 
     const [signin, setSignin] = useState(false);
     const navigate = useNavigate();
+    
+    
+    
 
     const [showSuccess, setShowSuccess] = useState(false);
     const [showSuccess2, setShowSuccess2] = useState(false);
@@ -51,7 +56,7 @@ export default function Login() {
               // VERIFICATION CREATE SUCCESS OU ERROR
             if (res.data.code === 201) {
                 setShowSuccess(true);
-                navigate(`/pokedex/${username}`)// FIX
+                // navigate(`/pokedex/${username}`)// FIX
             }
             else if (res.data.code === 400) {
                 setShowError(true);

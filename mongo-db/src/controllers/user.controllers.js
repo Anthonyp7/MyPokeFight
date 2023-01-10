@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
+
 
 const CreateUser = async (req,res) =>{
     try {
@@ -6,11 +8,20 @@ const CreateUser = async (req,res) =>{
         const pokeavatar = req.body.pokeavatar;
         const password = req.body.password;
 
+        const saltRounds = 3;
+        const hashpassword = bcrypt.hashSync(password, saltRounds);
+        // Store hash in your password DB.
+
+        // bcrypt.hash(password, saltRounds, function(err, hash) {
+        //     // Store hash in your password DB.
+        // });
+
         const newUser = new User();
         newUser.username = username; 
         newUser.pokeavatar = pokeavatar; 
-        newUser.password = password; 
+        newUser.password = hashpassword; 
 
+        // bcrypt.compareSync(password, hashpassword);
 
         await newUser.save();
         
