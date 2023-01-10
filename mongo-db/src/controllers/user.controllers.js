@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 
 const CreateUser = async (req,res) =>{
@@ -42,10 +43,17 @@ const CreateUser = async (req,res) =>{
 
 const GetUser = async (req,res) =>{
     try {
+        const username = req.body.username; 
+        const token = jwt.sign({
+            data: 'foobar'
+        }, 'secret', { expiresIn: '1h' });
+
 
         res.send({
             code : 201,
-            message: "Connection OK"
+            message: "Connection OK",
+            token: token,
+            username: username
         });
     }
     catch (error) {

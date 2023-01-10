@@ -20,6 +20,7 @@ export default function Login() {
 
     const [signin, setSignin] = useState(false);
     const navigate = useNavigate();
+    const ls = localStorage;
     
     
     
@@ -100,6 +101,9 @@ export default function Login() {
                 if (res.data.code === 201) {
                     setShowSuccess2(true);
                     navigate(`/pokedex/${username}`)// FIX
+                    ls.setItem("Token", res.data.token)
+                    ls.setItem("Username", res.data.username)
+                    // ls.getItem("Token")
                 }
                 else if (res.data.code === 400) {
                     setShowError(true);

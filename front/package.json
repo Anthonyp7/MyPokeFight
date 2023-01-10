@@ -9,6 +9,7 @@
     "axios": "^1.2.2",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.2",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
