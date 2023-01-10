@@ -10,7 +10,9 @@
 .container strong{
     font-family: 'pokemon_classicregular';
     top:30px;
-    color:rgb(128, 2, 2);
+
+    color:rgb(219, 187, 2);
+    text-shadow: 4px 3px 0px #2000FF;
     
 }
 
@@ -21,10 +23,15 @@
 
 .navbar-brand {
     text-align: left;
-    margin-right: 300px;
-    margin-left: -250px;
+    margin-right: 150px;
+    margin-left: -300px;
 }
 
+.navbar-brand img{
+    text-align: left;
+    margin-right: 150px;
+    margin-left: -300px;
+}
 .poke-img {
     position: absolute;
     padding-left: 220px;

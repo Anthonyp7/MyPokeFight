@@ -10,8 +10,9 @@
 
 .load-h1{
     font-family:'pokemon_classicregular';
-    color:rgb(128, 2, 2);
+    color:rgb(219, 187, 2);
     text-align: center;
+    text-shadow: 4px 3px 0px #2000FF;
 }
 
 #pokedex-addbutton img{
@@ -42,7 +43,9 @@
 
 .pokemon-name{
     text-align: center;
-    color:ivory;
+    font-family: 'pokemon_classicregular';
+    color:rgb(219, 187, 2);
+    text-shadow: 4px 3px 0px #2000FF;
 }
 
 #test .img-poke{
@@ -115,7 +118,8 @@ opacity: 1;
 
 .pagination-top button{
     font-family: 'pokemon_classicregular';
-    color:rgb(128, 2, 2);
+    color:rgb(219, 187, 2);
+    text-shadow: 4px 3px 0px #2000FF;
 }
 
 .pagination-bottom .btn-prev{
@@ -123,13 +127,16 @@ opacity: 1;
     color:rgb(128, 2, 2);
     position: fixed;
     margin-top: 10%;
+    text-shadow: 4px 3px 0px #2000FF;
+    
     /* right: 150px; */
 }
 
 .pagination-bottom .btn-next{
     font-family: 'pokemon_classicregular';
-    color:rgb(128, 2, 2);
+    color:rgb(219, 187, 2);
     position: fixed;
     margin-top: 10%;
-    
+    text-shadow: 4px 3px 0px #2000FF;
 }
+
