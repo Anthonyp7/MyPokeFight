@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Badge from 'react-bootstrap/Badge';
 import '../styles/Header.css';
 
 export default function Header() {
     const token = localStorage.getItem("Token");
     const username = localStorage.getItem("Username");
+    const pokeavatar = localStorage.getItem("Poké-Avatar");
     const navigate = useNavigate();
     const [test, setTest] = useState(true);
 
@@ -37,32 +39,21 @@ export default function Header() {
 
                     {/* eslint-disable-next-line */}
                     <Link to="/"><a className="nav-link active" aria-current="page">Liste Pokémon</a></Link>
-                    {/* eslint-disable-next-line */}
-                    <Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link>
-                    
-                    {/* {!username ? 
-                    <>
-                    
-                        <Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link>
-                    </>
-                    :
-                    <>
-                    
-                        <Link to="/logout" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link>
-
-                        
-                        <Link to="/login"><a className="nav-link active" aria-current="page">{username}</a></Link>
-                        {navigate('/login')}
-                    </>} */}
 
                     {!token ?
                     <>
-                        <Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link>
+                        <Badge pill bg="warning" text="dark"><Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link></Badge>{' '}
                     </>
                     :
                     <>
-                        <Link to="/login" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link>
-                        <Link><a className="nav-link active" aria-current="page">{username}</a></Link>
+                        {/* eslint-disable-next-line */}
+                       
+                        <Badge pill bg="warning" text="dark"><Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link> </Badge>{' '}
+                        <Badge pill bg="warning" text="dark"><Link to="/login" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link></Badge>{' '}
+                        <Link><a className="nav-link active" id="user" aria-current="page">
+                            <img src={pokeavatar} alt=""/>
+                            {username}
+                            </a></Link>
                     </>}
 
                 </div>

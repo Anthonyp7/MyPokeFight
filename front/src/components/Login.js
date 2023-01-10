@@ -102,6 +102,7 @@ export default function Login() {
                     setShowSuccess2(true);
                     ls.setItem("Token", res.data.token)
                     ls.setItem("Username", res.data.username)
+                    ls.setItem("Poké-Avatar", res.data.pokeavatar)
                     navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
                     
                     // ls.getItem("Token")

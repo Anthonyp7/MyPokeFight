@@ -44,17 +44,26 @@ const CreateUser = async (req,res) =>{
 const GetUser = async (req,res) =>{
     try {
         const username = req.body.username; 
+
         const token = jwt.sign({
             data: 'foobar'
         }, 'secret', { expiresIn: '1h' });
 
 
-        res.send({
-            code : 201,
-            message: "Connection OK",
-            token: token,
-            username: username
-        });
+        User.findOne({username: username})
+        .then(result => {
+            const pokeavatar = result.pokeavatar;
+            res.send({
+                code : 201,
+                message: "Connection OK",
+                token: token,
+                username: username,
+                pokeavatar: pokeavatar
+            });
+        })
+
+
+        
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");

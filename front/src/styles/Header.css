@@ -37,3 +37,15 @@
     padding-left: 220px;
 }
 
+#user {
+    font-family: 'pokemon_classicregular';
+    color:rgb(219, 187, 2);
+    text-shadow: 2px 1px 0px #2000FF;
+}
+
+/* .container a{
+    font-family: 'pokemon_classicregular';
+    color:rgb(219, 187, 2);
+    text-shadow: 4px 3px 0px #2000FF;
+} */
+
