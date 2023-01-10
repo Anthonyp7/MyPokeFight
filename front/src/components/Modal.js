@@ -15,7 +15,7 @@ export default function ModalTest(props) {
       centered
 
     >
-      {console.log(props)}
+      
       <div className={props.type}>
 
 

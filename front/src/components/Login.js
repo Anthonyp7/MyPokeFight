@@ -100,9 +100,10 @@ export default function Login() {
 
                 if (res.data.code === 201) {
                     setShowSuccess2(true);
-                    navigate(`/pokedex/${username}`)// FIX
                     ls.setItem("Token", res.data.token)
                     ls.setItem("Username", res.data.username)
+                    navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
+                    
                     // ls.getItem("Token")
                 }
                 else if (res.data.code === 400) {

@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/Header.css';
 
 export default function Header() {
+    // const token = localStorage.getItem("Token");
+    const username = localStorage.getItem("Username");
+    const navigate = useNavigate();
+
+    const Test = () => {
+        localStorage.clear("Token");
+    }
+
     return (
         <div>
             <nav className="navbar bg-light">
@@ -18,8 +26,21 @@ export default function Header() {
                     <Link to="/"><a className="nav-link active" aria-current="page">Liste Pokémon</a></Link>
                     {/* eslint-disable-next-line */}
                     <Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link>
-                    {/* eslint-disable-next-line */}
-                    <Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link>
+                    
+                    {/* {!username ? 
+                    <>
+                    
+                        <Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link>
+                    </>
+                    :
+                    <>
+                    
+                        <Link to="/logout" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link>
+
+                        
+                        <Link to="/login"><a className="nav-link active" aria-current="page">{username}</a></Link>
+                        {navigate('/login')}
+                    </>} */}
                 </div>
             </nav>
         </div>
