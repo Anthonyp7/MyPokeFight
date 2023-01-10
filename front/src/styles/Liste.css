@@ -118,7 +118,18 @@ opacity: 1;
     color:rgb(128, 2, 2);
 }
 
-.pagination-bottom button{
+.pagination-bottom .btn-prev{
     font-family: 'pokemon_classicregular';
     color:rgb(128, 2, 2);
+    position: fixed;
+    margin-top: 10%;
+    /* right: 150px; */
+}
+
+.pagination-bottom .btn-next{
+    font-family: 'pokemon_classicregular';
+    color:rgb(128, 2, 2);
+    position: fixed;
+    margin-top: 10%;
+    
 }

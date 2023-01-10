@@ -112,6 +112,7 @@ export default function ListePokemon() {
     setHeight([])
     setWeight([])
     setType([])
+    
 
     Promise.all(pokemons.map((pokemon) => (
       fetch(pokemon.url).then((res) => res.json())
@@ -239,8 +240,8 @@ export default function ListePokemon() {
       ))}
 
       <div className="pagination-bottom">
-        {url.previous && <button className="btn btn-dark" onClick={previous}>Précédent</button>}
-        {url.next && <button className="btn btn-dark" onClick={next}>Suivant</button>}
+        {url.previous && <button className="btn btn-dark btn-prev" onClick={previous}> *---- </button>}
+        {url.next && <button className="btn btn-dark btn-next" onClick={next}> ----* </button>}
       </div>
 
       <br />
