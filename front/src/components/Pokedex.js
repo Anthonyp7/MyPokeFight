@@ -1,7 +1,21 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function Pokedex() {
+  const ls =localStorage
+  const navigate = useNavigate();
 
+  const token = ls.getItem("Token")
+  if (token === null){
+    navigate('/login')
+  }
+  
+//   useEffect(() => {
+//     const token = ls.getItem('Token')
+//     if (!token) {
+//         navigate('/login')
+//     }
+// }, [])
 
   return (
     <div>
