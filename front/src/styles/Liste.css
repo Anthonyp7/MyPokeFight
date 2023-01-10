@@ -103,6 +103,11 @@ opacity: 1;
     margin-left: -20px;
 }
 
+.progress-stats img{
+    width: 5%;
+    margin-bottom: 7px;
+}
+
 
 .pagination-top, .pagination-bottom{
     text-align: center;

@@ -32,28 +32,6 @@ const CreateUser = async (req,res) =>{
 const GetUser = async (req,res) =>{
     try {
 
-        // User.findOne({username : req.body.username})
-        // .then(result => {
-        //     // console.log("test", res);
-
-        //     if(result.password === req.body.password){
-        //         console.log("password : ", req.body.password);
-        //         res.send({
-        //             code : 200,
-        //             message: "Connection OK"
-        //         });
-        //         console.log("Found!");
-        //     }
-
-        //     else {
-        //         res.send({
-        //             code: 404, 
-        //             message: "Error Connection"
-        //         })
-        //         console.log("Not Found!");
-        //     }
-        // })
-
         res.send({
             code : 201,
             message: "Connection OK"

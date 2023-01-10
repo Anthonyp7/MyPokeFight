@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ListePokemon/>}/>
         <Route path="/pokedex" element={<Pokedex/>}/>
+        <Route path="/pokedex/:username" element={<Pokedex/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
       

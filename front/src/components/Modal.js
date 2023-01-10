@@ -40,14 +40,17 @@ export default function ModalTest(props) {
                   <br></br>
 
                   <div className='progress-stats'>
-                    <p>Hp:</p>
+                    {/* <p>Hp:</p> */}
+                    <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt=''/><br></br>
                     <ProgressBar animated variant='success' now={props.stathp} label={`${props.stathp}`} />
 
                     <br></br>
-                    <p>Attaque:</p>
+                    {/* <p>Attaque:</p> */}
+                    <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt=''/><br></br>
                     <ProgressBar animated variant='danger' now={props.statattack} label={`${props.statattack}`} />
                     <br></br>
-                    <p>Speed:</p>
+                    {/* <p>Speed:</p> */}
+                    <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt=''/><br></br>
                     <ProgressBar animated variant='info' now={props.statspeed} label={`${props.statspeed}`} />
                   </div>
                 </div>
