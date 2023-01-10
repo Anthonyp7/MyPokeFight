@@ -112,6 +112,9 @@ export default function ListePokemon() {
     setHeight([])
     setWeight([])
     setType([])
+    setStatsHp([])
+    setStatsAttack([])
+    setStatsSpeed([])
     
 
     Promise.all(pokemons.map((pokemon) => (
