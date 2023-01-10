@@ -247,8 +247,6 @@ export default function ListePokemon() {
         {url.next && <button className="btn btn-dark btn-next" onClick={next}> ----* </button>}
       </div>
 
-      <br />
-      <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} alt="{pokemon}" />
     </div>
   );
 }
