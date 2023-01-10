@@ -1,13 +1,26 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/Header.css';
 
 export default function Header() {
-    // const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("Token");
     const username = localStorage.getItem("Username");
     const navigate = useNavigate();
+    const [test, setTest] = useState(true);
+
+    useEffect(() => {
+        // const token = localStorage.getItem('Token')
+        if (!token) {
+            setTest(false);
+        }
+        else{
+            setTest(true);
+        }
+    }, [])
 
     const Test = () => {
-        localStorage.clear("Token");
+        localStorage.clear()
+        // navigate('/login')
     }
 
     return (
@@ -41,6 +54,17 @@ export default function Header() {
                         <Link to="/login"><a className="nav-link active" aria-current="page">{username}</a></Link>
                         {navigate('/login')}
                     </>} */}
+
+                    {!token ?
+                    <>
+                        <Link to="/login"><a className="nav-link active" aria-current="page">Login</a></Link>
+                    </>
+                    :
+                    <>
+                        <Link to="/login" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link>
+                        <Link><a className="nav-link active" aria-current="page">{username}</a></Link>
+                    </>}
+
                 </div>
             </nav>
         </div>
