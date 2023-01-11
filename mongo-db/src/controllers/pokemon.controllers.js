@@ -2,7 +2,7 @@ const Pokemon = require('../models/Pokemon');
 
 
 
-const GetPokemon = async (req, res) => {
+const CreatePokemon = async (req, res) => {
     try {
         const pokemonurl = req.body.url;
         const username = req.body.username;
@@ -19,6 +19,42 @@ const GetPokemon = async (req, res) => {
             message: "Pokémon Attrapé"
         });
 
+        req.username = username;
+        req.url = pokemonurl;
+
+    } 
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
+const GetPokemon = async (req, res) => {
+    try {
+        const username = req.body.username;
+        console.log("username", username);
+        
+        Pokemon.find({ username: username})
+        .then(result => {
+            const pokemonurl = [];
+            
+
+            for (let i = 0; i <= (result).length; i ++){
+                 
+                pokemonurl.push(result && result[i] && result[i].url)
+
+                console.log(pokemonurl);
+            }
+            res.send({
+                code: 201,
+                username: username,
+                url: pokemonurl
+            })
+
+            
+
+        })
+
     } 
     catch (error) {
         res.status(500).send("Une erreur est survenue");
@@ -27,6 +63,7 @@ const GetPokemon = async (req, res) => {
 }
 
 module.exports = {
+    CreatePokemon,
     GetPokemon
 }
 

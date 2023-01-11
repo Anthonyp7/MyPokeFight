@@ -13,7 +13,10 @@ export default function Pokedex() {
   const ls = localStorage;
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
-  const [pokemon, setPokemon] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
+  const [newpokemon, setNewPokemon] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
+
+  const[pokemon, setPokemon] = useState([]);
+  const [tab2, setTab2] = useState([]);
 
   // eslint-disable-next-line
   const [tab, setTab] = useState([]);
@@ -26,25 +29,48 @@ export default function Pokedex() {
   const GetPokemon = () => {
     if (pokecoin > 0) {
 
+      // CREATION POKEMON UTILISATEUR
       axios.post('http://localhost:3080/pokemon',
       {
+        mode: 'no-cors',
         username: username,
-        url: pokemon[i]
+        url: newpokemon[i]
       })
       
       setI(i+1);
-      setTab(pokemon.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
+      setTab(newpokemon.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
       ls.setItem("Poké-Coin", pokecoin-1);
 
+      console.log("username test", username);
+
+      
+
+      // MODIFICATION POKECOIN UTILISATEUR
       axios.patch('http://localhost:3080/login',
       {
+        mode: 'no-cors',
         username: username,
         pokecoin: ls.getItem("Poké-Coin")
       })
+
+      // AFFICHAGE POKEMON UTILISATEUR
+      axios.post('http://localhost:3080/pokemons',
+      {
+        mode: 'no-cors',
+        username: username,
+      })
+      .then(res => {
+        console.log("data", res.data)
+        setPokemon(res.data.url);
+        // setTab2(pokemon.push(res.data.url));
+      })
+      console.log("pokemon",pokemon);
+      
+      
     }
 
     else{
-      setPokemon(``);
+      setNewPokemon(``);
       setShowError(true);
     }
   }
@@ -61,24 +87,26 @@ export default function Pokedex() {
         <Badge bg="secondary">{pokecoin}</Badge>
       </Button>
 
-      <img src={pokemon[i-1]} alt=""/>
+      <img src={newpokemon[i-1]} alt=""/>
 
       <Row>
-      <Col xs={6}>
-          <Toast onClose={() => setShowError(false)} show={showError} delay={7000} autohide>
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">MyPokéFight</strong>
-              <small>11 mins ago</small>
-            </Toast.Header>
-            <Toast.Body>Désolé, vous n'avez plus de PokéCoin. Gagnez des combats pour en obtenir !</Toast.Body>
-          </Toast>
-      </Col>
-    </Row>
+        <Col xs={6}>
+            <Toast onClose={() => setShowError(false)} show={showError} delay={7000} autohide>
+              <Toast.Header>
+                <img
+                  src="holder.js/20x20?text=%20"
+                  className="rounded me-2"
+                  alt=""
+                />
+                <strong className="me-auto">MyPokéFight</strong>
+                <small>11 mins ago</small>
+              </Toast.Header>
+              <Toast.Body>Désolé, vous n'avez plus de PokéCoin. Gagnez des combats pour en obtenir !</Toast.Body>
+            </Toast>
+        </Col>
+      </Row>
+
+      <img src={pokemon[0]}/>
       
 
 

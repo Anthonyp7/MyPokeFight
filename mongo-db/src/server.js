@@ -32,6 +32,11 @@ app.patch(
 // POKEMON
 app.post(
     '/pokemon',
+    controllers2.CreatePokemon
+);
+
+app.post(
+    '/pokemons',
     controllers2.GetPokemon
 );
 
