@@ -46,7 +46,6 @@ export default function Login() {
 
       axios.post('http://localhost:3080/login',
           {
-              mode: 'no-cors',
               username: username,
               password: password,
               pokeavatar: pokeAvatar[i],

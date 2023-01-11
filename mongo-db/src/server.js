@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 require('./database');
 const controllers = require('./controllers/user.controllers');
+const controllers2 = require('./controllers/pokemon.controllers');
 const dto = require('./dto/user.dto');
 app.use(express.json());
 app.use(cors());
@@ -20,6 +21,12 @@ app.post(
     '/signin',
     dto.dtoGetUser,
     controllers.GetUser
+);
+
+// POKEMON
+app.post(
+    '/pokemon',
+    controllers2.GetPokemon
 );
 
 
