@@ -17,7 +17,7 @@ import Popover from 'react-bootstrap/Popover';
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // const [pokecoin, setPokecoin] = useState("4");
+    const [pokecoin, setPokecoin] = useState(4);//
 
     const [signin, setSignin] = useState(false);
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function Login() {
               username: username,
               password: password,
               pokeavatar: pokeAvatar[i],
-            //   pokecoin: pokecoin
+              pokecoin: pokecoin
           })
           .then(res => {
             console.log("data", res.data)              
@@ -94,7 +94,8 @@ export default function Login() {
                 mode: 'no-cors',
                 username: username,
                 password: password,
-                pokeavatar: pokeAvatar[i]
+                pokeavatar: pokeAvatar[i],
+                pokecoin: pokecoin
             })
             .then(res => {
                 console.log("data", res.data)
@@ -104,7 +105,7 @@ export default function Login() {
                     ls.setItem("Token", res.data.token)
                     ls.setItem("Username", res.data.username)
                     ls.setItem("Poké-Avatar", res.data.pokeavatar)
-                    ls.setItem("Poké-Coin", 4)
+                    ls.setItem("Poké-Coin", res.data.pokecoin)
                     navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
                     
                     // ls.getItem("Token")

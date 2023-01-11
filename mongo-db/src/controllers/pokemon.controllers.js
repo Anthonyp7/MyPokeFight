@@ -12,6 +12,7 @@ const GetPokemon = async (req, res) => {
         newPokemon.username = username;
 
         await newPokemon.save();
+        
 
         res.send({
             code: 201,

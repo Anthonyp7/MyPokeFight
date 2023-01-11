@@ -10,9 +10,10 @@ export default function Header() {
 
 
     const Test = () => {
-        localStorage.removeItem("Token");
-        localStorage.removeItem("Username");
-        localStorage.removeItem("Poké-Avatar");
+        // localStorage.removeItem("Token");
+        // localStorage.removeItem("Username");
+        // localStorage.removeItem("Poké-Avatar");
+        localStorage.clear();
         // navigate('/login')
     }
 

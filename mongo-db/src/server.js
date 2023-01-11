@@ -23,6 +23,12 @@ app.post(
     controllers.GetUser
 );
 
+app.patch(
+    '/login',
+    controllers.PatchUser
+);
+
+
 // POKEMON
 app.post(
     '/pokemon',

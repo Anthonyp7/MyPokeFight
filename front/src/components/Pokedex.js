@@ -31,10 +31,16 @@ export default function Pokedex() {
         username: username,
         url: pokemon[i]
       })
-
+      
       setI(i+1);
       setTab(pokemon.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
       ls.setItem("Poké-Coin", pokecoin-1);
+
+      axios.patch('http://localhost:3080/login',
+      {
+        username: username,
+        pokecoin: ls.getItem("Poké-Coin")
+      })
     }
 
     else{

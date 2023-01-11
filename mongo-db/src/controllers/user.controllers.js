@@ -8,7 +8,7 @@ const CreateUser = async (req,res) =>{
         const username = req.body.username;
         const pokeavatar = req.body.pokeavatar;
         const password = req.body.password;
-        // const pokecoin = 4;
+        const pokecoin = 4;
 
         const saltRounds = 3;
         const hashpassword = bcrypt.hashSync(password, saltRounds);
@@ -22,7 +22,7 @@ const CreateUser = async (req,res) =>{
         newUser.username = username; 
         newUser.pokeavatar = pokeavatar; 
         newUser.password = hashpassword; 
-        // newUser.pokecoin = pokecoin;
+        newUser.pokecoin = pokecoin;
 
         // bcrypt.compareSync(password, hashpassword);
 
@@ -36,7 +36,7 @@ const CreateUser = async (req,res) =>{
         req.username = username;
         req.pokeavatar = pokeavatar;
         req.password = password;
-        // req.pokecoin = pokecoin;
+        req.pokecoin = pokecoin;
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
@@ -56,14 +56,14 @@ const GetUser = async (req,res) =>{
         User.findOne({username: username})
         .then(result => {
             const pokeavatar = result.pokeavatar;
-            // const pokecoin = result.pokecoin;
+            const pokecoin = result.pokecoin;
             res.send({
                 code : 201,
                 message: "Connection OK",
                 token: token,
                 username: username,
                 pokeavatar: pokeavatar,
-                // pokecoin:pokecoin
+                pokecoin:pokecoin
             });
         })
 
@@ -76,7 +76,26 @@ const GetUser = async (req,res) =>{
     }
 }
 
+const PatchUser = async (req,res) =>{
+    try {
+        const username = req.body.username; 
+        const newPokecoin = req.body.pokecoin;
+        
+        const user = await User.findOne({username : username})
+
+        user.pokecoin = newPokecoin;
+
+        await user.save();
+        
+    }
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
 module.exports= {
     CreateUser,
-    GetUser
+    GetUser,
+    PatchUser
 }

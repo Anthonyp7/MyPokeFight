@@ -4,7 +4,7 @@ const User = new Schema({
     username:String,
     password:String,
     pokeavatar:String,
-    // pokecoin:String,
+    pokecoin:String,
     createdAt: {
         type: Date,
         default: Date.now,
