@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
+import Card from 'react-bootstrap/Card';
 import '../styles/Pokedex.css';
 
 
@@ -65,6 +66,23 @@ export default function Pokedex() {
         // setTab2(pokemon.push(res.data.url));
       })
       console.log("pokemon",pokemon);
+
+      return(
+        <>
+        <Card style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={newpokemon[i-1]} />
+          <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card>
+        </>
+      )
+      
       
       
     }
@@ -106,7 +124,13 @@ export default function Pokedex() {
         </Col>
       </Row>
 
-      <img src={pokemon[0]}/>
+      {/* {pokemon.map((pokeurl, index) => {
+        <img src={pokemon[index]}/>
+      })} */}
+      <br></br><br></br>
+
+      
+      
       
 
 
