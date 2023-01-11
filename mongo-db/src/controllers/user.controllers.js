@@ -8,6 +8,7 @@ const CreateUser = async (req,res) =>{
         const username = req.body.username;
         const pokeavatar = req.body.pokeavatar;
         const password = req.body.password;
+        // const pokecoin = 4;
 
         const saltRounds = 3;
         const hashpassword = bcrypt.hashSync(password, saltRounds);
@@ -21,6 +22,7 @@ const CreateUser = async (req,res) =>{
         newUser.username = username; 
         newUser.pokeavatar = pokeavatar; 
         newUser.password = hashpassword; 
+        // newUser.pokecoin = pokecoin;
 
         // bcrypt.compareSync(password, hashpassword);
 
@@ -34,6 +36,7 @@ const CreateUser = async (req,res) =>{
         req.username = username;
         req.pokeavatar = pokeavatar;
         req.password = password;
+        // req.pokecoin = pokecoin;
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
@@ -53,12 +56,14 @@ const GetUser = async (req,res) =>{
         User.findOne({username: username})
         .then(result => {
             const pokeavatar = result.pokeavatar;
+            // const pokecoin = result.pokecoin;
             res.send({
                 code : 201,
                 message: "Connection OK",
                 token: token,
                 username: username,
-                pokeavatar: pokeavatar
+                pokeavatar: pokeavatar,
+                // pokecoin:pokecoin
             });
         })
 

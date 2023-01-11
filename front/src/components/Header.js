@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
 import '../styles/Header.css';
@@ -8,17 +7,7 @@ export default function Header() {
     const username = localStorage.getItem("Username");
     const pokeavatar = localStorage.getItem("Poké-Avatar");
     const navigate = useNavigate();
-    const [test, setTest] = useState(true);
 
-    useEffect(() => {
-        // const token = localStorage.getItem('Token')
-        if (!token) {
-            setTest(false);
-        }
-        else{
-            setTest(true);
-        }
-    }, [])
 
     const Test = () => {
         localStorage.clear()
