@@ -4,12 +4,12 @@ const Pokemon = require('../models/Pokemon');
 
 const CreatePokemon = async (req, res) => {
     try {
-        const pokemonurl = req.body.url;
+        // const pokemonurl = req.body.url;
         const username = req.body.username;
         const pokeid = req.body.pokeid;
 
         const newPokemon = new Pokemon();
-        newPokemon.url = pokemonurl;
+        // newPokemon.url = pokemonurl;
         newPokemon.username = username;
         newPokemon.pokeid = pokeid;
 
@@ -22,7 +22,7 @@ const CreatePokemon = async (req, res) => {
         });
 
         req.username = username;
-        req.url = pokemonurl;
+        // req.url = pokemonurl;
 
     } 
     catch (error) {
@@ -34,23 +34,23 @@ const CreatePokemon = async (req, res) => {
 const GetPokemon = async (req, res) => {
     try {
         const username = req.body.username;
-        console.log("username", username);
         
         Pokemon.find({ username: username})
         .then(result => {
-            const pokemonurl = [];
+            const pokeid = [];
             
 
-            for (let i = 0; i <= (result).length; i ++){
+            for (let i = 0; i < (result).length; i ++){
                  
-                pokemonurl.push(result && result[i] && result[i].url)
+                pokeid.push(result && result[i] && result[i].pokeid)
 
-                console.log(pokemonurl);
+                console.log(pokeid);
             }
+            console.log("pokeid", pokeid);
             res.send({
                 code: 201,
                 username: username,
-                url: pokemonurl
+                pokemonid: pokeid
             })
 
             
