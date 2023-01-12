@@ -1,12 +1,12 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
-import Card from 'react-bootstrap/Card';
 import '../styles/Pokedex.css';
+import CardPokemon from './Card';
 
 
 export default function Pokedex() {
@@ -17,7 +17,7 @@ export default function Pokedex() {
   const [newpokemon, setNewPokemon] = useState([`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`]);
 
   const[pokemon, setPokemon] = useState([]);
-  const [tab2, setTab2] = useState([]);
+  // const [tab2, setTab2] = useState([]);
 
   // eslint-disable-next-line
   const [tab, setTab] = useState([]);
@@ -64,33 +64,36 @@ export default function Pokedex() {
         console.log("data", res.data)
         setPokemon(res.data.url);
         // setTab2(pokemon.push(res.data.url));
-      })
-      console.log("pokemon",pokemon);
+        
 
-      return(
-        <>
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={newpokemon[i-1]} />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-        </>
-      )
-      
-      
-      
+      })
+      console.log("pokemon",pokemon);      
     }
 
     else{
       setNewPokemon(``);
       setShowError(true);
     }
+  }
+
+  const Test = () => {
+    return (
+   
+      <div className='row-wrapper'>
+        {/* <Row>
+           {pokemon.map(product => (
+            <CardPokemon key={product.id} img={product[i-1]} />
+          ))}  
+        </Row> */}
+
+        <CardPokemon
+          
+        />
+
+
+
+      </div>
+    )
   }
   
 
@@ -101,6 +104,12 @@ export default function Pokedex() {
 
       <Button variant="primary" className='btn-poke-coin' onClick={GetPokemon}>
         Nouveau Pokémon 
+        {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
+        <Badge bg="secondary">{pokecoin}</Badge>
+      </Button>
+
+      <Button variant="primary" className='btn-poke-coin' onClick={Test}>
+        Nouveau
         {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
         <Badge bg="secondary">{pokecoin}</Badge>
       </Button>
@@ -129,6 +138,46 @@ export default function Pokedex() {
       })} */}
       <br></br><br></br>
 
+
+      
+      
+
+        {/* {pokemon.map((test, index) => {
+          <tr>
+            Test<b>{test[index]}</b>
+          </tr>
+        })} */}
+
+
+        <ul>
+          <li>
+            <div className="row">
+              <div className="column">
+                <div className="card">
+                  {pokemon.map((ad, index) => (
+                    <tr key={"index-" + index}>
+                      <br></br>
+                      Attack:<b>{ad.stats[1].base_stat}</b>
+                      Hp: <b>{ad.stats[0].base_stat}</b>
+                      Order: <b>{ad.order}</b>
+                      Defense: <b>{ad.stats[2].base_stat}</b>
+                      <br></br>
+                      ID: <td>{ad.id}</td>
+                      NAME<td>{ad.name}</td>
+                      type:<td>{ad.types[0].type.name}</td>
+                      <td>
+                        <img src={ad.sprites.front_default} />
+                      </td>
+                      <button id={ad.id} onClick={() => Test(ad.id)}>
+                        Add To pokedex
+                      </button>
+                    </tr>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       
       
       

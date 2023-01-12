@@ -68,8 +68,8 @@ export default function Header() {
                         {/* eslint-disable-next-line */}
                        
                         <Badge pill bg="warning" text="dark"><Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link> </Badge>{' '}
+                        <Badge pill bg="warning" text="dark"><Link to="/fight"><a className="nav-link active" aria-current="page">Fight</a></Link></Badge>{' '}
                         <Badge pill bg="warning" text="dark"><Link to="/login" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link></Badge>{' '}
-                        {/* <Badge pill bg="warning" text="dark"><Link><a className="nav-link active" aria-current="page">Fight</a></Link></Badge>{' '} */}
                         <Link><a className="nav-link active" id="user" aria-current="page">
                             <img src={pokeavatar} alt=""/>
                             {username}
