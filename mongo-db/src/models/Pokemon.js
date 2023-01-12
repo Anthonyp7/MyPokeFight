@@ -6,7 +6,7 @@ const Pokemon = new Schema({
     // },
     username:String,
     name:String,
-    url: String,
+    pokeid: String,
     getAt: {
         type: Date,
         default: Date.now,
