@@ -154,7 +154,7 @@ export default function ListePokemon() {
         <span className="visually-hidden">Loading...</span>
       </div> : <h1 className="load-h1">Liste Pokémon</h1>}
       <br></br>
-      <h2 fontFamily="pokemon_classicregular,arial, sans-serif" className="load-h1">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
+      <h2 fontFamily="pokemon_classicregular,arial, sans-serif" className="load-h2">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
       <div className="pagination-top">

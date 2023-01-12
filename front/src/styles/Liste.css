@@ -8,11 +8,28 @@
 
 }
 
+
 .load-h1{
     font-family:'pokemon_classicregular';
     color:rgb(219, 187, 2);
     text-align: center;
     text-shadow: 4px 3px 0px #2000FF;
+    border: 1px solid black; padding: 5px;
+    width: 500px;
+    margin-left: 700px;
+    text-align: center;
+    background-color: #00000070;
+}
+.load-h2{
+    font-family:'pokemon_classicregular';
+    color:rgb(219, 187, 2);
+    text-align: center;
+    text-shadow: 4px 3px 0px #2000FF;
+    border: 1px solid black; padding: 5px;
+    background-color: #000000a1;
+    width: 1500px;
+    margin-left: 200px;
+    padding-bottom: 10px;
 }
 
 #pokedex-addbutton img{
@@ -85,14 +102,18 @@ opacity: 1;
 .type-li {
     display: flex;
     justify-content: center; 
+    font-family: 'pokemon_classicregular';
+    /* color:rgb(219, 187, 2); */
+    /* text-shadow: 3px 2px 0px #ffffff; */
 }
 
 .list-group-item{
     justify-content: center; 
+
 }
 
 .type-li li {
-    color:ivory;
+    color:rgb(255, 255, 255);
 }
 
 
