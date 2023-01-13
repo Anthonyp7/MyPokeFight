@@ -140,6 +140,7 @@ export default function ListePokemon() {
         setStatsSpeed((current) => [...current, data.stats[5].base_stat]);
 
         // console.log(data)
+        console.log(statsHp)
       }))
 
   }, [pokemons]);
@@ -166,6 +167,7 @@ export default function ListePokemon() {
       {/* {setPokemonId(pokemons.url.replace(/[^\d]/g, "").substring(1))} */}
       {/* {console.log(pokemons[url.replace(/[^\d]/g, "").substring(1)])} */}
 
+      {/* {console.log("pokemons",pokemons)} */}
       {pokemons.map((pokemon, index) => (
 
 

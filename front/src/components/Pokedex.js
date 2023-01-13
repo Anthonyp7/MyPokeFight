@@ -17,9 +17,14 @@ export default function Pokedex() {
 
   const rand = (Math.floor(Math.random() * 905) + 1);
   const [pokemons, setPokemons] = useState([]);
+  const [isShiny, setIsShiny] = useState(Math.floor(Math.random() * 10) + 1);
 
   const [id, setId] = useState([]);
   const [tab2, setTab2] = useState([]);
+
+  const [test, setTest] = useState([]);
+  const [datas, setDatas] = useState([]);
+
 
   const [showError, setShowError] = useState(false);
 
@@ -40,36 +45,46 @@ export default function Pokedex() {
   const GetPokemon = () => {
     if (pokecoin > 0) {
 
+      // async function pokedata(){
+        
+        fetch(`https://pokeapi.co/api/v2/pokemon/${rand}/`)
+          .then((result) => result.json())
+          .then((data) => {
+            // console.log("data.result", data.height)
+            setDatas(data);
+            setIsShiny(Math.floor(Math.random() * 10) + 1)
+            
 
-      fetch(`https://pokeapi.co/api/v2/pokemon/${rand}/`)
-        .then((result) => result.json())
-        .then((data) => {
-          console.log("data.result", data.height)
-          // SET INFO
-          setPokeAttack(data.stats[1].base_stat)
-          setPokeHp(data.stats[0].base_stat);
-          setPokeName(data.name);
+            // SET INFO
+            setPokeAttack((current) => [...current, data.stats[1].base_stat]);
+            // setPokeHp(data.stats[0].base_stat);
+            setPokeHp((current) => [...current, data.stats[0].base_stat]);
+            setPokeName((current) => [...current, data.name]);
 
-          setPokeSpeed(data.stats[5].base_stat);
-          setPokeHeight(data.height);
-          setPokeWeight(data.weight);
+            setPokeSpeed((current) => [...current, data.stats[5].base_stat]);
+            setPokeHeight((current) => [...current, data.height]);
+            setPokeWeight((current) => [...current, data.weight]);
 
-          console.log("pokemonheight", data.height)
-          console.log("pokemonattt", pokeAttack)
+            // console.log("pokemonheight", data.height)
+            // console.log("pokemonattt", pokeAttack)
 
-          console.log("data.name", data.name)
+            // console.log("data.name", data.name)
 
-          setTab2(id.unshift(data.id));//
+            setTab2(id.unshift(data.id));//
 
-          TestPoke();
-        })
-        .catch((err) => console.log(err));
+            TestPoke();
+          })
+          .catch((err) => console.log(err));
+      // }
+        
     }
 
     else {
       setShowError(true);
     }
   }
+
+  // console.log("isShiny", isShiny);
 
 
   const TestPoke = () => {
@@ -103,6 +118,9 @@ export default function Pokedex() {
       })
       .then(res => {
         setPokemons(res.data.pokemonid);
+        // setPokemons(datas);
+        // setPokemons(pokemons.unshift(res.data.pokemonid, datas));
+        console.log("pokemons", pokemons);
 
 
 
@@ -119,6 +137,7 @@ export default function Pokedex() {
       <h1 className="load-h1">Mon Pokedex</h1>
 
 
+      
       <Button variant="primary" className='btn-poke-coin' onClick={GetPokemon}>
         Nouveau Pokémon
         {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
@@ -147,32 +166,7 @@ export default function Pokedex() {
 
 
       <br></br><br></br>
-
-
-
-
-
-      {/* <ul>
-          <li>
-            <div className="row">
-              <div className="column">
-                <div className="card">
-                  {pokemon.map((ad, index) => (
-                    <tr key={"index-" + index}>
-                      <br></br>
-
-                      <br></br>
-                      <td>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ad}.png`} />
-                      </td>
-                    </tr>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul> */}
-
+    
 
       <div className="row">
         <div className="column">
@@ -182,22 +176,15 @@ export default function Pokedex() {
                 <ul>
                   <CardPokemon
                     img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                    name={pokeName}
-                    pokehp={pokeHp}
-                    pokeattack={pokeAttack}
-                    pokespeed={pokeSpeed}
-                    pokeheight={pokeHeight / 10}
-                    pokeweight={pokeWeight / 10}
+                    name={pokeName[index]}
+                    pokehp={pokeHp[index]}
+                    pokeattack={pokeAttack[index]}
+                    pokespeed={pokeSpeed[index]}
+                    pokeheight={pokeHeight[index] / 10}
+                    pokeweight={pokeWeight[index] / 10}
                   />
 
-                  {/* <tr key={"index-" + index}>
-                    <br></br>
-
-                    <br></br>
-                    <td>
-                      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ad}.png`} />
-                    </td>
-                  </tr> */}
+          
                 </ul>
               </>
 
@@ -205,40 +192,6 @@ export default function Pokedex() {
           </div>
         </div>
       </div>
-
-
-
-
-
-      {/* <ul>
-          <li>
-            <div className="row">
-              <div className="column">
-                <div className="card">
-                  {pokemon.map((ad, index) => (
-                    <tr key={"index-" + index}>
-                      <br></br>
-                      Attack:<b>{ad.stats[1].base_stat}</b>
-                      Hp: <b>{ad.stats[0].base_stat}</b>
-                      Order: <b>{ad.order}</b>
-                      Defense: <b>{ad.stats[2].base_stat}</b>
-                      <br></br>
-                      ID: <td>{ad.id}</td>
-                      NAME<td>{ad.name}</td>
-                      type:<td>{ad.types[0].type.name}</td>
-                      <td>
-                        <img src={ad.sprites.front_default} />
-                      </td>
-                      <button id={ad.id} onClick={() => Test(ad.id)}>
-                        Add To pokedex
-                      </button>
-                    </tr>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul> */}
 
 
     </div>
