@@ -26,14 +26,14 @@ export default function Pokedex() {
   // INFO POKEMON Card
   const [pokeCard, setPokeCard] = useState("");
 
-  const [pokeCardHeight, setPokeCardHeight] = useState("");
-  const [pokeCardWeight, setPokeCardWeight] = useState("");
+  const [pokeHeight, setPokeHeight] = useState("");
+  const [pokeWeight, setPokeWeight] = useState("");
 
 
   // INFO STATS POKEMON Card
-  const [pokeCardHp, setPokeCardHp] = useState("");
-  const [pokeCardAttack, setPokeCardAttack] = useState("");
-  const [pokeCardSpeed, setPokeCardSpeed] = useState("");
+  const [pokeHp, setPokeHp] = useState("");
+  const [pokeAttack, setPokeAttack] = useState("");
+  const [pokeSpeed, setPokeSpeed] = useState("");
 
 
 
@@ -44,8 +44,19 @@ export default function Pokedex() {
       fetch(`https://pokeapi.co/api/v2/pokemon/${rand}/`)
         .then((result) => result.json())
         .then((data) => {
-          console.log("data.result", data)
+          console.log("data.result", data.height)
+          // SET INFO
+          setPokeAttack(data.stats[1].base_stat)
+          setPokeHp(data.stats[0].base_stat);
 
+          setPokeSpeed(data.stats[5].base_stat);
+          setPokeHeight(data.height);
+          setPokeWeight(data.weight);
+
+          console.log("pokemonheight", data.height)
+          console.log("pokemonattt", pokeAttack)
+
+          console.log("data.name", data.name)
 
           setTab2(id.unshift(data.id));//
 
@@ -92,9 +103,12 @@ export default function Pokedex() {
       .then(res => {
         setPokemons(res.data.pokemonid);
 
+
+
+
       })
 
-    console.log(pokemons);
+    // console.log(data);
   }
 
 
@@ -167,12 +181,12 @@ export default function Pokedex() {
                 <ul>
                   <CardPokemon
                     img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                  // name={pokeCard}
-                  // stathp={pokeCardHp}
-                  // statattack={pokeCardAttack}
-                  // statspeed={pokeCardSpeed}
-                  // height={pokeCardHeight / 10}
-                  // weight={pokeCardWeight / 10}
+                    // name={ }
+                    pokehp={pokeHp}
+                    pokeattack={pokeAttack}
+                    pokespeed={pokeSpeed}
+                    pokeheight={pokeHeight / 10}
+                    pokeweight={pokeWeight / 10}
                   />
 
                   {/* <tr key={"index-" + index}>

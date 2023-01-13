@@ -37,22 +37,22 @@ export default function CardPokemon(props) {
             <Card.Title>{props.name}Nom poke</Card.Title>
             <Card.Body>
                 <div>
-                    <p className="card-text">Taille: {props.height} m <br></br>
-                        Poids: {props.weight} kg</p>
+                    <p className="card-text">Taille: {props.pokeheight} m <br></br>
+                        Poids: {props.pokeweight} kg</p>
                 </div>
                 <div className='progress-stats'>
                     {/* <p>Hp:</p> */}
                     <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
-                    <ProgressBar animated variant='success' now={props.stathp} label={`${props.stathp}`} />
+                    <ProgressBar animated variant='success' now={props.pokehp} label={`${props.pokehp}`} />
 
                     <br></br>
                     {/* <p>Attaque:</p> */}
                     <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt='' /><br></br>
-                    <ProgressBar animated variant='danger' now={props.statattack} label={`${props.statattack}`} />
+                    <ProgressBar animated variant='danger' now={props.pokeattack} label={`${props.pokeattack}`} />
                     <br></br>
                     {/* <p>Speed:</p> */}
                     <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
-                    <ProgressBar animated variant='info' now={props.statspeed} label={`${props.statspeed}`} />
+                    <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} />
                 </div>
                 <br></br>
                 <Button variant="primary">Ajouter au combat</Button>
