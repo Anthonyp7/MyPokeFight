@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -16,73 +16,85 @@ export default function Pokedex() {
   const username = ls.getItem("Username");
 
   const rand = (Math.floor(Math.random() * 905) + 1);
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
 
   const [id, setId] = useState([]);
   const [tab2, setTab2] = useState([]);
 
   const [showError, setShowError] = useState(false);
 
+  // INFO POKEMON Card
+  const [pokeCard, setPokeCard] = useState("");
+
+  const [pokeCardHeight, setPokeCardHeight] = useState("");
+  const [pokeCardWeight, setPokeCardWeight] = useState("");
+
+
+  // INFO STATS POKEMON Card
+  const [pokeCardHp, setPokeCardHp] = useState("");
+  const [pokeCardAttack, setPokeCardAttack] = useState("");
+  const [pokeCardSpeed, setPokeCardSpeed] = useState("");
+
 
 
   const GetPokemon = () => {
     if (pokecoin > 0) {
 
-      
+
       fetch(`https://pokeapi.co/api/v2/pokemon/${rand}/`)
-      .then((result) => result.json())
-      .then((data) => {
-        console.log("data.result", data)
-        
+        .then((result) => result.json())
+        .then((data) => {
+          console.log("data.result", data)
 
-        setTab2(id.unshift(data.id));//
 
-        TestPoke();
-      })
-      .catch((err) => console.log(err));
+          setTab2(id.unshift(data.id));//
+
+          TestPoke();
+        })
+        .catch((err) => console.log(err));
     }
 
-    else{
+    else {
       setShowError(true);
     }
   }
-  
+
 
   const TestPoke = () => {
 
-      // CREATION POKEMON UTILISATEUR
-      axios.post('http://localhost:3080/pokemon',
+    // CREATION POKEMON UTILISATEUR
+    axios.post('http://localhost:3080/pokemon',
       {
         mode: 'no-cors',
         username: username,
         pokeid: id[0]
       })
-      
-      
-      ls.setItem("Poké-Coin", pokecoin-1);
 
-      
 
-      // MODIFICATION POKECOIN UTILISATEUR
-      axios.patch('http://localhost:3080/login',
+    ls.setItem("Poké-Coin", pokecoin - 1);
+
+
+
+    // MODIFICATION POKECOIN UTILISATEUR
+    axios.patch('http://localhost:3080/login',
       {
         mode: 'no-cors',
         username: username,
         pokecoin: ls.getItem("Poké-Coin")
       })
 
-      // AFFICHAGE POKEMON UTILISATEUR
-      axios.post('http://localhost:3080/pokemons',
+    // AFFICHAGE POKEMON UTILISATEUR
+    axios.post('http://localhost:3080/pokemons',
       {
         mode: 'no-cors',
         username: username,
       })
       .then(res => {
-        setPokemon(res.data.pokemonid);
-        
-      }) 
+        setPokemons(res.data.pokemonid);
 
-      console.log(pokemon);
+      })
+
+    console.log(pokemons);
   }
 
 
@@ -90,42 +102,42 @@ export default function Pokedex() {
   return (
     <div>
       <h1 className="load-h1">Mon Pokedex</h1>
-      
+
 
       <Button variant="primary" className='btn-poke-coin' onClick={GetPokemon}>
-        Nouveau Pokémon 
+        Nouveau Pokémon
         {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
         <Badge bg="secondary">{pokecoin}</Badge>
       </Button>
 
 
-      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[0]}.png`} alt=""/>
+      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[0]}.png`} alt="" />
 
       <Row>
         <Col xs={6}>
-            <Toast onClose={() => setShowError(false)} show={showError} delay={7000} autohide>
-              <Toast.Header>
-                <img
-                  src="holder.js/20x20?text=%20"
-                  className="rounded me-2"
-                  alt=""
-                />
-                <strong className="me-auto">MyPokéFight</strong>
-                <small>11 mins ago</small>
-              </Toast.Header>
-              <Toast.Body>Désolé, vous n'avez plus de PokéCoin. Gagnez des combats pour en obtenir !</Toast.Body>
-            </Toast>
+          <Toast onClose={() => setShowError(false)} show={showError} delay={7000} autohide>
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">MyPokéFight</strong>
+              <small>11 mins ago</small>
+            </Toast.Header>
+            <Toast.Body>Désolé, vous n'avez plus de PokéCoin. Gagnez des combats pour en obtenir !</Toast.Body>
+          </Toast>
         </Col>
       </Row>
 
-      
+
       <br></br><br></br>
 
 
-      
 
 
-        {/* <ul>
+
+      {/* <ul>
           <li>
             <div className="row">
               <div className="column">
@@ -147,13 +159,21 @@ export default function Pokedex() {
         </ul> */}
 
 
-        <div className="row">
-          <div className="column">
-            <div className="card">
-              {pokemon.map((ad, index) => (
-                <>
+      <div className="row">
+        <div className="column">
+          <div className="card">
+            {pokemons.map((pokemon, index) => (
+              <>
+                <ul>
                   <CardPokemon
-                  img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ad}.png`}/>
+                    img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+                  // name={pokeCard}
+                  // stathp={pokeCardHp}
+                  // statattack={pokeCardAttack}
+                  // statspeed={pokeCardSpeed}
+                  // height={pokeCardHeight / 10}
+                  // weight={pokeCardWeight / 10}
+                  />
 
                   {/* <tr key={"index-" + index}>
                     <br></br>
@@ -163,18 +183,19 @@ export default function Pokedex() {
                       <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ad}.png`} />
                     </td>
                   </tr> */}
-                </>
-                
-              ))}
-            </div>
+                </ul>
+              </>
+
+            ))}
           </div>
         </div>
+      </div>
 
 
 
 
 
-        {/* <ul>
+      {/* <ul>
           <li>
             <div className="row">
               <div className="column">
@@ -203,7 +224,7 @@ export default function Pokedex() {
             </div>
           </li>
         </ul> */}
-      
+
 
     </div>
   );
