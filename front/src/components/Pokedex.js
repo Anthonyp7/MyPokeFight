@@ -59,7 +59,7 @@ export default function Pokedex() {
             setPokeAttack((current) => [...current, data.stats[1].base_stat]);
             // setPokeHp(data.stats[0].base_stat);
             setPokeHp((current) => [...current, data.stats[0].base_stat]);
-            setPokeName((current) => [...current, data.name]);
+            setPokeName((current) => [...current, data.name[0].toUpperCase() + data.name.substring(1)]);
 
             setPokeSpeed((current) => [...current, data.stats[5].base_stat]);
             setPokeHeight((current) => [...current, data.height]);
@@ -84,7 +84,7 @@ export default function Pokedex() {
     }
   }
 
-  // console.log("isShiny", isShiny);
+  console.log("isShiny", isShiny);
 
 
   const TestPoke = () => {
@@ -170,26 +170,35 @@ export default function Pokedex() {
 
       <div className="row">
         <div className="column">
-          <div className="card">
             {pokemons.map((pokemon, index) => (
-              <>
-                <ul>
-                  <CardPokemon
-                    img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                    name={pokeName[index]}
-                    pokehp={pokeHp[index]}
-                    pokeattack={pokeAttack[index]}
-                    pokespeed={pokeSpeed[index]}
-                    pokeheight={pokeHeight[index] / 10}
-                    pokeweight={pokeWeight[index] / 10}
-                  />
+              
+              
+                <CardPokemon
+                  img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+                  img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
+                  isShiny={isShiny}
+                  name={pokeName[index]}
+                  pokehp={pokeHp[index]}
+                  pokeattack={pokeAttack[index]}
+                  pokespeed={pokeSpeed[index]}
+                  pokeheight={pokeHeight[index] / 10}
+                  pokeweight={pokeWeight[index] / 10}
+                />
+
+
+                // <CardPokemon
+                //   img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+                //   name={pokeName[index]}
+                //   pokehp={pokeHp[index]}
+                //   pokeattack={pokeAttack[index]}
+                //   pokespeed={pokeSpeed[index]}
+                //   pokeheight={pokeHeight[index] / 10}
+                //   pokeweight={pokeWeight[index] / 10}
+                // />
 
           
-                </ul>
-              </>
 
             ))}
-          </div>
         </div>
       </div>
 

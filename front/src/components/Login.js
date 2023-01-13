@@ -140,7 +140,7 @@ export default function Login() {
 
     const popover = (
         <Popover id="popover-basic">
-            {showError === false || showError2 === false ?
+            {showError === false && showError2 === false?
                 <Popover id="popover-basic">
                     <Popover.Header as="h3">Poké Avatar</Popover.Header>
                     <Popover.Body>
@@ -148,8 +148,8 @@ export default function Login() {
                     </Popover.Body>
                 </Popover>
             :
-            <Popover id="popover-basic">
-            </Popover>
+            <>
+            </>
             
             }
         
@@ -218,10 +218,7 @@ export default function Login() {
                             </Form>
                         </Card.Text> 
                         <br></br>
-                        {/* <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose> */}
-                            {/* disabled */}
                             <Button variant="primary" className="btn-signup"  onClick={() => {SignIn(); }} >Connect</Button>
-                        {/* </OverlayTrigger> */}
                     </>
                     }
                     

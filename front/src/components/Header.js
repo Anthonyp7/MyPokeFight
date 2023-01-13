@@ -57,7 +57,7 @@ export default function Header() {
 
 
                     {/* eslint-disable-next-line */}
-                    <Link to="/"><a className="nav-link active" aria-current="page">Liste Pokémon</a></Link>
+                    <Badge pill bg="warning" text="dark"><Link to="/"><a className="nav-link active" aria-current="page">Liste Pokémon</a></Link></Badge>{' '}
 
                     {!token ?
                     <>
