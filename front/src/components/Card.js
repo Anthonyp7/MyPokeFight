@@ -34,7 +34,7 @@ export default function CardPokemon(props) {
     return (
         <Card {...props} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={props.img} />
-            <Card.Title>{props.name}Nom poke</Card.Title>
+            <Card.Title>{props.name}</Card.Title>
             <Card.Body>
                 <div>
                     <p className="card-text">Taille: {props.pokeheight} m <br></br>

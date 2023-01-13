@@ -24,7 +24,7 @@ export default function Pokedex() {
   const [showError, setShowError] = useState(false);
 
   // INFO POKEMON Card
-  const [pokeCard, setPokeCard] = useState("");
+  const [pokeName, setPokeName] = useState("");
 
   const [pokeHeight, setPokeHeight] = useState("");
   const [pokeWeight, setPokeWeight] = useState("");
@@ -48,6 +48,7 @@ export default function Pokedex() {
           // SET INFO
           setPokeAttack(data.stats[1].base_stat)
           setPokeHp(data.stats[0].base_stat);
+          setPokeName(data.name);
 
           setPokeSpeed(data.stats[5].base_stat);
           setPokeHeight(data.height);
@@ -181,7 +182,7 @@ export default function Pokedex() {
                 <ul>
                   <CardPokemon
                     img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                    // name={ }
+                    name={pokeName}
                     pokehp={pokeHp}
                     pokeattack={pokeAttack}
                     pokespeed={pokeSpeed}
