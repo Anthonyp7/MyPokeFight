@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
@@ -17,11 +18,11 @@ export default function Pokedex() {
 
   const [antho, setAntho] = useState("");
 
-  const rand = (Math.floor(Math.random() * 905) + 1);
+
   const [pokemons, setPokemons] = useState([]);
   const [isShiny, setIsShiny] = useState(Math.floor(Math.random() * 10) + 1);
 
-  const [id, setId] = useState([]);
+  const [ids, setIds] = useState([]);
   const [tab2, setTab2] = useState([]);
 
   const [test, setTest] = useState([]);
@@ -43,47 +44,77 @@ export default function Pokedex() {
   const [pokeSpeed, setPokeSpeed] = useState("");
 
 
+  useEffect(() => {
+    console.log(username)
+    axios.post('http://localhost:3080/pokemons',
+      {
+        mode: 'no-cors',
+        username: username,
 
-  const GetPokemon = () => {
+      }
+
+    ).then((result) => result.data)
+      .then((data) => {
+        console.log(data)
+        setPokemons(data.pokemonid)
+
+        if (data.pokemonid.length >= 4) { ls.setItem("Poké-Coin", 0); }
+        else { ls.setItem("Poké-Coin", 4 - data.pokemonid.length); }
+        data.pokemonid.forEach(id => {
+          GetPokemon(id)
+        });
+
+      })
+
+  }, []);
+
+
+  const GetRandomPokemon = () => {
     if (pokecoin > 0) {
-
-      // async function pokedata(){
-        
-        fetch(`https://pokeapi.co/api/v2/pokemon/${rand}/`)
-          .then((result) => result.json())
-          .then((data) => {
-            // console.log("data.result", data.height)
-            setDatas(data);
-            setIsShiny(Math.floor(Math.random() * 10) + 1)
-            
-
-            // SET INFO
-            setPokeAttack((current) => [...current, data.stats[1].base_stat]);
-            // setPokeHp(data.stats[0].base_stat);
-            setPokeHp((current) => [...current, data.stats[0].base_stat]);
-            setPokeName((current) => [...current, data.name[0].toUpperCase() + data.name.substring(1)]);
-
-            setPokeSpeed((current) => [...current, data.stats[5].base_stat]);
-            setPokeHeight((current) => [...current, data.height]);
-            setPokeWeight((current) => [...current, data.weight]);
-
-            // console.log("pokemonheight", data.height)
-            // console.log("pokemonattt", pokeAttack)
-
-            // console.log("data.name", data.name)
-
-            setTab2(id.unshift(data.id));//
-
-            TestPoke();
-          })
-          .catch((err) => console.log(err));
-      // }
-        
+      const rand = (Math.floor(Math.random() * 905) + 1);
+      GetPokemon(rand)
+        .then(() => TestPoke())
+      // TestPoke();
     }
-
     else {
       setShowError(true);
     }
+  }
+
+  const GetPokemon = (id) => {
+    console.log(id)
+    // async function pokedata(){
+
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+      .then((result) => result.json())
+      .then((data) => {
+        // console.log("data.result", data.height)
+        setDatas(data);
+        setIsShiny(Math.floor(Math.random() * 10) + 1)
+
+
+        // SET INFO
+        setPokeAttack((current) => [...current, data.stats[1].base_stat]);
+        // setPokeHp(data.stats[0].base_stat);
+        setPokeHp((current) => [...current, data.stats[0].base_stat]);
+        setPokeName((current) => [...current, data.name[0].toUpperCase() + data.name.substring(1)]);
+
+        setPokeSpeed((current) => [...current, data.stats[5].base_stat]);
+        setPokeHeight((current) => [...current, data.height]);
+        setPokeWeight((current) => [...current, data.weight]);
+
+        // console.log("pokemonheight", data.height)
+        // console.log("pokemonattt", pokeAttack)
+
+        // console.log("data.name", data.name)
+
+        setTab2(ids.unshift(data.id));//
+        // setTab2(id.unshift(data.id));//
+
+
+      })
+      .catch((err) => console.log(err));
+    // }
   }
 
   console.log("isShiny", isShiny);
@@ -96,7 +127,7 @@ export default function Pokedex() {
       {
         mode: 'no-cors',
         username: username,
-        pokeid: id[0]
+        pokeid: ids[0]
       })
 
 
@@ -140,15 +171,15 @@ export default function Pokedex() {
       <h1 className="load-h1">Mon Pokedex</h1>
 
 
-      
-      <Button variant="primary" className='btn-poke-coin' onClick={GetPokemon}>
-        Nouveau Pokémon 
+
+      <Button variant="primary" className='btn-poke-coin' onClick={GetRandomPokemon}>
+        Nouveau Pokémon
         {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
         <Badge bg="secondary"> {pokecoin}</Badge>
       </Button>
 
 
-      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id[0]}.png`} alt="" />
+      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ids[0]}.png`} alt="" />
 
       <Row>
         <Col xs={6}>
@@ -169,39 +200,39 @@ export default function Pokedex() {
 
 
       <br></br><br></br>
-    
+
 
       <div className="row">
         <div className="column">
-            {pokemons.map((pokemon, index) => (
-              
-              
-                <CardPokemon
-                  img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                  img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
-                  isShiny={isShiny}
-                  name={pokeName[index]}
-                  pokehp={pokeHp[index]}
-                  pokeattack={pokeAttack[index]}
-                  pokespeed={pokeSpeed[index]}
-                  pokeheight={pokeHeight[index] / 10}
-                  pokeweight={pokeWeight[index] / 10}
-                />
+          {pokemons.map((pokemon, index) => (
 
 
-                // <CardPokemon
-                //   img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-                //   name={pokeName[index]}
-                //   pokehp={pokeHp[index]}
-                //   pokeattack={pokeAttack[index]}
-                //   pokespeed={pokeSpeed[index]}
-                //   pokeheight={pokeHeight[index] / 10}
-                //   pokeweight={pokeWeight[index] / 10}
-                // />
+            <CardPokemon
+              img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+              img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
+              isShiny={isShiny}
+              name={pokeName[index]}
+              pokehp={pokeHp[index]}
+              pokeattack={pokeAttack[index]}
+              pokespeed={pokeSpeed[index]}
+              pokeheight={pokeHeight[index] / 10}
+              pokeweight={pokeWeight[index] / 10}
+            />
 
-          
 
-            ))}
+            // <CardPokemon
+            //   img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+            //   name={pokeName[index]}
+            //   pokehp={pokeHp[index]}
+            //   pokeattack={pokeAttack[index]}
+            //   pokespeed={pokeSpeed[index]}
+            //   pokeheight={pokeHeight[index] / 10}
+            //   pokeweight={pokeWeight[index] / 10}
+            // />
+
+
+
+          ))}
         </div>
       </div>
 

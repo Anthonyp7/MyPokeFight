@@ -14,7 +14,7 @@ const CreatePokemon = async (req, res) => {
         newPokemon.pokeid = pokeid;
 
         await newPokemon.save();
-        
+
 
         res.send({
             code: 201,
@@ -24,7 +24,7 @@ const CreatePokemon = async (req, res) => {
         req.username = username;
         // req.url = pokemonurl;
 
-    } 
+    }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
         console.log('error', error);
@@ -34,30 +34,31 @@ const CreatePokemon = async (req, res) => {
 const GetPokemon = async (req, res) => {
     try {
         const username = req.body.username;
-        
-        Pokemon.find({ username: username})
-        .then(result => {
-            const pokeid = [];
-            
 
-            for (let i = 0; i < (result).length; i ++){
-                 
-                pokeid.push(result && result[i] && result[i].pokeid)
+        Pokemon.find({ username: username })
+            .then(result => {
+                const pokeid = [];
+                console.log(result.length)
+                for (let i = 0; i < (result).length; i++) {
 
-                console.log(pokeid);
-            }
-            console.log("pokeid", pokeid);
-            res.send({
-                code: 201,
-                username: username,
-                pokemonid: pokeid
+                    if (result && result[i] && result[i].pokeid)
+                        pokeid.push(result[i].pokeid)
+
+                    console.log(pokeid);
+                }
+                console.log("pokeid", pokeid);
+                console.log(result.length)
+                res.send({
+                    code: 201,
+                    username: username,
+                    pokemonid: pokeid
+                })
+
+
+
             })
 
-            
-
-        })
-
-    } 
+    }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
         console.log('error', error);
