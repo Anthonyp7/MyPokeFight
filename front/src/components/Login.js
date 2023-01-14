@@ -13,6 +13,11 @@ import Form from 'react-bootstrap/Form';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
+import { ToastContainer } from "react-bootstrap";
+
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -156,6 +161,7 @@ export default function Login() {
         </Popover>
     );
     
+    
 
     return (
         <div className="body" style={{backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)"}}>
@@ -236,12 +242,31 @@ export default function Login() {
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
 
             {/* SUCCESS */}
-            <Alert show={showSuccess2} variant="info" className="alert-login" onClick={() => setShowSuccess2(false)} dismissible>
+
+            <Row>
+                <Col xs={6}>
+                    <ToastContainer position="bottom-end">
+                    <Toast onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
+                    <Toast.Header>
+                        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                        <strong className="me-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                    </Toast.Header>
+                    <Toast.Body>Your Account is created !</Toast.Body>
+                    </Toast>
+                    </ToastContainer>
+                </Col>
+            </Row>
+
+            
+
+            {/* <Alert show={showSuccess2} variant="info" className="alert-login" onClick={() => setShowSuccess2(false)} dismissible>
                 Login Successful  !
             </Alert>
+            
             <Alert show={showSuccess} variant="info" className="alert-login" onClick={() => setShowSuccess(false)} dismissible>
                 Your Account is created !
-            </Alert>
+            </Alert> */}
             {/* ERROR CREATE */}
             <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
                 Username or Password Missing !

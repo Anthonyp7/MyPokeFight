@@ -15,6 +15,8 @@ export default function Pokedex() {
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
 
+  const [antho, setAntho] = useState("");
+
   const rand = (Math.floor(Math.random() * 905) + 1);
   const [pokemons, setPokemons] = useState([]);
   const [isShiny, setIsShiny] = useState(Math.floor(Math.random() * 10) + 1);
@@ -121,6 +123,7 @@ export default function Pokedex() {
         // setPokemons(datas);
         // setPokemons(pokemons.unshift(res.data.pokemonid, datas));
         console.log("pokemons", pokemons);
+        ls.setItem("Pokemons", pokemons);
 
 
 
@@ -139,9 +142,9 @@ export default function Pokedex() {
 
       
       <Button variant="primary" className='btn-poke-coin' onClick={GetPokemon}>
-        Nouveau Pokémon
+        Nouveau Pokémon 
         {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
-        <Badge bg="secondary">{pokecoin}</Badge>
+        <Badge bg="secondary"> {pokecoin}</Badge>
       </Button>
 
 
