@@ -137,13 +137,7 @@ export default function Pokedex() {
 
 
 
-    // MODIFICATION POKECOIN UTILISATEUR
-    axios.patch('http://localhost:3080/login',
-      {
-        mode: 'no-cors',
-        username: username,
-        pokecoin: ls.getItem("Poké-Coin")
-      })
+    
 
     // AFFICHAGE POKEMON UTILISATEUR
     axios.post('http://localhost:3080/pokemons',
@@ -157,11 +151,16 @@ export default function Pokedex() {
         // setPokemons(pokemons.unshift(res.data.pokemonid, datas));
         console.log("pokemons", pokemons);
         ls.setItem("Pokemons", pokemons);
-
-
-
-
       })
+
+      // MODIFICATION POKECOIN UTILISATEUR
+    axios.patch('http://localhost:3080/login',
+    {
+      mode: 'no-cors',
+      username: username,
+      pokecoin: ls.getItem("Poké-Coin"),
+      pokeid: ids[0]
+    })
 
     // console.log(data);
   }

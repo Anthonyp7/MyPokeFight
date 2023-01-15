@@ -54,7 +54,8 @@ export default function Login() {
               username: username,
               password: password,
               pokeavatar: pokeAvatar[i],
-              pokecoin: pokecoin
+              pokecoin: pokecoin,
+              pokeid: []
           })
           .then(res => {
             console.log("data", res.data)              

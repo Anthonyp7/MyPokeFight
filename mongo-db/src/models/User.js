@@ -5,6 +5,7 @@ const User = new Schema({
     password:String,
     pokeavatar:String,
     pokecoin:String,
+    pokeid:[String],
     createdAt: {
         type: Date,
         default: Date.now,
