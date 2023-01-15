@@ -53,18 +53,20 @@ export default function Pokedex() {
 
       }
 
+
     ).then((result) => result.data)
       .then((data) => {
         console.log(data)
         setPokemons(data.pokemonid)
 
-        if (data.pokemonid.length >= 4) { ls.setItem("Poké-Coin", 0); }
-        else { ls.setItem("Poké-Coin", 4 - data.pokemonid.length); }
+        ls.setItem("Poké-Coin", pokecoin)
         data.pokemonid.forEach(id => {
           GetPokemon(id)
         });
 
       })
+
+
 
   }, []);
 
