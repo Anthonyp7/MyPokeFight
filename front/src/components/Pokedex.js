@@ -119,7 +119,7 @@ export default function Pokedex() {
     // }
   }
 
-  console.log("isShiny", isShiny);
+  // console.log("isShiny", isShiny);
 
 
   const TestPoke = () => {
@@ -150,7 +150,7 @@ export default function Pokedex() {
         // setPokemons(datas);
         // setPokemons(pokemons.unshift(res.data.pokemonid, datas));
         console.log("pokemons", pokemons);
-        ls.setItem("Pokemons", pokemons);
+        // ls.setItem("Pokemons", pokemons);
       })
 
       // MODIFICATION POKECOIN UTILISATEUR
@@ -161,6 +161,8 @@ export default function Pokedex() {
       pokecoin: ls.getItem("Poké-Coin"),
       pokeid: ids[0]
     })
+
+    ls.setItem("PokeId", JSON.stringify(ids));
 
     // console.log(data);
   }
@@ -218,6 +220,7 @@ export default function Pokedex() {
               pokespeed={pokeSpeed[index]}
               pokeheight={pokeHeight[index] / 10}
               pokeweight={pokeWeight[index] / 10}
+              fight={false}
             />
 
 

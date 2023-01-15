@@ -112,6 +112,7 @@ export default function Login() {
                     ls.setItem("Username", res.data.username)
                     ls.setItem("Poké-Avatar", res.data.pokeavatar)
                     ls.setItem("Poké-Coin", res.data.pokecoin)
+                    ls.setItem("PokeId", res.data.pokeid)
                     navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
                     
                     // ls.getItem("Token")

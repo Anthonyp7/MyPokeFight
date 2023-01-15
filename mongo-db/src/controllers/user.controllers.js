@@ -60,13 +60,15 @@ const GetUser = async (req,res) =>{
         .then(result => {
             const pokeavatar = result.pokeavatar;
             const pokecoin = result.pokecoin;
+            const pokeid = result.pokeid;
             res.send({
                 code : 201,
                 message: "Connection OK",
                 token: token,
                 username: username,
                 pokeavatar: pokeavatar,
-                pokecoin:pokecoin
+                pokecoin:pokecoin,
+                pokeid: pokeid
             });
         })
 
