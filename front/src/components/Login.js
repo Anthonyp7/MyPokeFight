@@ -27,9 +27,9 @@ export default function Login() {
     const [signin, setSignin] = useState(false);
     const navigate = useNavigate();
     const ls = localStorage;
-    
-    
-    
+
+
+
 
     const [showSuccess, setShowSuccess] = useState(false);
     const [showSuccess2, setShowSuccess2] = useState(false);
@@ -47,54 +47,54 @@ export default function Login() {
 
     const SignUp = () => {
 
-      console.log(username, password)
+        console.log(username, password)
 
-      axios.post('http://localhost:3080/login',
-          {
-              username: username,
-              password: password,
-              pokeavatar: pokeAvatar[i],
-              pokecoin: pokecoin,
-              pokeid: []
-          })
-          .then(res => {
-            console.log("data", res.data)              
-
-            
-              // VERIFICATION CREATE SUCCESS OU ERROR
-            if (res.data.code === 201) {
-                setShowSuccess(true);
-                // navigate(`/pokedex/${username}`)// FIX
-            }
-            else if (res.data.code === 400) {
-                setShowError(true);
-            }
-            else if (res.data.code === 401) {
-                setShowError2(true);
-            }
-            //   if (res.data.code === 200) {
-            //       // move to home
-            //       navigate('/')
-            //       localStorage.setItem('TOKEN', res.data.token)
-            //       localStorage.setItem('EMAIL', res.data.email)
-            //   }
+        axios.post('http://localhost:3080/login',
+            {
+                username: username,
+                password: password,
+                pokeavatar: pokeAvatar[i],
+                pokecoin: pokecoin,
+                pokeid: []
+            })
+            .then(res => {
+                console.log("data", res.data)
 
 
-          }).catch(err => {
-              console.log(err)
-        })
+                // VERIFICATION CREATE SUCCESS OU ERROR
+                if (res.data.code === 201) {
+                    setShowSuccess(true);
+                    // navigate(`/pokedex/${username}`)// FIX
+                }
+                else if (res.data.code === 400) {
+                    setShowError(true);
+                }
+                else if (res.data.code === 401) {
+                    setShowError2(true);
+                }
+                //   if (res.data.code === 200) {
+                //       // move to home
+                //       navigate('/')
+                //       localStorage.setItem('TOKEN', res.data.token)
+                //       localStorage.setItem('EMAIL', res.data.email)
+                //   }
+
+
+            }).catch(err => {
+                console.log(err)
+            })
         // console.log("pokeAvatar-mongo", pokeAvatar);
         // console.log("pokeAvatar-mongo-user", pokeAvatar[i]);
-        
-        
 
-        setI(i+1);
+
+
+        setI(i + 1);
         setTab(pokeAvatar.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
     }
 
 
     const SignIn = () => {
-  
+
         axios.post('http://localhost:3080/signin',
             {
                 mode: 'no-cors',
@@ -114,7 +114,7 @@ export default function Login() {
                     ls.setItem("Poké-Coin", res.data.pokecoin)
                     ls.setItem("PokeId", res.data.pokeid)
                     navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
-                    
+
                     // ls.getItem("Token")
                 }
                 else if (res.data.code === 400) {
@@ -127,13 +127,13 @@ export default function Login() {
             }).catch(err => {
                 console.log(err)
             })
-            console.log(username, password)
+        console.log(username, password)
     }
 
 
 
     const changeSigninForm = () => {
-      setSignin(true);
+        setSignin(true);
     }
 
     const changeSignupForm = () => {
@@ -147,89 +147,89 @@ export default function Login() {
 
     const popover = (
         <Popover id="popover-basic">
-            {showError === false && showError2 === false?
+            {showError === false && showError2 === false ?
                 <Popover id="popover-basic">
                     <Popover.Header as="h3">Poké Avatar</Popover.Header>
                     <Popover.Body>
-                        <img src={pokeAvatar[i-1]} alt=""/>
+                        <img src={pokeAvatar[i - 1]} alt="" />
                     </Popover.Body>
                 </Popover>
-            :
-            <>
-            </>
-            
+                :
+                <>
+                </>
+
             }
-        
+
         </Popover>
     );
-    
-    
+
+
 
     return (
-        <div className="body" style={{backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)"}}>
+        <div className="body" style={{ backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)" }}>
 
             <br></br>
-            <h1>Register</h1> <br></br>
+            <h1>Connexion</h1> <br></br>
             <br></br>
             <div className="outcard">
 
                 <Card style={{ width: '30rem' }} className="card-login">
                     <Card.Header>
-                    <Nav variant="pills" defaultActiveKey="#first">
-                        <Nav.Item>
-                        <Nav.Link href="#signup" onClick={changeSignupForm}>SignUp</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link href="#signin" onClick={changeSigninForm}>SignIn</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
+                        <Nav variant="pills" defaultActiveKey="#first">
+                            <Nav.Item>
+                                <Nav.Link href="#signup" onClick={changeSignupForm}>Créer un compte</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="#signin" onClick={changeSigninForm}>Connexion</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
                     </Card.Header>
                     <Card.Body>
 
                         {/* SI ON CLIQUE SUR SIGNIN OU SIGNUP */}
                         {/* SIGNUP */}
-                    {signin === false ? 
-                    <>
-                        <Card.Title style={{ textAlign: "center" }}>Create an Account</Card.Title> <br></br>
-                        <Card.Text>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="formGroupEmail">
-                                    <Form.Label>Username</Form.Label>
-                                    <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text"  placeholder="Username"/>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formGroupPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Password"/>
-                                </Form.Group>
-                            </Form>
-                        </Card.Text> 
-                        <br></br>
-                        <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
-                            {/* disabled */}
-                            <Button variant="success" className="btn-signup" onClick={() => {SignUp(); }} >Create</Button>
-                        </OverlayTrigger>
-                    </>
-                    : 
-                    <>
-                    {/* SIGNIN */}
-                        <Card.Title style={{ textAlign: "center" }}>SignIn</Card.Title> <br></br>
-                        <Card.Text>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="formGroupEmail">
-                                    <Form.Label>Username</Form.Label>
-                                    <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text" value={username} placeholder="Username"/>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formGroupPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Password"/>
-                                </Form.Group>
-                            </Form>
-                        </Card.Text> 
-                        <br></br>
-                            <Button variant="primary" className="btn-signup"  onClick={() => {SignIn(); }} >Connect</Button>
-                    </>
-                    }
-                    
+                        {signin === false ?
+                            <>
+                                <Card.Title style={{ textAlign: "center" }}>Créer un compte</Card.Title> <br></br>
+                                <Card.Text>
+                                    <Form>
+                                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                                            <Form.Label>Utilisateur</Form.Label>
+                                            <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text" placeholder="Rentrez votre nom d'utilisateur" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formGroupPassword">
+                                            <Form.Label>Mot de passe</Form.Label>
+                                            <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Rentrez votre mot de passe" />
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Text>
+                                <br></br>
+                                <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
+                                    {/* disabled */}
+                                    <Button variant="success" className="btn-signup" onClick={() => { SignUp(); }} >Valider</Button>
+                                </OverlayTrigger>
+                            </>
+                            :
+                            <>
+                                {/* SIGNIN */}
+                                <Card.Title style={{ textAlign: "center" }}>Connexion</Card.Title> <br></br>
+                                <Card.Text>
+                                    <Form>
+                                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                                            <Form.Label>Utilisateur</Form.Label>
+                                            <Form.Control onChange={(e) => { setUsername(e.target.value) }} className="inputs" type="text" value={username} placeholder="Rentrez votre nom d'utilisateur" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formGroupPassword">
+                                            <Form.Label>Mot de passe</Form.Label>
+                                            <Form.Control onChange={(e) => { setPassword(e.target.value) }} className="inputs" type="password" placeholder="Rentrez votre mot de passe" />
+                                        </Form.Group>
+                                    </Form>
+                                </Card.Text>
+                                <br></br>
+                                <Button variant="primary" className="btn-signup" onClick={() => { SignIn(); }} >Valider</Button>
+                            </>
+                        }
+
                     </Card.Body>
                 </Card>
             </div>
@@ -237,9 +237,9 @@ export default function Login() {
                 <img className="darkrai" style={{ position: "absolute", top: "150px", right: "600px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/491.gif"} alt="darkrai" />
                 <img className="oh-ho" style={{ position: "absolute", top: "400px", left: "350px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/250.gif"} alt="oh-ho" />
                 <img style={{ position: "absolute", top: "600px", right: "400px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/334.gif"} alt="altaria" />
-                <img style={{ width:"2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="wailord" />
-                <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="" />
-                <img className="boreas"style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="boreas" />
+                {/* <img style={{ width: "2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="wailord" /> */}
+                {/* <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="" /> */}
+                <img className="boreas" style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="boreas" />
             </div>
             {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
 
@@ -248,19 +248,19 @@ export default function Login() {
             <Row>
                 <Col xs={6}>
                     <ToastContainer position="bottom-end">
-                    <Toast onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
-                    <Toast.Header>
-                        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                        <strong className="me-auto">MyPokéFight</strong>
-                        <small>Erreur</small>
-                    </Toast.Header>
-                    <Toast.Body>Your Account is created !</Toast.Body>
-                    </Toast>
+                        <Toast onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
+                            <Toast.Header>
+                                <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                                <strong className="me-auto">MyPokéFight</strong>
+                                <small>Erreur</small>
+                            </Toast.Header>
+                            <Toast.Body>Your Account is created !</Toast.Body>
+                        </Toast>
                     </ToastContainer>
                 </Col>
             </Row>
 
-            
+
 
             {/* <Alert show={showSuccess2} variant="info" className="alert-login" onClick={() => setShowSuccess2(false)} dismissible>
                 Login Successful  !

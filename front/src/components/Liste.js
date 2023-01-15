@@ -115,7 +115,7 @@ export default function ListePokemon() {
     setStatsHp([])
     setStatsAttack([])
     setStatsSpeed([])
-    
+
 
     Promise.all(pokemons.map((pokemon) => (
       fetch(pokemon.url).then((res) => res.json())
@@ -159,8 +159,8 @@ export default function ListePokemon() {
       <br></br>
 
       <div className="pagination-top">
-        {url.previous && <button className="btn btn-dark" onClick={previous}>Précédent</button>}
-        {url.next && <button className="btn btn-dark" onClick={next}>Suivant</button>}
+        {/* {url.previous && <button className="" onClick={previous}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316873061175417/btn-prev.png"></img></button>}
+        {url.next && <button className="" onClick={next}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316855587700776/btn-next.png"></img></button>} */}
       </div>
 
 
@@ -206,7 +206,7 @@ export default function ListePokemon() {
 
             {/* {console.log(pokemons[index].url.replace(/[^\d]/g, "").substring(1))} */}
 
-            <Button variant="primary" onClick={() => {
+            <Button variant="" className="btn-stat" onClick={() => {
               setModalShow(true);
               setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1));
               setPokeModalImg(imageani[index]);
@@ -220,7 +220,7 @@ export default function ListePokemon() {
               setPokeModalSpeed(statsSpeed[index]);
               setPokeModalType(type[index])
             }}>
-              Voir plus
+              <img className="btn-img" src="https://cdn-icons-png.flaticon.com/512/2394/2394792.png"></img>
             </Button>
 
           </div>
@@ -245,8 +245,8 @@ export default function ListePokemon() {
       ))}
 
       <div className="pagination-bottom">
-        {url.previous && <button className="btn btn-dark btn-prev" onClick={previous}> *---- </button>}
-        {url.next && <button className="btn btn-dark btn-next" onClick={next}> ----* </button>}
+        {url.previous && <button className="btn-prev" onClick={previous}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316873061175417/btn-prev.png"></img></button>}
+        {url.next && <button className="btn-next" onClick={next}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316855587700776/btn-next.png"></img></button>}
       </div>
 
     </div>
