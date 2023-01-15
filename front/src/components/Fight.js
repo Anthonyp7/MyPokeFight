@@ -47,13 +47,12 @@ export default function Fight(props) {
                             
                 <div style={{marginLeft: "", display:"inline-block" , backgroundColor:"#00000070", border: "1px solid black "}}>
                     <img style={{width:"120%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}/>
-                    {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon}.gif`}/> */}
                     
                 </div>
             ))}
             <br></br> 
 
-            {/* {lspokemon[2]} */}
+             
             {lspokemon.reverse().map((pokemon, index) => (
                 <>
                 
@@ -86,13 +85,18 @@ export default function Fight(props) {
 
                 </>
             ))}
+
+
+            {/* SI 4 POKEMONS SONT SELECTIONNES */}
+            {order.length === 4 ?
+            <Button style={{marginLeft: "930px", marginTop:"150px", display:"inline-flex", textAlign:"center"}} variant="danger" size="lg">Fight</Button>
+            :
+            <>
+            <Button style={{marginLeft: "930px", marginTop:"150px", display:"inline-flex", textAlign:"center"}} variant="danger" size="lg" disabled>Fight</Button>
+            </>}
             
 
-                    
-                    
-
-            
-
+                     
             {/* ERREUR CHOIX FIGHT */}
             <Row>
                 <Col xs={6}>
