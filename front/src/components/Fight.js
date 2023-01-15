@@ -17,12 +17,13 @@ export default function Fight(props) {
 
     const [showError, setShowError] = useState(false);
     const [showError2, setShowError2] = useState(false);
-    
-    const test = JSON.stringify(ls.getItem("PokeId"));
 
+    const [background, setBackground] = useState(["", "https://pm1.narvii.com/7243/f2fb9db8191078f72c8b98fee93155c56e6e8674r1-673-421v2_hq.jpg", "https://pm1.narvii.com/7243/b0945fed2f0cc9fa340c6e7deb851c14ddf53e30r1-575-530v2_hq.jpg", "https://pm1.narvii.com/7243/0d2736d705781ea116d08621abbfefae60a971c2r1-700-542v2_hq.jpg", "https://pm1.narvii.com/7243/00eaa3cfd5033ff306b23965e1c50b31577dd464r1-647-485v2_hq.jpg"]);
+    
+
+    const test = JSON.stringify(ls.getItem("PokeId"));
     // REMPLACEMENT DES CROCHETS
     const test2 = test.replace(/[\[\]]/g, "");
-
     // REMPLACEMENT DES GUILLEMETS
     const lspokemon = test2.replace(/["]/g, "").split(",") ;
     
@@ -36,17 +37,21 @@ export default function Fight(props) {
     //     console.log("order", order);
     // }
     
-    const AddtoFight = () => {
-        setTab(order.push(props.id));
-        ls.setItem("Order", JSON.stringify(order));
-        console.log("order", order);
-    }
     
 
     return(
         <>
             <h1 className="load-h1">Fight</h1>
             <br></br><br></br>
+            {order.map((pokemon, index) => (
+                            
+                <div style={{marginLeft: "", display:"inline-block" , backgroundColor:"#00000070", border: "1px solid black "}}>
+                    <img style={{width:"120%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}/>
+                    {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon}.gif`}/> */}
+                    
+                </div>
+            ))}
+            <br></br> 
 
             {/* {lspokemon[2]} */}
             {lspokemon.reverse().map((pokemon, index) => (
@@ -57,10 +62,10 @@ export default function Fight(props) {
                     id={pokemon}
                     isShiny="0"
                     fight={true}
-                    test={0}
-                    addfight={AddtoFight}
+                    background={background[order.length]}
                     />
-                    <Button variant="primary" onClick={() => {
+                    {console.log("bg nmbr", order.length)}
+                    <Button style={{marginLeft: "-375px", marginTop:"300px"}} variant="primary" onClick={() => {
                         
                         
                         if(order.length >= 4){
@@ -73,12 +78,22 @@ export default function Fight(props) {
                             setTab(order.push(pokemon));
                             ls.setItem("Order", JSON.stringify(order));
                             // console.log("order2", order);
+                            console.log("bg nmbr2", order.length);
                         }
                         
-                    }}>Ajouter au combat</Button>
+                    }}>Ajouter au combat </Button>
+
+
                 </>
             ))}
+            
 
+                    
+                    
+
+            
+
+            {/* ERREUR CHOIX FIGHT */}
             <Row>
                 <Col xs={6}>
                     <ToastContainer position="bottom-end">

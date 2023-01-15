@@ -14,34 +14,14 @@ export default function CardPokemon(props) {
     const [order, setOrder] = useState([]);
     const [tab, setTab] = useState([]);
 
-    const AddtoFight = () => {
-        // if (test.length < 1){
-        //     setTab(test.push(props.id));
-        // }
-        // console.log("test", test);
-
-        // // for (let i = 0; i >= 4; i += 1){
-        // //     setTab(order.push(test));
-        // // }
-
-        // setTab(order.push(test));
-        
-        
-        // ls.setItem("Order", JSON.stringify(order));
-        // console.log("order", order);
-        console.log("Addfight");
-        <Fight 
-        id={0}/>
-        
-    }
-
+    
     
 
     return (
         <>
         {props.fight === true ?
             <>
-                <Card {...props} bg="light" style={{ width: '12rem' , display: 'inline-block', marginRight: '130px', marginLeft: '150px', marginBottom: '40px'}}>
+                <Card {...props} bg="light" style={{ width: '12rem' , display: 'inline-block', marginRight: '200px', marginLeft: '240px', marginTop: '80px', backgroundImage:`url(${props.background})`}}>
                     <Card.Img variant="top" src={props.img} />
                     <Card.Body>
                         {/* <Button variant="primary" onClick={props.addfight}>Ajouter au combat</Button> */}
