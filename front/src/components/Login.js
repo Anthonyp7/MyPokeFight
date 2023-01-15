@@ -251,8 +251,8 @@ export default function Login() {
                     <Toast onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
                     <Toast.Header>
                         <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                        <strong className="me-auto">Bootstrap</strong>
-                        <small>11 mins ago</small>
+                        <strong className="me-auto">MyPokéFight</strong>
+                        <small>Erreur</small>
                     </Toast.Header>
                     <Toast.Body>Your Account is created !</Toast.Body>
                     </Toast>
