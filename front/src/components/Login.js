@@ -28,7 +28,7 @@ export default function Login() {
     const navigate = useNavigate();
     const ls = localStorage;
 
-
+    const [heights, setHeights] = useState(window.innerHeight - 87 + "px");
 
 
     const [showSuccess, setShowSuccess] = useState(false);
@@ -149,10 +149,12 @@ export default function Login() {
         </Popover>
     );
 
+    console.log(heights);
 
 
     return (
-        <div className="body" style={{ backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)" }}>
+        <div className="body" style={{ backgroundImage: "url(https://i.imgur.com/O7ZWigt.png)", height:`${heights}`}}>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 
             <br></br>
             <h1>Connexion</h1> <br></br>
