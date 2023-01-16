@@ -21,7 +21,7 @@ export default function CardPokemon(props) {
         <>
         {props.fight === true ?
             <>
-                <Card {...props} bg="light" style={{ width: '12rem' , display: 'inline-block', marginRight: '200px', marginLeft: '240px', marginTop: '80px', backgroundImage:`url(${props.background})`}}>
+                <Card {...props} bg="light" style={{ width: '12rem' , display: 'inline-block', marginRight: '200px', marginLeft: '240px', marginTop: '80px'}}>
                     <Card.Img variant="top" src={props.img} />
                     <Card.Body>
                         {/* <Button variant="primary" onClick={props.addfight}>Ajouter au combat</Button> */}

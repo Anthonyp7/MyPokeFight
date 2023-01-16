@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import CardPokemon from "./Card";
 
+import axios from "axios";
+
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
@@ -18,7 +20,7 @@ export default function Fight(props) {
     const [showError, setShowError] = useState(false);
     const [showError2, setShowError2] = useState(false);
 
-    const [background, setBackground] = useState(["", "https://pm1.narvii.com/7243/f2fb9db8191078f72c8b98fee93155c56e6e8674r1-673-421v2_hq.jpg", "https://pm1.narvii.com/7243/b0945fed2f0cc9fa340c6e7deb851c14ddf53e30r1-575-530v2_hq.jpg", "https://pm1.narvii.com/7243/0d2736d705781ea116d08621abbfefae60a971c2r1-700-542v2_hq.jpg", "https://pm1.narvii.com/7243/00eaa3cfd5033ff306b23965e1c50b31577dd464r1-647-485v2_hq.jpg"]);
+    // const [background, setBackground] = useState(["", "https://pm1.narvii.com/7243/f2fb9db8191078f72c8b98fee93155c56e6e8674r1-673-421v2_hq.jpg", "https://pm1.narvii.com/7243/b0945fed2f0cc9fa340c6e7deb851c14ddf53e30r1-575-530v2_hq.jpg", "https://pm1.narvii.com/7243/0d2736d705781ea116d08621abbfefae60a971c2r1-700-542v2_hq.jpg", "https://pm1.narvii.com/7243/00eaa3cfd5033ff306b23965e1c50b31577dd464r1-647-485v2_hq.jpg"]);
 
 
     const test = JSON.stringify(ls.getItem("PokeId"));
