@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +15,6 @@ export default function Pokedex() {
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
 
-  const [antho, setAntho] = useState("");
 
 
   const [pokemons, setPokemons] = useState([]);
@@ -25,7 +23,6 @@ export default function Pokedex() {
   const [ids, setIds] = useState([]);
   const [tab2, setTab2] = useState([]);
 
-  const [test, setTest] = useState([]);
   const [datas, setDatas] = useState([]);
 
 
@@ -76,7 +73,7 @@ export default function Pokedex() {
       const rand = (Math.floor(Math.random() * 905) + 1);
       GetPokemon(rand)
         .then(() => TestPoke())
-      // TestPoke();
+
     }
     else {
       setShowError(true);
@@ -85,19 +82,19 @@ export default function Pokedex() {
 
   const GetPokemon = (id) => {
     console.log(id)
-    // async function pokedata(){
+
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
       .then((result) => result.json())
       .then((data) => {
-        // console.log("data.result", data.height)
+
         setDatas(data);
         setIsShiny(Math.floor(Math.random() * 10) + 1)
 
 
         // SET INFO
         setPokeAttack((current) => [...current, data.stats[1].base_stat]);
-        // setPokeHp(data.stats[0].base_stat);
+
         setPokeHp((current) => [...current, data.stats[0].base_stat]);
         setPokeName((current) => [...current, data.name[0].toUpperCase() + data.name.substring(1)]);
 
@@ -105,21 +102,13 @@ export default function Pokedex() {
         setPokeHeight((current) => [...current, data.height]);
         setPokeWeight((current) => [...current, data.weight]);
 
-        // console.log("pokemonheight", data.height)
-        // console.log("pokemonattt", pokeAttack)
-
-        // console.log("data.name", data.name)
-
-        setTab2(ids.unshift(data.id));//
-        // setTab2(id.unshift(data.id));//
-
+        setTab2(ids.unshift(data.id));
 
       })
       .catch((err) => console.log(err));
-    // }
+
   }
 
-  // console.log("isShiny", isShiny);
 
 
   const TestPoke = () => {
@@ -137,7 +126,7 @@ export default function Pokedex() {
 
 
 
-    
+
 
     // AFFICHAGE POKEMON UTILISATEUR
     axios.post('http://localhost:3080/pokemons',
@@ -147,24 +136,20 @@ export default function Pokedex() {
       })
       .then(res => {
         setPokemons(res.data.pokemonid);
-        // setPokemons(datas);
-        // setPokemons(pokemons.unshift(res.data.pokemonid, datas));
-        console.log("pokemons", pokemons);
-        // ls.setItem("Pokemons", pokemons);
+
       })
 
-      // MODIFICATION POKECOIN UTILISATEUR
+    // MODIFICATION POKECOIN UTILISATEUR
     axios.patch('http://localhost:3080/login',
-    {
-      mode: 'no-cors',
-      username: username,
-      pokecoin: ls.getItem("Poké-Coin"),
-      pokeid: ids[0]
-    })
+      {
+        mode: 'no-cors',
+        username: username,
+        pokecoin: ls.getItem("Poké-Coin"),
+        pokeid: ids[0]
+      })
 
     ls.setItem("PokeId", JSON.stringify(ids));
 
-    // console.log(data);
   }
 
 
@@ -194,7 +179,7 @@ export default function Pokedex() {
                 alt=""
               />
               <strong className="me-auto">MyPokéFight</strong>
-              <small>11 mins ago</small>
+              <small>Erreur</small>
             </Toast.Header>
             <Toast.Body>Désolé, vous n'avez plus de PokéCoin. Gagnez des combats pour en obtenir !</Toast.Body>
           </Toast>
@@ -222,19 +207,6 @@ export default function Pokedex() {
               pokeweight={pokeWeight[index] / 10}
               fight={false}
             />
-
-
-            // <CardPokemon
-            //   img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-            //   name={pokeName[index]}
-            //   pokehp={pokeHp[index]}
-            //   pokeattack={pokeAttack[index]}
-            //   pokespeed={pokeSpeed[index]}
-            //   pokeheight={pokeHeight[index] / 10}
-            //   pokeweight={pokeWeight[index] / 10}
-            // />
-
-
 
           ))}
         </div>

@@ -72,21 +72,11 @@ export default function Login() {
                 else if (res.data.code === 401) {
                     setShowError2(true);
                 }
-                //   if (res.data.code === 200) {
-                //       // move to home
-                //       navigate('/')
-                //       localStorage.setItem('TOKEN', res.data.token)
-                //       localStorage.setItem('EMAIL', res.data.email)
-                //   }
 
 
             }).catch(err => {
                 console.log(err)
             })
-        // console.log("pokeAvatar-mongo", pokeAvatar);
-        // console.log("pokeAvatar-mongo-user", pokeAvatar[i]);
-
-
 
         setI(i + 1);
         setTab(pokeAvatar.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`));
@@ -115,7 +105,7 @@ export default function Login() {
                     ls.setItem("PokeId", res.data.pokeid)
                     navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
 
-                    // ls.getItem("Token")
+
                 }
                 else if (res.data.code === 400) {
                     setShowError(true);
@@ -140,10 +130,6 @@ export default function Login() {
         setSignin(false);
     }
 
-    // const changePokeAvatar = () => {
-    //     setPokeAvatar(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(Math.floor(Math.random() * 905) + 1)}.png`);
-    //     console.log("pokeAvatar func", pokeAvatar);
-    // }
 
     const popover = (
         <Popover id="popover-basic">
@@ -205,7 +191,6 @@ export default function Login() {
                                 </Card.Text>
                                 <br></br>
                                 <OverlayTrigger trigger="click" placement="right-start" overlay={popover} rootClose>
-                                    {/* disabled */}
                                     <Button variant="success" className="btn-signup" onClick={() => { SignUp(); }} >Valider</Button>
                                 </OverlayTrigger>
                             </>
@@ -241,7 +226,6 @@ export default function Login() {
                 {/* <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="" /> */}
                 <img className="boreas" style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="boreas" />
             </div>
-            {/* <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/641.gif"} alt="{pokemon}" /> */}
 
             {/* SUCCESS */}
 
@@ -259,16 +243,6 @@ export default function Login() {
                     </ToastContainer>
                 </Col>
             </Row>
-
-
-
-            {/* <Alert show={showSuccess2} variant="info" className="alert-login" onClick={() => setShowSuccess2(false)} dismissible>
-                Login Successful  !
-            </Alert>
-            
-            <Alert show={showSuccess} variant="info" className="alert-login" onClick={() => setShowSuccess(false)} dismissible>
-                Your Account is created !
-            </Alert> */}
             {/* ERROR CREATE */}
             <Alert show={showError} variant="danger" className="alert-login" onClick={() => setShowError(false)} dismissible>
                 Username or Password Missing !

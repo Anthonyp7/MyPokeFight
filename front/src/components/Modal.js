@@ -15,13 +15,13 @@ export default function ModalTest(props) {
       centered
 
     >
-      
+
       <div className={props.type}>
 
 
         <Modal.Header closeButton >
           <Modal.Title id="contained-modal-title-vcenter">
-            {/* {props.name} */}
+
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
@@ -30,7 +30,6 @@ export default function ModalTest(props) {
             <div className="row g-0">
               <div className="col-md-4" id="modal-col">
                 <img className="img-modal" src={props.img} alt=""></img>
-                {/* <img className="img-modal" src={props.img2} alt=""></img> */}
               </div>
               <div className="col-md-8">
                 <div className="card-body">
@@ -41,16 +40,16 @@ export default function ModalTest(props) {
 
                   <div className='progress-stats'>
                     {/* <p>Hp:</p> */}
-                    <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt=''/><br></br>
+                    <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
                     <ProgressBar animated variant='success' now={props.stathp} label={`${props.stathp}`} />
 
                     <br></br>
                     {/* <p>Attaque:</p> */}
-                    <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt=''/><br></br>
+                    <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt='' /><br></br>
                     <ProgressBar animated variant='danger' now={props.statattack} label={`${props.statattack}`} />
                     <br></br>
                     {/* <p>Speed:</p> */}
-                    <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt=''/><br></br>
+                    <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
                     <ProgressBar animated variant='info' now={props.statspeed} label={`${props.statspeed}`} />
                   </div>
                 </div>
@@ -59,7 +58,7 @@ export default function ModalTest(props) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button onClick={props.onHide}>Close</Button> */}
+
         </Modal.Footer>
       </div>
     </Modal>

@@ -44,26 +44,6 @@ export default function ListePokemon() {
   const [pokeModalAttack, setPokeModalAttack] = useState("");
   const [pokeModalSpeed, setPokeModalSpeed] = useState("");
 
-  // const [pokemonId, setPokemonId] = useState("");
-
-
-  // const [pokemonUrl, setPokemonUrl] = useState("");
-
-
-
-  // async function fetchData() {
-  //   return new Promise((resolve, reject) => {
-  //     fetch("https://pokeapi.co/api/v2/pokemon/1")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         resolve(data)
-  //         // console.log(data)
-  //       })
-  //   })
-  // }
-
-  // fetchData()
-
 
   //PAGE SUIVANTE
   const next = () => {
@@ -123,8 +103,6 @@ export default function ListePokemon() {
       .then((datas) => datas.map(data => {
         //SET IMG
         setImage((current) => [...current, data.sprites.front_default]);
-        //data.sprites.other['official-artwork'].front_default
-        //data.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default
         setImage2((current) => [...current, data.sprites.front_shiny]);
         setImageAni((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.front_default]);
         setImageAniBack((current) => [...current, data.sprites.versions['generation-v']['black-white'].animated.back_default]);
@@ -138,9 +116,6 @@ export default function ListePokemon() {
         setStatsHp((current) => [...current, data.stats[0].base_stat]);
         setStatsAttack((current) => [...current, data.stats[1].base_stat]);
         setStatsSpeed((current) => [...current, data.stats[5].base_stat]);
-
-        // console.log(data)
-        console.log(statsHp)
       }))
 
   }, [pokemons]);
@@ -158,26 +133,10 @@ export default function ListePokemon() {
       <h2 fontFamily="pokemon_classicregular,arial, sans-serif" className="load-h2">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
-      <div className="pagination-top">
-        {/* {url.previous && <button className="" onClick={previous}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316873061175417/btn-prev.png"></img></button>}
-        {url.next && <button className="" onClick={next}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316855587700776/btn-next.png"></img></button>} */}
-      </div>
-
-
-      {/* {setPokemonId(pokemons.url.replace(/[^\d]/g, "").substring(1))} */}
-      {/* {console.log(pokemons[url.replace(/[^\d]/g, "").substring(1)])} */}
-
-      {/* {console.log("pokemons",pokemons)} */}
       {pokemons.map((pokemon, index) => (
 
 
         <div className={type[index]} id="test">
-
-          {/* {console.log(pokemonUrl)} */}
-          {/* {setPokemonUrl(pokemon)} */}
-          {/* {console.log(pokemon.url)} */}
-          {/* {console.log(pokemon)}
-          {console.log(image)} */}
           <div className="card-body">
             <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
@@ -188,8 +147,6 @@ export default function ListePokemon() {
               <img className="img-poke" src={image2[index]} alt="" />
             </div>
 
-
-
             {/* INFO POKEMON */}
             <div className="type-li" >
               <ul className={type[index]}>
@@ -197,22 +154,11 @@ export default function ListePokemon() {
               </ul>
             </div>
 
-            {/* {console.log(pokemon.name, pokemon.url.replace(/[^\d]/g, "").substring(1), statsHp[pokemon.url.replace(/[^\d]/g, "").substring(1)])} */}
-
-
-
-
-            {/* {setPokemonId(pokemons[index].url.replace(/[^\d]/g, "").substring(1))} */}
-
-            {/* {console.log(pokemons[index].url.replace(/[^\d]/g, "").substring(1))} */}
-
             <Button variant="" className="btn-stat" onClick={() => {
               setModalShow(true);
               setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1));
               setPokeModalImg(imageani[index]);
               setPokeModalImg2(imageaniback[index]);
-              // {index < 650 ? setPokeModalImg(imageani[index]) 
-              //   : setPokeModalImg(image[index])};
               setPokeModalHeight(height[index]);
               setPokeModalWeight(weight[index]);
               setPokeModalHp(statsHp[index]);

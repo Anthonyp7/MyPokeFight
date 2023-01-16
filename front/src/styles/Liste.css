@@ -35,13 +35,6 @@
 }
 
 
-/* #pokedex-button {
-    margin-left: 150px;
-}
-#pokedex-button img{
-    width: 38%;
-} */
-
 #test {
     max-width: 21.5rem;
     float: left;
@@ -102,8 +95,6 @@
     display: flex;
     justify-content: center;
     font-family: 'pokemon_classicregular';
-    /* color:rgb(219, 187, 2); */
-    /* text-shadow: 3px 2px 0px #ffffff; */
 }
 
 .list-group-item {
