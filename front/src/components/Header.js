@@ -10,16 +10,15 @@ export default function Header() {
 
 
     const Test = () => {
-
         localStorage.clear();
-
     }
 
     return (
         <div>
             <nav className="navbar bg-light">
                 <div className="container">
-                    <Link to="/"><a className="navbar-brand" href="/">
+                {/* eslint-disable */}
+                    <Link to="/"><a className="navbar-brand">
                         <img src="https://cdn.discordapp.com/attachments/956119709361774592/1060200881016016966/logoMyPokeFight.png" alt="" width="70" height="70" />
                         <strong fontFamily="pokemon_classicregular,arial, sans-serif" className="title-pokefight">MyPokéFight</strong>
                         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"} className="poke-img" alt="{pokemon}" />
@@ -27,7 +26,6 @@ export default function Header() {
                     </a></Link>
 
 
-                    {/* eslint-disable-next-line */}
                     <Badge pill bg="warning" text="dark"><Link to="/"><a className="nav-link active" aria-current="page">Liste Pokémon</a></Link></Badge>{' '}
 
                     {!token ?
@@ -36,7 +34,6 @@ export default function Header() {
                         </>
                         :
                         <>
-                            {/* eslint-disable-next-line */}
 
                             <Badge pill bg="warning" text="dark"><Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link> </Badge>{' '}
                             <Badge pill bg="warning" text="dark"><Link to="/fight"><a className="nav-link active" aria-current="page">Fight</a></Link></Badge>{' '}

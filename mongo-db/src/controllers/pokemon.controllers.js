@@ -4,12 +4,10 @@ const Pokemon = require('../models/Pokemon');
 
 const CreatePokemon = async (req, res) => {
     try {
-        // const pokemonurl = req.body.url;
         const username = req.body.username;
         const pokeid = req.body.pokeid;
 
         const newPokemon = new Pokemon();
-        // newPokemon.url = pokemonurl;
         newPokemon.username = username;
         newPokemon.pokeid = pokeid;
 
@@ -22,7 +20,6 @@ const CreatePokemon = async (req, res) => {
         });
 
         req.username = username;
-        // req.url = pokemonurl;
 
     }
     catch (error) {

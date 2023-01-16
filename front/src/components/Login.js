@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-// const bcrypt = require('bcrypt');
-import axios from "axios"
+import React, { useState } from "react";
+import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import '../styles/Login.css';
 
@@ -12,7 +11,6 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
@@ -20,14 +18,16 @@ import { ToastContainer } from "react-bootstrap";
 
 
 export default function Login() {
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [pokecoin, setPokecoin] = useState(4);//
+    // eslint-disable-next-line
+    const [pokecoin, setPokecoin] = useState(4);
 
     const [signin, setSignin] = useState(false);
     const navigate = useNavigate();
     const ls = localStorage;
-
+    // eslint-disable-next-line
     const [heights, setHeights] = useState(window.innerHeight - 87 + "px");
 
 
@@ -64,7 +64,6 @@ export default function Login() {
                 // VERIFICATION CREATE SUCCESS OU ERROR
                 if (res.data.code === 201) {
                     setShowSuccess(true);
-                    // navigate(`/pokedex/${username}`)// FIX
                 }
                 else if (res.data.code === 400) {
                     setShowError(true);
@@ -103,7 +102,7 @@ export default function Login() {
                     ls.setItem("Poké-Avatar", res.data.pokeavatar)
                     ls.setItem("Poké-Coin", res.data.pokecoin)
                     ls.setItem("PokeId", res.data.pokeid)
-                    navigate(`/pokedex/${ls.getItem("Username")}`)// FIX
+                    navigate(`/pokedex/${ls.getItem("Username")}`)
 
 
                 }
@@ -149,7 +148,7 @@ export default function Login() {
         </Popover>
     );
 
-    console.log(heights);
+    
 
 
     return (
@@ -224,8 +223,6 @@ export default function Login() {
                 <img className="darkrai" style={{ position: "absolute", top: "150px", right: "600px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/491.gif"} alt="darkrai" />
                 <img className="oh-ho" style={{ position: "absolute", top: "400px", left: "350px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/250.gif"} alt="oh-ho" />
                 <img style={{ position: "absolute", top: "600px", right: "400px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/334.gif"} alt="altaria" />
-                {/* <img style={{ width: "2%", position: "absolute", bottom: "153px", left: "-10px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/321.gif"} alt="wailord" /> */}
-                {/* <img style={{ position: "absolute", top: "650px", right: "800px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/567.gif"} alt="" /> */}
                 <img className="boreas" style={{ position: "absolute", top: "250px", right: "50px" }} src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/641.gif"} alt="boreas" />
             </div>
 

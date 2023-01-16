@@ -42,6 +42,7 @@ export default function Pokedex() {
 
 
   useEffect(() => {
+    
     console.log(username)
     axios.post('http://localhost:3080/pokemons',
       {
@@ -162,7 +163,6 @@ export default function Pokedex() {
 
       <Button variant="primary" className='btn-poke-coin' onClick={GetRandomPokemon}>
         Nouveau Pokémon
-        {/* <img className='poke-coin' src='https://cdn-icons-png.flaticon.com/512/871/871383.png'/> */}
         <Badge bg="secondary"> {pokecoin}</Badge>
       </Button>
 
@@ -170,7 +170,7 @@ export default function Pokedex() {
       <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ids[0]}.png`} alt="" />
 
       <Row>
-        <Col xs={6}>
+        <Col>
           <Toast onClose={() => setShowError(false)} show={showError} delay={7000} autohide>
             <Toast.Header>
               <img

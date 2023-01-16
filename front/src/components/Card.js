@@ -1,27 +1,19 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Fight from './Fight';
 
 
 export default function CardPokemon(props) {
     const ls = localStorage;
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
-
-    const [test, setTest] = useState([]);
-    const [order, setOrder] = useState([]);
-    const [tab, setTab] = useState([]);
-
-
+    // const [show, setShow] = useState(false);
+    // const handleShow = () => setShow(true);
 
 
     return (
         <>
             {props.fight === true ?
                 <>
-                    <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '200px', marginLeft: '240px', marginTop: '80px' }}>
+                    <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '200px', marginLeft: '150px', marginTop: '80px' }}>
                         <Card.Img variant="top" src={props.img} />
                         <Card.Body>
                         </Card.Body>
@@ -30,7 +22,7 @@ export default function CardPokemon(props) {
 
                 :
                 <>
-                    <Card {...props} bg="light" style={{ width: '17rem', display: 'inline-block', marginRight: '100px', marginLeft: '100px', marginBottom: '40px' }}>
+                    <Card {...props} bg="light" style={{ width: '17rem', display: 'inline-block', marginRight: '50px', marginLeft: '50px', marginBottom: '40px' }}>
                         {props.isShiny === 7 ?
                             <>
                                 <Card.Img variant="top" src={props.img2} />
@@ -68,13 +60,7 @@ export default function CardPokemon(props) {
                         </Card.Body>
                     </Card>
                 </>
-
-
-
-
-
-
-
+                
             }
         </>
     )

@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import CardPokemon from "./Card";
-
-import axios from "axios";
-
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
@@ -20,6 +17,9 @@ export default function Fight(props) {
     const [showError, setShowError] = useState(false);
     const [showError2, setShowError2] = useState(false);
 
+    const [heights, setHeights] = useState(window.innerHeight - 116 + "px");
+    const [widths, setWidths] = useState(window.innerWidth - 17 + "px");
+
 
     const test = JSON.stringify(ls.getItem("PokeId"));
     // REMPLACEMENT DES CROCHETS
@@ -29,13 +29,13 @@ export default function Fight(props) {
 
 
     return (
-        <div style={{ backgroundImage: "url(https://wallpapercave.com/wp/wp11053899.jpg)", height: "855px" }}>
+        <div style={{ backgroundImage: "url(https://wallpapercave.com/wp/wp11053803.jpg)", height:`${heights}`, width:`${widths}`, backgroundSize:"cover" }}>
             <h1 className="load-h1">Fight</h1>
-            <br></br><br></br>
+            <br></br>
             {order.map((pokemon, index) => (
 
                 <div style={{ marginLeft: "", display: "inline-block", backgroundColor: "#00000070", border: "1px solid black " }}>
-                    <img style={{ width: "120%" }} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`} />
+                    <img style={{ width: "120%" }} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`} alt="" />
 
                 </div>
             ))}
@@ -44,7 +44,6 @@ export default function Fight(props) {
 
             {lspokemon.reverse().map((pokemon, index) => (
                 <>
-
                     <CardPokemon
                         img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
                         id={pokemon}
@@ -52,13 +51,13 @@ export default function Fight(props) {
                         fight={true}
 
                     />
-                    {console.log("bg nmbr", order.length)}
                     <Button style={{ marginLeft: "-375px", marginTop: "300px" }} variant="primary" onClick={() => {
 
-
+                        // SI + DE 4 POKEMONS SONT CHOISI
                         if (order.length >= 4) {
                             setShowError2(true);
                         }
+                        // SI POKEMON DEJA CHOISI
                         else if (order.includes(pokemon)) {
                             setShowError2(true);
                         }
@@ -76,11 +75,12 @@ export default function Fight(props) {
 
             {/* SI 4 POKEMONS SONT SELECTIONNES */}
             {order.length === 4 ?
-                <Button style={{ marginLeft: "930px", marginTop: "150px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg">Fight</Button>
+                <Button style={{ marginLeft: "46%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg">Fight</Button>
                 :
                 <>
-                    <Button style={{ marginLeft: "930px", marginTop: "150px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
-                </>}
+                    <Button style={{ marginLeft: "46%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
+                </>
+            }
 
 
 

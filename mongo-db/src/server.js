@@ -5,7 +5,7 @@ require('./database');
 const controllers = require('./controllers/user.controllers');
 const controllers2 = require('./controllers/pokemon.controllers');
 const dto = require('./dto/user.dto');
-const match = require('./Matchmaking');
+// const match = require('./Matchmaking');
 app.use(express.json());
 app.use(cors());
 

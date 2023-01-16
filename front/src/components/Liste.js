@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 export default function ListePokemon() {
+  const [widths, setWidths] = useState(window.innerWidth - 17 + "px");
   const [pokemons, setPokemons] = useState([]);
   const [url, setUrl] = useState({
     current: "https://pokeapi.co/api/v2/pokemon/",
@@ -124,7 +125,7 @@ export default function ListePokemon() {
 
 
   return (
-    <div>
+    <div style={{ width:`${widths}`}}>
       <br></br>
       {loading ? <div className="spinner-border" role="status">
         <span className="visually-hidden">Loading...</span>
@@ -166,7 +167,7 @@ export default function ListePokemon() {
               setPokeModalSpeed(statsSpeed[index]);
               setPokeModalType(type[index])
             }}>
-              <img className="btn-img" src="https://cdn-icons-png.flaticon.com/512/2394/2394792.png"></img>
+              <img className="btn-img" src="https://cdn-icons-png.flaticon.com/512/2394/2394792.png" alt=""></img>
             </Button>
 
           </div>
@@ -191,8 +192,8 @@ export default function ListePokemon() {
       ))}
 
       <div className="pagination-bottom">
-        {url.previous && <button className="btn-prev" onClick={previous}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316873061175417/btn-prev.png"></img></button>}
-        {url.next && <button className="btn-next" onClick={next}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316855587700776/btn-next.png"></img></button>}
+        {url.previous && <button className="btn-prev" onClick={previous}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316873061175417/btn-prev.png" alt=""></img></button>}
+        {url.next && <button className="btn-next" onClick={next}><img className="btn-img" src="https://cdn.discordapp.com/attachments/956119709361774592/1064316855587700776/btn-next.png" alt=""></img></button>}
       </div>
 
     </div>

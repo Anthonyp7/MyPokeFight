@@ -8,8 +8,6 @@ const dtoCreateUser = async (req,res,next) => {
 
         const userExist = await User.findOne({ username: username });
 
-        
-
         if (!username || !password) {
             res.send({
                 code: 400,
@@ -46,17 +44,7 @@ const dtoGetUser = async (req, res, next) => {
 
         User.findOne({username : username})
         .then(result => {
-            // console.log("test", res);
 
-            // if(result.password === req.body.password){
-            //     console.log("password : ", req.body.password);
-            //     res.send({
-            //         code : 200,
-            //         message: "Connection OK"
-            //     });
-            //     console.log("Found!");
-            //     return;
-            // }
             if (!username || !password) {
                 res.send({
                     code: 400,
@@ -71,14 +59,6 @@ const dtoGetUser = async (req, res, next) => {
                 })
                 return;
             }
-
-        //    if (!user || result.password !== password) {
-        //         res.send({
-        //             code: 402, 
-        //             message: " Username or Password is Incorrect"
-        //         })
-        //         return;
-        //     }
             else{
                 next();
             }
