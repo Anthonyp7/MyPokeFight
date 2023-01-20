@@ -30,9 +30,9 @@ export default function Pokedex() {
 
   // INFO POKEMON Card
   const [pokeName, setPokeName] = useState("");
-
   const [pokeHeight, setPokeHeight] = useState("");
   const [pokeWeight, setPokeWeight] = useState("");
+  const [type, setType] = useState([]);
 
 
   // INFO STATS POKEMON Card
@@ -43,7 +43,6 @@ export default function Pokedex() {
 
   useEffect(() => {
     
-    console.log(username)
     axios.post('http://localhost:3080/pokemons',
       {
         mode: 'no-cors',
@@ -54,7 +53,6 @@ export default function Pokedex() {
 
     ).then((result) => result.data)
       .then((data) => {
-        console.log(data)
         setPokemons(data.pokemonid)
 
         ls.setItem("Poké-Coin", pokecoin)
@@ -74,6 +72,8 @@ export default function Pokedex() {
       const rand = (Math.floor(Math.random() * 905) + 1);
       GetPokemon(rand)
         .then(() => TestPoke())
+      
+      // isLegendary(rand)
 
     }
     else {
@@ -81,8 +81,7 @@ export default function Pokedex() {
     }
   }
 
-  const GetPokemon = (id) => {
-    console.log(id)
+  const GetPokemon = async (id) => {
 
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -102,6 +101,7 @@ export default function Pokedex() {
         setPokeSpeed((current) => [...current, data.stats[5].base_stat]);
         setPokeHeight((current) => [...current, data.height]);
         setPokeWeight((current) => [...current, data.weight]);
+        setType((current) => [...current, data.types.map(type => type.type.name + " ")]);
 
         setTab2(ids.unshift(data.id));
 
@@ -194,12 +194,15 @@ export default function Pokedex() {
         <div className="column">
           {pokemons.map((pokemon, index) => (
 
+            
 
             <CardPokemon
               img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
               img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
               isShiny={isShiny}
+              id={pokemon}
               name={pokeName[index]}
+              type={type[index]}
               pokehp={pokeHp[index]}
               pokeattack={pokeAttack[index]}
               pokespeed={pokeSpeed[index]}
@@ -207,6 +210,8 @@ export default function Pokedex() {
               pokeweight={pokeWeight[index] / 10}
               fight={false}
             />
+
+            
 
           ))}
         </div>

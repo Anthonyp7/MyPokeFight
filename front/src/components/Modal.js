@@ -13,6 +13,7 @@ export default function ModalTest(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      scrollable="true"
 
     >
 
@@ -30,10 +31,11 @@ export default function ModalTest(props) {
             <div className="row g-0">
               <div className="col-md-4" id="modal-col">
                 <img className="img-modal" src={props.img} alt=""></img>
+                <img className="img-modal" src={props.img2} alt=""></img>
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h3 className="card-title">{props.name}</h3>
+                  <h2 className="card-title">{props.name}</h2>
                   <p className="card-text">Taille: {props.height} m <br></br>
                     Poids: {props.weight} kg</p>
                   <br></br>
@@ -64,4 +66,3 @@ export default function ModalTest(props) {
     </Modal>
   );
 }
-

@@ -18,7 +18,7 @@ export default function Fight(props) {
     const [showError2, setShowError2] = useState(false);
 
     const [heights, setHeights] = useState(window.innerHeight - 116 + "px");
-    const [widths, setWidths] = useState(window.innerWidth - 17 + "px");
+    const [widths, setWidths] = useState(window.innerWidth + "px");
 
 
     const test = JSON.stringify(ls.getItem("PokeId"));
@@ -75,10 +75,10 @@ export default function Fight(props) {
 
             {/* SI 4 POKEMONS SONT SELECTIONNES */}
             {order.length === 4 ?
-                <Button style={{ marginLeft: "46%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg">Fight</Button>
+                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg">Fight</Button>
                 :
                 <>
-                    <Button style={{ marginLeft: "46%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
+                    <Button style={{ marginLeft: "48%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
                 </>
             }
 

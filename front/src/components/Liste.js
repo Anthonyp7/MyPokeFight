@@ -4,6 +4,7 @@ import '../styles/PokemonColors.css';
 import ModalTest from "./Modal";
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import ResearchBar from "./ResearchBar";
 
 
 export default function ListePokemon() {
@@ -90,6 +91,7 @@ export default function ListePokemon() {
     setImage([])
     setImage2([])
     setImageAni([])
+    setImageAniBack([])
     setHeight([])
     setWeight([])
     setType([])
@@ -134,11 +136,24 @@ export default function ListePokemon() {
       <h2 fontFamily="pokemon_classicregular,arial, sans-serif" className="load-h2">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
+      {/* <ResearchBar /> */}
+
       {pokemons.map((pokemon, index) => (
 
 
-        <div className={type[index]} id="test">
-          <div className="card-body">
+        <div className={type[index]} id="test" >
+          <div className="card-body"onClick={() => {
+              setModalShow(true);
+              setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1));
+              setPokeModalImg(imageani[index]);
+              setPokeModalImg2(imageaniback[index]);
+              setPokeModalHeight(height[index]);
+              setPokeModalWeight(weight[index]);
+              setPokeModalHp(statsHp[index]);
+              setPokeModalAttack(statsAttack[index]);
+              setPokeModalSpeed(statsSpeed[index]);
+              setPokeModalType(type[index])
+            }}>
             <h5 className="pokemon-name" key={index}> {pokemon.url.replace(/[^\d]/g, "").substring(1)} • {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</h5>
 
             <div className="image">
@@ -155,20 +170,9 @@ export default function ListePokemon() {
               </ul>
             </div>
 
-            <Button variant="" className="btn-stat" onClick={() => {
-              setModalShow(true);
-              setPokeModal(pokemon.name[0].toUpperCase() + pokemon.name.substring(1));
-              setPokeModalImg(imageani[index]);
-              setPokeModalImg2(imageaniback[index]);
-              setPokeModalHeight(height[index]);
-              setPokeModalWeight(weight[index]);
-              setPokeModalHp(statsHp[index]);
-              setPokeModalAttack(statsAttack[index]);
-              setPokeModalSpeed(statsSpeed[index]);
-              setPokeModalType(type[index])
-            }}>
+            {/* <Button variant="" className="btn-stat" >
               <img className="btn-img" src="https://cdn-icons-png.flaticon.com/512/2394/2394792.png" alt=""></img>
-            </Button>
+            </Button> */}
 
           </div>
 

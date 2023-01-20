@@ -1,3 +1,7 @@
-.poke-coin {
+/* .poke-coin {
     width: 5%;
+} */
+
+.row {
+    --bs-gutter-x: 0rem;
 }

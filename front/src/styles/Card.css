@@ -1,0 +1,44 @@
+.legendary {
+    background: hsl(0, 0%, 100%);
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.01);
+}
+  
+.legendary ::after {
+    position: absolute;
+    content: "";
+    top: -12px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 105%;
+    width: 100%;
+    transform: scale(0.9) translateZ(0);
+    filter: blur(15px);
+    background: linear-gradient(
+    to left,
+    /* #ff0000, #ff5770, #fffb00, #48ff00, #00ffd5, #002bff, #6501de, #ff00c8, #ff0000
+    #ff5770, */
+      #e4428d,
+      #c42da8,
+      #9e16c3,
+      #6501de,
+      #002bff,
+      #00a2ff,
+      #5900ff,
+      #9e16c3,
+      #c42da8,
+      #e4428d,
+      #ff5770
+    );
+    background-size: 200% 200%;
+    animation: animateGlow 40s linear infinite;
+  
+}
+
+  
+@keyframes animateGlow {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}

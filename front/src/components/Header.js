@@ -1,12 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
 import '../styles/Header.css';
+import CanvaProfile from "./CanvaProfile";
+import React from 'react';
 
 export default function Header() {
     const token = localStorage.getItem("Token");
     const username = localStorage.getItem("Username");
     const pokeavatar = localStorage.getItem("Poké-Avatar");
     const navigate = useNavigate();
+
+    const [canvashow, setCanvashow] = React.useState(false);
 
 
     const Test = () => {
@@ -38,11 +42,20 @@ export default function Header() {
                             <Badge pill bg="warning" text="dark"><Link to="/pokedex"><a className="nav-link active" aria-current="page">Pokédex</a></Link> </Badge>{' '}
                             <Badge pill bg="warning" text="dark"><Link to="/fight"><a className="nav-link active" aria-current="page">Fight</a></Link></Badge>{' '}
                             <Badge pill bg="warning" text="dark"><Link to="/login" onClick={Test}><a className="nav-link active" aria-current="page">Logout</a></Link></Badge>{' '}
-                            <Link><a className="nav-link active" id="user" aria-current="page">
+                            <Link  onClick={()=> {
+                                setCanvashow(true)}
+                                }><a className="nav-link active" id="user" aria-current="page">
                                 <img className="img-avatar" src={pokeavatar} alt="" />
                                 {username}
                             </a></Link>
                         </>}
+
+
+                        <CanvaProfile 
+                            placement="start"
+                            show={canvashow}
+                            onHide={() => setCanvashow(false)}
+                        />
 
                 </div>
             </nav>
