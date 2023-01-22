@@ -10,6 +10,7 @@ export default function CardPokemon(props) {
     const ls = localStorage;
 
     const [style, setStyle] = useState(props.type + " " + "legendary");
+    const [widths, setWidths] = useState(window.innerWidth);
 
     const [legendary, setLengedary] = useState(false);
     // const [show, setShow] = useState(false);
@@ -51,7 +52,7 @@ export default function CardPokemon(props) {
                         <>
                         
                         
-                            <Card {...props} className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '50px', marginLeft: '50px', marginBottom: '40px' }}>
+                            <Card {...props} className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 {/* backgroundImage:"url(https://www.wallpapertip.com/wmimgs/57-572508_neon-lights-4k.jpg)", backgroundSize:"cover",  */}
                                 {props.isShiny === 7 ?
                                     <>
@@ -91,7 +92,7 @@ export default function CardPokemon(props) {
                         
                         :
                         <>
-                            <Card {...props} text="white" border="dark" className={props.type} style={{ width: '17rem', display: 'inline-block', marginRight: '50px', marginLeft: '50px', marginBottom: '40px' }}>
+                            <Card {...props} text="white" border="dark" className={props.type} style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 {props.isShiny === 7 ?
                                     <>
                                         <Card.Img variant="top" src={props.img2} />
