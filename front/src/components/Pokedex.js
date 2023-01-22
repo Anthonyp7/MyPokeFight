@@ -18,7 +18,6 @@ export default function Pokedex() {
 
 
   const [pokemons, setPokemons] = useState([]);
-  const [isShiny, setIsShiny] = useState(Math.floor(Math.random() * 10) + 1);
 
   const [ids, setIds] = useState([]);
   const [tab2, setTab2] = useState([]);
@@ -73,7 +72,7 @@ export default function Pokedex() {
       GetPokemon(rand)
         .then(() => TestPoke())
       
-      // isLegendary(rand)
+        
 
     }
     else {
@@ -89,7 +88,6 @@ export default function Pokedex() {
       .then((data) => {
 
         setDatas(data);
-        setIsShiny(Math.floor(Math.random() * 10) + 1)
 
 
         // SET INFO
@@ -199,7 +197,6 @@ export default function Pokedex() {
             <CardPokemon
               img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
               img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
-              isShiny={isShiny}
               id={pokemon}
               name={pokeName[index]}
               type={type[index]}

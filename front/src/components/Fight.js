@@ -46,6 +46,7 @@ export default function Fight(props) {
                 <>
                     <CardPokemon
                         img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+                        img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
                         id={pokemon}
                         isShiny="0"
                         fight={true}
