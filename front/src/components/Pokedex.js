@@ -25,6 +25,10 @@ export default function Pokedex() {
   const [datas, setDatas] = useState([]);
 
 
+  const [canMegaPokemons, setCanMegaPokemons] = useState([3,"6",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
+  const [megaPokemons, setMegaPokemons] = useState([3,"10034",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
+
+
   const [showError, setShowError] = useState(false);
 
   // INFO POKEMON Card
@@ -192,22 +196,33 @@ export default function Pokedex() {
         <div className="column">
           {pokemons.map((pokemon, index) => (
 
-            
+            <>
 
-            <CardPokemon
-              img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
-              img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
-              id={pokemon}
-              name={pokeName[index]}
-              type={type[index]}
-              pokehp={pokeHp[index]}
-              pokeattack={pokeAttack[index]}
-              pokespeed={pokeSpeed[index]}
-              pokeheight={pokeHeight[index] / 10}
-              pokeweight={pokeWeight[index] / 10}
-              fight={false}
-            />
+              <CardPokemon
+                img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`}
+                img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon}.png`}
+                id={pokemon}
+                name={pokeName[index]}
+                type={type[index]}
+                pokehp={pokeHp[index]}
+                pokeattack={pokeAttack[index]}
+                pokespeed={pokeSpeed[index]}
+                pokeheight={pokeHeight[index] / 10}
+                pokeweight={pokeWeight[index] / 10}
+                fight={false}
+              />
 
+              {canMegaPokemons.includes(pokemon) ?
+              <>
+                <button style={{ display: ""}}>Mega Evolution</button>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons.includes(pokemon)).inde]}.png`} alt=""/>
+                {/* <Button style={{ marginTop: "300px"}} variant="primary"> Méga Evolution</Button> */}
+              </>
+              :
+              null
+              }
+
+            </>
             
 
           ))}
