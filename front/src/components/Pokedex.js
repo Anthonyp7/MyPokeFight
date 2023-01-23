@@ -25,8 +25,8 @@ export default function Pokedex() {
   const [datas, setDatas] = useState([]);
 
 
-  const [canMegaPokemons, setCanMegaPokemons] = useState([3,"6",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
-  const [megaPokemons, setMegaPokemons] = useState([3,"10034",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
+  const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
+  const [megaPokemons, setMegaPokemons] = useState(["10033","10034",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
 
 
   const [showError, setShowError] = useState(false);
@@ -212,15 +212,15 @@ export default function Pokedex() {
                 fight={false}
               />
 
-              {canMegaPokemons.includes(pokemon) ?
+              {/* {canMegaPokemons.includes(pokemon) ?
               <>
-                <button style={{ display: ""}}>Mega Evolution</button>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons.includes(pokemon)).inde]}.png`} alt=""/>
-                {/* <Button style={{ marginTop: "300px"}} variant="primary"> Méga Evolution</Button> */}
+                <Button style={{ }} variant="primary"> Méga Evolution</Button>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${pokemon}`)]}.png`} alt=""/>
+                
               </>
               :
               null
-              }
+              } */}
 
             </>
             

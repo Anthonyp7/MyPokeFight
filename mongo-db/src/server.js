@@ -41,6 +41,11 @@ app.post(
     controllers2.GetPokemon
 );
 
+app.patch(
+    '/pokemon',
+    controllers2.PatchPokemon
+);
+
 // MATCH
 app.post(
     '/matchmaking',

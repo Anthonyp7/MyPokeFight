@@ -95,6 +95,25 @@ const PatchUser = async (req,res) =>{
     }
 }
 
+const PatchUserPokemon = (req, res) => {
+    try {
+        const newPokeid = req.body.newpokeid;
+        User.updateOne({username: req.body.username, pokeid: req.body.pokeid}, {
+            pokeid: newPokeid
+        })
+        .then(result => {
+            res.send({
+                code: 201,
+                pokemonid: newPokeid
+            })
+        })
+
+    } 
+    catch (error) {
+        
+    }
+}
+
 module.exports= {
     CreateUser,
     GetUser,

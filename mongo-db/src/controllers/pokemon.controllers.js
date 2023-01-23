@@ -62,9 +62,31 @@ const GetPokemon = async (req, res) => {
     }
 }
 
+const PatchPokemon = (req, res, next) => {
+    try {
+        const newPokeid = req.body.newpokeid;
+        Pokemon.updateOne({username: req.body.username, pokeid: req.body.pokeid}, {
+            pokeid: newPokeid
+        })
+        .then(result => {
+            res.send({
+                code: 201,
+                pokemonid: newPokeid
+            })
+        })
+
+
+    }
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
 module.exports = {
     CreatePokemon,
-    GetPokemon
+    GetPokemon,
+    PatchPokemon
 }
 
 
