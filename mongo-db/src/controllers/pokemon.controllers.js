@@ -67,6 +67,7 @@ const PatchPokemon = (req, res, next) => {
         const newPokeid = req.body.newpokeid;
         Pokemon.updateOne({username: req.body.username, pokeid: req.body.pokeid}, {
             pokeid: newPokeid
+
         })
         .then(result => {
             res.send({

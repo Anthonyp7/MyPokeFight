@@ -160,7 +160,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
-// import '../styles/Card.css';
+import '../styles/Card.css';
 import '../styles/PokemonColors.css';
 
 
@@ -181,11 +181,7 @@ export default function CardPokemon(props) {
     const [img, setImg] = useState(props.img);
 
 
-    const test = JSON.stringify(ls.getItem("PokeId"));
-    // REMPLACEMENT DES CROCHETS
-    const test2 = test.replace(/[\[\]]/g, "");
-    // REMPLACEMENT DES GUILLEMETS
-    const [lspokemon, setLspokemon] = useState(test2.replace(/["]/g, "").split(","));
+    
     
     
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${props.id}/`)
@@ -224,34 +220,40 @@ export default function CardPokemon(props) {
 
     function GetMegaPokemon() {
 
+        const test = JSON.stringify(ls.getItem("PokeId"));
+        // REMPLACEMENT DES CROCHETS
+        const test2 = test.replace(/[\[\]]/g, "");
+        // REMPLACEMENT DES GUILLEMETS
+        const lspokemon = test2.replace(/["]/g, "").split(",");
 
-        // ls.setItem("Pokeid", lspokemon.slice(lspokemon.indexOf(`${props.id}`), 1, megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]));
 
-        // setLspokemon(lspokemon.slice(lspokemon.indexOf(`${props.id}`), 1, megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]));
-
+        lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
 
 
 
-        // setLspokemon(lspokemon.push(props.id))
 
-        // console.log("typeof lspokemon",typeof lspokemon);
-        // console.log("test2", lspokemon);
-
-        // console.log("props", props.id);
 
         axios.patch('http://localhost:3080/pokemon',
-            {
-                mode: 'no-cors',
-                username: ls.getItem("Username"),
-                pokeid: props.id,
-                newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
-            })
-            .then(res => {
-                // setPokemons(res.data.pokemonid);
-                console.log(res.data.pokemonid);
+        {
+            mode: 'no-cors',
+            username: ls.getItem("Username"),
+            pokeid: props.id,
+            newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
+        })
+        .then(res => {
+            console.log(res.data.pokemonid);
+        })
 
-            })
         
+        axios.patch('http://localhost:3080/userpokemon',
+        {
+            mode: 'no-cors',
+            username: ls.getItem("Username"),
+            newpokeid: lspokemon
+        })
+        .then(res => {
+            console.log(res.data.pokemonid);
+        })
 
     }
 
@@ -266,7 +268,7 @@ export default function CardPokemon(props) {
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]}.png`} alt=""/>
           </Popover.Body>
         </Popover>
-      );
+    );
 
 
 
@@ -347,10 +349,10 @@ export default function CardPokemon(props) {
                                     </div>
                                     
                                     
-                                    
+                                    <br></br>
                                     {canMegaPokemons.includes(props.id) ?
                                         <OverlayTrigger trigger="hover" placement="top" overlay={popover}>
-                                            <Button variant="primary" onClick={GetMegaPokemon}> Méga Evolution</Button>
+                                            <Button className='glow-on-hover' variant="primary" onClick={GetMegaPokemon} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
                                         </OverlayTrigger>
                                         
                                     :

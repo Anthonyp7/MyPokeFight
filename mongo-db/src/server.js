@@ -29,6 +29,11 @@ app.patch(
     controllers.PatchUser
 );
 
+app.patch(
+    '/userpokemon',
+    controllers.PatchUserPokemon
+);
+
 
 // POKEMON
 app.post(

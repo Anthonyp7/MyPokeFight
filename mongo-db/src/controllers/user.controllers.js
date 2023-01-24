@@ -98,7 +98,7 @@ const PatchUser = async (req,res) =>{
 const PatchUserPokemon = (req, res) => {
     try {
         const newPokeid = req.body.newpokeid;
-        User.updateOne({username: req.body.username, pokeid: req.body.pokeid}, {
+        User.updateOne({username: req.body.username}, {
             pokeid: newPokeid
         })
         .then(result => {
@@ -110,12 +110,14 @@ const PatchUserPokemon = (req, res) => {
 
     } 
     catch (error) {
-        
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
     }
 }
 
 module.exports= {
     CreateUser,
     GetUser,
-    PatchUser
+    PatchUser,
+    PatchUserPokemon
 }
