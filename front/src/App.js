@@ -4,6 +4,7 @@ import Pokedex from "./components/Pokedex";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Fight from "./components/Fight";
+// import Mega from "./components/MegaPokemon";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/pokedex/:username" element={<Pokedex />} />
         <Route path="/login" element={<Login />} />
         <Route path="/fight" element={<Fight />} />
+        {/* <Route path="/mega" element={<Mega />} /> */}
       </Routes>
 
     </div>

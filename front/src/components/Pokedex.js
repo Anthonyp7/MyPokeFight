@@ -130,7 +130,6 @@ export default function Pokedex() {
 
 
 
-
     // AFFICHAGE POKEMON UTILISATEUR
     axios.post('http://localhost:3080/pokemons',
       {

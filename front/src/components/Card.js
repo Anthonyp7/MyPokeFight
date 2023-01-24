@@ -155,6 +155,7 @@
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -162,10 +163,12 @@ import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import '../styles/Card.css';
 import '../styles/PokemonColors.css';
+import Mega from './MegaPokemon';
 
 
 export default function CardPokemon(props) {
     const ls = localStorage;
+    const navigate = useNavigate();
 
     const [widths, setWidths] = useState(window.innerWidth);
 
@@ -174,7 +177,7 @@ export default function CardPokemon(props) {
     const [isShiny, setIsShiny] = useState(false);
 
     const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260"]);
-    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10036","10037","10038","10034","10034","10034","10034","10034","10034","10034","10034","10034","10034","10034","10034","10034","10034"]);
+    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10036","10037","10038","10034","10034","10034","10034","10034","10034","10034","10046","10034","10034","10034","10034","10050","10034"]);
 
     const [tab, setTab] = useState([]);
 
@@ -182,7 +185,7 @@ export default function CardPokemon(props) {
 
 
     
-    
+    const [modalShow, setModalShow] = useState(false);
     
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${props.id}/`)
     .then((result) => result.json())
@@ -216,7 +219,7 @@ export default function CardPokemon(props) {
 
     // console.log("props", props.id);
 
-        
+    
 
     function GetMegaPokemon() {
 
@@ -227,33 +230,43 @@ export default function CardPokemon(props) {
         const lspokemon = test2.replace(/["]/g, "").split(",");
 
 
-        lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+        // lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
 
 
 
 
+        // // MODIFICATION POKEID POKEMON
+        // axios.patch('http://localhost:3080/pokemon',
+        // {
+        //     mode: 'no-cors',
+        //     username: ls.getItem("Username"),
+        //     pokeid: props.id,
+        //     newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
+        // })
+        // .then(res => {
+        //     console.log(res.data.pokemonid);
+        // })
 
-        axios.patch('http://localhost:3080/pokemon',
-        {
-            mode: 'no-cors',
-            username: ls.getItem("Username"),
-            pokeid: props.id,
-            newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
-        })
-        .then(res => {
-            console.log(res.data.pokemonid);
-        })
+        // // MODIFICATION ARRAY POKEID USER
+        // axios.patch('http://localhost:3080/userpokemon',
+        // {
+        //     mode: 'no-cors',
+        //     username: ls.getItem("Username"),
+        //     newpokeid: lspokemon
+        // })
+        // .then(res => {
+        //     console.log(res.data.pokemonid);
+        // })
 
         
-        axios.patch('http://localhost:3080/userpokemon',
-        {
-            mode: 'no-cors',
-            username: ls.getItem("Username"),
-            newpokeid: lspokemon
-        })
-        .then(res => {
-            console.log(res.data.pokemonid);
-        })
+
+        // navigate(`/mega`);
+        <Mega 
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+        />
+
+        console.log("test");
 
     }
 
@@ -316,7 +329,7 @@ export default function CardPokemon(props) {
                                         <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
                                         <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} />
                                     </div>
-                                    <br></br>
+                                    <br></br><br></br>
                                 </Card.Body>
                             </Card>
                         </>
@@ -351,10 +364,13 @@ export default function CardPokemon(props) {
                                     
                                     <br></br>
                                     {canMegaPokemons.includes(props.id) ?
-                                        <OverlayTrigger trigger="hover" placement="top" overlay={popover}>
-                                            <Button className='glow-on-hover' variant="primary" onClick={GetMegaPokemon} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
+                                        <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
+                                            <Button className='glow-on-hover' variant="primary" onClick={() => {
+                                                GetMegaPokemon();
+                                                setModalShow(true);
+                                                // window.location.reload()
+                                                }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
                                         </OverlayTrigger>
-                                        
                                     :
                                         null
                                     }
