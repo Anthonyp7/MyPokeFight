@@ -175,10 +175,11 @@
     /* background-image: url(https://wallpaperaccess.com/full/5818333.jpg); */
     background-image: url(https://th.bing.com/th/id/R.7626d73942c01632c95e9691931166e0?rik=UJKegE4NNl1qFw&riu=http%3a%2f%2fcdn.wallpapersafari.com%2f55%2f44%2ftvlMso.jpg&ehk=%2bDVrtGepjlqez8o1AwhC%2bEubYy3idQiFk1fWGLyLpw4%3d&risl=&pid=ImgRaw&r=0);
     background-size: cover;
+    opacity: 1;
 }
 
 
 .modal {
-    --bs-modal-bg: ;
+    /* --bs-modal-bg: ; */
     --bs-modal-border-width: 0px;
 }

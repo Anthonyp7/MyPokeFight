@@ -1,0 +1,56 @@
+.orb {
+    animation:spin 8s linear infinite, test 3s infinite;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    right: 42.25%;
+    top: 25.3%;
+    opacity: 1;
+    margin-top: 140px;
+    border-radius: 50%;
+    animation-delay: 2s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    box-shadow:
+        inset 0 0 50px #fff,
+        inset 20px 0 60px #7a00ff,
+        inset -20px 0 60px #0ff,
+        inset 20px 0 300px #7a00ff,
+        inset -20px 0 300px #0ff,
+          0 0 50px #fff,
+          -10px 0 60px #7a00ff,
+          10px 0 60px #0ff;
+}
+
+@keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);} 
+}
+
+
+@keyframes test {
+    100% {-webkit-transform:scale(2); }
+}
+
+
+
+.pokemon1 {
+    animation: poke1 3s;
+    animation-fill-mode: forwards;
+    /* animation-delay: 6s; */
+}
+
+@keyframes poke1 { 
+    100% {-webkit-transform:scale(0);  } 
+}
+
+
+.pokemon2 {
+    animation: poke2 5.5s;
+    animation-fill-mode: backwards;
+    animation-delay: 3s;
+}
+
+@keyframes poke2 { 
+    0% {-webkit-transform:scale(0); } 
+}

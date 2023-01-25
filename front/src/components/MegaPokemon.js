@@ -2,86 +2,67 @@ import { useState } from "react";
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link, useNavigate } from "react-router-dom";
+import '../styles/Mega.css';
 
 
-export default function Mega(props) {
+export default function MegaPoke(props) {
 
-    // const ls = localStorage;
+    const ls = localStorage;
 
-    // const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260"]);
-    // const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10036","10037","10038","10034","10034","10034","10034","10034","10034","10034","10046","10034","10034","10034","10034","10050","10034"]);
+    const [audio, setAudio] = useState(new Audio('../../public//megaEvolution.mp3'));
 
-
-    // const [test, setTest] = useState(megaPokemons.indexOf(ls.getItem("PokeId").includes("212")));
-    // return (
-    //     <>
-    //         <h1>Mega</h1>
-
-    //         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`212`)]}.png`} alt=""/>
-    //         {/* canMegaPokemons[(megaPokemons).indexOf(`${ls.getItem("PokeId").includes("212")}`)] */}
-
-    //     </>
-    // )
+    const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260"]);
+    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10037","10037","10038","10034","10034","10034","10034","10034","10034","10034","10046","10034","10034","10034","10034","10050","10034"]);
 
 
-    // const [fullscreen, setFullscreen] = useState(true);
-    // const [show, setShow] = useState(false);
+    // TROUVER L'INDEX OU LA PREMIERE VALEUR = ID DU POKEMON
+    const isLargeNumber = (element) => element == props.id;
+    
+    // audio.load();
+    audio.play();
 
-    // function handleShow(breakpoint) {
-    //     setFullscreen(breakpoint);
-    //     setShow(true);
-    // }
-
-    // return (
-    //     <Modal {...props} show={props.show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-    //     <Modal.Header closeButton>
-    //       <Modal.Title>Modal</Modal.Title>
-    //     </Modal.Header>
-    //     <Modal.Body>Modal body content
-    //     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png" alt=""/></Modal.Body>
-    //   </Modal>
-    // )
-
-    return(
+    return (
       <Modal
       {...props}
-      size="lg"
+      fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      scrollable="true"
-
+      
+      
     >
+      {/* <Modal.Header>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header> */}
+      <Modal.Body style={{backgroundImage: "url(https://cdn.wallpapersafari.com/95/72/eKFOgU.jpg)", backgroundSize: "cover"}}>
+      <h1>Mega Evolution</h1>
+      <div class="orb"></div>
 
-      <div>
 
 
-        <Modal.Header closeButton >
-          <Modal.Title id="contained-modal-title-vcenter">
-
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body >
-
-          <div className="card mb-3" >
-            <div className="row g-0">
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h2 className="card-title">t</h2>
-                  <p className="card-text">Taille:  m <br></br>
-                    Poids:  kg</p>
-                  <br></br>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-
-        </Modal.Footer>
-      </div>
+        <img className="pokemon1" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${canMegaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
+        <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
+         {/* canMegaPokemons[(megaPokemons).indexOf(`${ls.getItem("PokeId").includes("212")}`)] */}
+         
+        <audio>
+          <source src="../../public//megaEvolution.mp3"></source>
+        </audio>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={() => {
+          props.onHide();
+          // navigate('/pokedex');
+          window.location.reload()
+          
+          }}>Close</Button>
+      </Modal.Footer>
     </Modal>
     )
+    console.log("ok")
+
+  
 
 
 
