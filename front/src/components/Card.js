@@ -176,8 +176,10 @@ export default function CardPokemon(props) {
     const [shiny, setShiny] = useState(Math.floor(Math.random() * 3) + 1);
     const [isShiny, setIsShiny] = useState(false);
 
-    const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260"]);
-    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10037","10037","10038","10034","10034","10034","10034","10034","10034","10072","10046","10034","10034","10034","10034","10050","10034"]);
+    const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260", "282", 
+    "302", "303", "306", "308", "310", "319", "323", "334", "354", "359", "362", "373", "376", "380", "381", "384", "428", "445", "448", "460", "475", "531", "719"]);
+    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10090","10073","10037","10071","10038","10039","10040","10041","10042","10044","10045","10072","10046","10047","10048","10049","10065","10050","10064", "10051", 
+    "10066", "10052", "10053", "10054", "10055", "10070", "10087", "10067", "10056", "10057", "10074", "10089", "10076", "10062", "10063", "10079", "10088", "10058", "10059", "10060", "10068", "10069", "10075"]);
 
     const [tab, setTab] = useState([]);
 
@@ -219,6 +221,22 @@ export default function CardPokemon(props) {
 
     // console.log("props", props.id);
 
+
+    // const test = JSON.stringify(ls.getItem("PokeId"));
+    // // REMPLACEMENT DES CROCHETS
+    // const test2 = test.replace(/[\[\]]/g, "");
+    // // REMPLACEMENT DES GUILLEMETS
+    // const lspokemon = test2.replace(/["]/g, "").split(",");
+
+
+    // const isLargeNumber = (element) => element === "373";
+
+    // console.log(lspokemon.indexOf(`425`));
+
+    // // console.log(megaPokemons[373]);
+
+    // console.log(lspokemon.findIndex(isLargeNumber));
+    // console.log(megaPokemons[canMegaPokemons.findIndex(isLargeNumber)]);
     
 
     function GetMegaPokemon() {
@@ -232,7 +250,9 @@ export default function CardPokemon(props) {
 
 
 
-        lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+        lspokemon[(lspokemon).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+
+        console.log(lspokemon);
 
         
         // MODIFICATION POKEID POKEMON
@@ -256,7 +276,10 @@ export default function CardPokemon(props) {
         })
         .then(res => {
             console.log(res.data.pokemonid);
+            ls.setItem("PokeId", res.data.pokemonid);
         })
+
+        
 
         
 
