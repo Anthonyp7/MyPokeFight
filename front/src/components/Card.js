@@ -177,7 +177,7 @@ export default function CardPokemon(props) {
     const [isShiny, setIsShiny] = useState(false);
 
     const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260"]);
-    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10037","10037","10038","10034","10034","10034","10034","10034","10034","10034","10046","10034","10034","10034","10034","10050","10034"]);
+    const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10036","10037","10037","10037","10038","10034","10034","10034","10034","10034","10034","10072","10046","10034","10034","10034","10034","10050","10034"]);
 
     const [tab, setTab] = useState([]);
 
@@ -232,31 +232,31 @@ export default function CardPokemon(props) {
 
 
 
-        // lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+        lspokemon[(canMegaPokemons).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
 
         
-        // // MODIFICATION POKEID POKEMON
-        // axios.patch('http://localhost:3080/pokemon',
-        // {
-        //     mode: 'no-cors',
-        //     username: ls.getItem("Username"),
-        //     pokeid: props.id,
-        //     newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
-        // })
-        // .then(res => {
-        //     console.log(res.data.pokemonid);
-        // })
+        // MODIFICATION POKEID POKEMON
+        axios.patch('http://localhost:3080/pokemon',
+        {
+            mode: 'no-cors',
+            username: ls.getItem("Username"),
+            pokeid: props.id,
+            newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
+        })
+        .then(res => {
+            console.log(res.data.pokemonid);
+        })
 
-        // // MODIFICATION ARRAY POKEID USER
-        // axios.patch('http://localhost:3080/userpokemon',
-        // {
-        //     mode: 'no-cors',
-        //     username: ls.getItem("Username"),
-        //     newpokeid: lspokemon
-        // })
-        // .then(res => {
-        //     console.log(res.data.pokemonid);
-        // })
+        // MODIFICATION ARRAY POKEID USER
+        axios.patch('http://localhost:3080/userpokemon',
+        {
+            mode: 'no-cors',
+            username: ls.getItem("Username"),
+            newpokeid: lspokemon
+        })
+        .then(res => {
+            console.log(res.data.pokemonid);
+        })
 
         
 
@@ -365,9 +365,14 @@ export default function CardPokemon(props) {
                                         <>
                                         <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
                                             <Button className='glow-on-hover' variant="primary" onClick={() => {
+                                                
+
                                                 GetMegaPokemon();
                                                 setModalShow(true);
-                                                // window.location.reload()
+                                                setTimeout(()=> {
+                                                    window.location.reload()
+                                                }, 10000);
+
                                                 }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
                                         </OverlayTrigger>
 
