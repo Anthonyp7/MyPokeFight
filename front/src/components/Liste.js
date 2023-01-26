@@ -136,7 +136,7 @@ export default function ListePokemon() {
       <h2 fontFamily="pokemon_classicregular,arial, sans-serif" className="load-h2">Passez la souris sur les Pokemons pour voir les formes shinys</h2>
       <br></br>
 
-      {/* <ResearchBar /> */}
+      <ResearchBar />
 
       {pokemons.map((pokemon, index) => (
 

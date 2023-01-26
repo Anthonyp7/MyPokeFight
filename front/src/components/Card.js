@@ -198,8 +198,9 @@ export default function CardPokemon(props) {
                         </>
                         
                         :
+                        // SI LE POKEMON N'EST PAS LEGENDAIRE
                         <>
-                            <Card {...props} text="white" border="dark" className={props.type}  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
+                            <Card {...props} text={props.text} border="dark" className={props.type}  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} />
 
 

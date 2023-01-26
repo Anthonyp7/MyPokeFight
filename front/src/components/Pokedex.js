@@ -209,6 +209,7 @@ export default function Pokedex() {
                 pokeheight={pokeHeight[index] / 10}
                 pokeweight={pokeWeight[index] / 10}
                 fight={false}
+                text={"white"}
               />
 
               {/* {canMegaPokemons.includes(pokemon) ?

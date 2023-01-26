@@ -56,7 +56,7 @@ export default function Fight(props) {
 
                         // SI + DE 4 POKEMONS SONT CHOISI
                         if (order.length >= 4) {
-                            setShowError2(true);
+                            setShowError(true);
                         }
                         // SI POKEMON DEJA CHOISI
                         else if (order.includes(pokemon)) {
@@ -92,10 +92,10 @@ export default function Fight(props) {
                         <Toast onClose={() => setShowError(false)} show={showError} delay={3000} autohide>
                             <Toast.Header>
                                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                                <strong className="me-auto">Bootstrap</strong>
-                                <small>11 mins ago</small>
+                                <strong className="me-auto">MyPokéFight</strong>
+                                <small>Erreur</small>
                             </Toast.Header>
-                            <Toast.Body>Error</Toast.Body>
+                            <Toast.Body>Vous ne pouvez sélectionner que 4 Pokémons</Toast.Body>
                         </Toast>
 
                         <Toast bg="danger" onClose={() => setShowError2(false)} show={showError2} delay={3000} autohide>
