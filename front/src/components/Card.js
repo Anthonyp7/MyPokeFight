@@ -17,7 +17,7 @@ export default function CardPokemon(props) {
 
     const [legendary, setLengedary] = useState(false);
     const [shiny, setShiny] = useState(Math.floor(Math.random() * 3) + 1);
-    const [isShiny, setIsShiny] = useState(false);
+    const [isShiny, setIsShiny] = useState("");
 
     const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260", "282", 
     "302", "303", "306", "308", "310", "319", "323", "334", "354", "359", "362", "373", "376", "380", "381", "384", "428", "445", "448", "460", "475", "531", "719"]);
@@ -39,7 +39,7 @@ export default function CardPokemon(props) {
         setShiny(data.order);
 
         if (shiny % 10 === 0){
-            setIsShiny(true);
+            setIsShiny("shiny");
             setImg(props.img2);
         }
 
@@ -199,12 +199,12 @@ export default function CardPokemon(props) {
                         
                         :
                         <>
-                            <Card {...props} text="white" border="dark" className={props.type} style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
+                            <Card {...props} text="white" border="dark" className={props.type}  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} />
 
 
                                 <Card.Title>{props.name}</Card.Title>
-                                <Card.Body>
+                                <Card.Body className={isShiny}>
                                     <div>
                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
                                             Poids: {props.pokeweight} kg</p>

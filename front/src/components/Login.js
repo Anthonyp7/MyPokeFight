@@ -235,7 +235,7 @@ export default function Login() {
                             <Toast.Header>
                                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                                 <strong className="me-auto">MyPokéFight</strong>
-                                <small>Erreur</small>
+                                <small>Réussi</small>
                             </Toast.Header>
                             <Toast.Body>Your Account is created !</Toast.Body>
                         </Toast>

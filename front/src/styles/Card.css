@@ -110,3 +110,10 @@
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+
+
+.shiny {
+     background-image: url(https://th.bing.com/th/id/R.6dc89a27b42700654cae60ff1a7073a8?rik=cIdoPZykR7CihQ&pid=ImgRaw&r=0);
+     opacity: 1;
+}
