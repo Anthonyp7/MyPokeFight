@@ -1,161 +1,5 @@
-// import { useState, useEffect } from 'react';
-// import Card from 'react-bootstrap/Card';
-// import ProgressBar from 'react-bootstrap/ProgressBar';
-// // import '../styles/Card.css';
-// import '../styles/PokemonColors.css';
-
-
-// export default function CardPokemon(props) {
-//     const ls = localStorage;
-
-//     const [widths, setWidths] = useState(window.innerWidth);
-
-//     const [legendary, setLengedary] = useState(false);
-//     const [shiny, setShiny] = useState(Math.floor(Math.random() * 3) + 1);
-//     const [isShiny, setIsShiny] = useState([false]);
-
-//     const [tab, setTab] = useState([]);
-
-//     const [img, setImg] = useState(props.img);
-    
-    
-//     fetch(`https://pokeapi.co/api/v2/pokemon-species/${props.id}/`)
-//     .then((result) => result.json())
-//         .then((data) => {
-
-        
-//         setLengedary(data.is_legendary);
-//         setShiny(data.order);
-
-//         for (let i = 0; i > (ls.getItem("PokeId")).length; i += 1){
-//             if (shiny % 10 === 0){
-//                 setTab(isShiny.push(true));
-//                 // setIsShiny(true);
-//                 setImg(props.img2);
-//             }
-    
-//             else{
-//                 setTab(isShiny.push(false));
-//                 setImg(props.img);
-//             }
-    
-//             console.log(isShiny)
-//         }
-
-        
-
-        
-
-//         })
-//         .catch((err) => console.log(err));
-//     //
-
-
-
-//     return (
-//         <>
-            
-//             {props.fight === true ?
-//                 <>
-//                     <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '200px', marginLeft: '150px', marginTop: '80px' }}>
-//                         <Card.Img variant="top" src={img} />
-//                         <Card.Body>
-//                         </Card.Body>
-//                     </Card>
-//                 </>
-
-//                 :
-
-//                 <>
-                    
-//                     {legendary === true ?
-//                         <>
-                        
-                        
-//                             <Card {...props} className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
-//                                 <Card.Img variant="top" src={img} />
-
-
-//                                 <Card.Title>{props.name}</Card.Title>
-//                                 <Card.Body>
-//                                     <div>
-//                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
-//                                             Poids: {props.pokeweight} kg</p>
-//                                     </div>
-//                                     <div className='progress-stats'>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='success' now={props.pokehp} label={`${props.pokehp}`} />
-
-//                                         <br></br>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='danger' now={props.pokeattack} label={`${props.pokeattack}`} />
-//                                         <br></br>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} />
-//                                     </div>
-//                                     <br></br>
-//                                 </Card.Body>
-//                             </Card>
-//                         </>
-                        
-//                         :
-//                         <>
-//                             <Card {...props} text="white" border="dark" className={props.type} style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
-//                                 <Card.Img variant="top" src={img} />
-
-
-//                                 <Card.Title>{props.name}</Card.Title>
-//                                 <Card.Body>
-//                                     <div>
-//                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
-//                                             Poids: {props.pokeweight} kg</p>
-//                                     </div>
-//                                     <div className='progress-stats'>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='success' now={props.pokehp} label={`${props.pokehp}`} />
-
-//                                         <br></br>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='danger' now={props.pokeattack} label={`${props.pokeattack}`} />
-//                                         <br></br>
-
-//                                         <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
-//                                         <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} />
-//                                     </div>
-//                                     <br></br>
-//                                 </Card.Body>
-//                             </Card>
-//                         </>
-//                         }
-                    
-                    
-                            
-//                 </>
-                
-//             }
-//         </>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState} from 'react';
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -168,7 +12,6 @@ import MegaPoke from './MegaPokemon';
 
 export default function CardPokemon(props) {
     const ls = localStorage;
-    const navigate = useNavigate();
 
     const [widths, setWidths] = useState(window.innerWidth);
 
@@ -181,13 +24,11 @@ export default function CardPokemon(props) {
     const [megaPokemons, setMegaPokemons] = useState(["10033","10034","10036","10090","10073","10037","10071","10038","10039","10040","10041","10042","10044","10045","10072","10046","10047","10048","10049","10065","10050","10064", "10051", 
     "10066", "10052", "10053", "10054", "10055", "10070", "10087", "10067", "10056", "10057", "10074", "10089", "10076", "10062", "10063", "10079", "10088", "10058", "10059", "10060", "10068", "10069", "10075"]);
 
-    const [tab, setTab] = useState([]);
-
     const [img, setImg] = useState(props.img);
 
 
-    
     const [modalShow, setModalShow] = React.useState(false);
+
     
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${props.id}/`)
     .then((result) => result.json())
@@ -213,30 +54,6 @@ export default function CardPokemon(props) {
         .catch((err) => console.log(err));
     //
 
-    // console.log(typeof ls.getItem("PokeId"));
-    // // console.log("test", ls.getItem("PokeId")[1]);
-    // console.log("typeof lspokemon",typeof lspokemon);
-    // console.log("test2", lspokemon);
-
-
-    // console.log("props", props.id);
-
-
-    // const test = JSON.stringify(ls.getItem("PokeId"));
-    // // REMPLACEMENT DES CROCHETS
-    // const test2 = test.replace(/[\[\]]/g, "");
-    // // REMPLACEMENT DES GUILLEMETS
-    // const lspokemon = test2.replace(/["]/g, "").split(",");
-
-
-    // const isLargeNumber = (element) => element === "373";
-
-    // console.log(lspokemon.indexOf(`425`));
-
-    // // console.log(megaPokemons[373]);
-
-    // console.log(lspokemon.findIndex(isLargeNumber));
-    // console.log(megaPokemons[canMegaPokemons.findIndex(isLargeNumber)]);
     
 
     function GetMegaPokemon() {
@@ -350,7 +167,32 @@ export default function CardPokemon(props) {
                                         <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
                                         <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} />
                                     </div>
-                                    <br></br><br></br>
+                                    <br></br>
+                                    
+                                    <br></br>{canMegaPokemons.includes(props.id) ?
+                                        <>
+                                        <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
+                                            <Button className='glow-on-hover' variant="primary" onClick={() => {
+                                                
+
+                                                GetMegaPokemon();
+                                                setModalShow(true);
+                                                setTimeout(()=> {
+                                                    window.location.reload()
+                                                }, 10000);
+
+                                                }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
+                                        </OverlayTrigger>
+
+                                        <MegaPoke
+                                        show={modalShow}
+                                        id={props.id}
+                                        onHide={() => setModalShow(false)}
+                                        />
+                                        </>
+                                    :
+                                        null
+                                    }
                                 </Card.Body>
                             </Card>
                         </>

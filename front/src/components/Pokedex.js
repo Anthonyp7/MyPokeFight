@@ -87,7 +87,7 @@ export default function Pokedex() {
   const GetPokemon = async (id) => {
 
 
-    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
       .then((result) => result.json())
       .then((data) => {
 
