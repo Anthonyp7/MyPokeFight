@@ -26,8 +26,6 @@ export default function CardPokemon(props) {
     "10066", "10052", "10053", "10054", "10055", "10070", "10087", "10067", "10056", "10057", "10074", "10089", "10076", "10062", "10063", "10079", "10088", "10058", "10059", "10060", "10068", "10069", "10075"]);
 
     const [img, setImg] = useState(props.img);
-
-
     const [modalShow, setModalShow] = React.useState(false);
 
     
@@ -62,23 +60,40 @@ export default function CardPokemon(props) {
 
 
 
+        if (props.night === true && props.id === "6")
+        {
+            lspokemon[(lspokemon).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
 
-        lspokemon[(lspokemon).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+            // MODIFICATION POKEID POKEMON
+            axios.patch('http://localhost:3080/pokemon',
+            {
+                mode: 'no-cors',
+                username: ls.getItem("Username"),
+                pokeid: props.id,
+                newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
+            })
+            .then(res => {
 
-        console.log(lspokemon);
+            })
+        }
+
+        else{
+            lspokemon[(lspokemon).indexOf(`${props.id}`)] = "10035";
+
+            // MODIFICATION POKEID POKEMON
+            axios.patch('http://localhost:3080/pokemon',
+            {
+                mode: 'no-cors',
+                username: ls.getItem("Username"),
+                pokeid: props.id,
+                newpokeid: "10035"
+            })
+            .then(res => {
+
+            })
+        }
 
         
-        // MODIFICATION POKEID POKEMON
-        axios.patch('http://localhost:3080/pokemon',
-        {
-            mode: 'no-cors',
-            username: ls.getItem("Username"),
-            pokeid: props.id,
-            newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
-        })
-        .then(res => {
-            console.log(res.data.pokemonid);
-        })
 
         // MODIFICATION ARRAY POKEID USER
         axios.patch('http://localhost:3080/userpokemon',
@@ -88,17 +103,8 @@ export default function CardPokemon(props) {
             newpokeid: lspokemon
         })
         .then(res => {
-            console.log(res.data.pokemonid);
             ls.setItem("PokeId", res.data.pokemonid);
         })
-
-        
-
-        
-
-        // navigate(`/mega`);
-        
-
     }
 
     
@@ -109,7 +115,15 @@ export default function CardPokemon(props) {
         <Popover id="popover-basic">
           <Popover.Header as="h3">Méga Evolution</Popover.Header>
           <Popover.Body>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]}.png`} alt=""/>
+            {props.night === true && props.id === "6" ?
+            <>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]}.png`} alt=""/>
+            </>
+            :
+            <>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
+            </>}
+            
           </Popover.Body>
         </Popover>
     );
@@ -118,33 +132,24 @@ export default function CardPokemon(props) {
 
     return (
         <>
-
-            
-        
-            
             {props.fight === true ?
-                <>
                     <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '200px', marginLeft: '150px', marginTop: '80px' }}>
                         <Card.Img variant="top" src={img} />
                         <Card.Body>
                         </Card.Body>
                     </Card>
-                </>
-
                 :
 
                 <>
                     
                     {legendary === true ?
                         <>
-                        
-                        
-                            <Card {...props} text="black" className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
+                            <Card {...props} text="black" className={props.type + "legendary"} border="warning" style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} />
 
 
-                                <Card.Title>{props.name}</Card.Title>
-                                <Card.Body>
+                                <Card.Title className={isShiny}>{props.name}</Card.Title>
+                                <Card.Body className={isShiny}>
                                     <div>
                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
                                             Poids: {props.pokeweight} kg</p>
@@ -165,29 +170,30 @@ export default function CardPokemon(props) {
                                     </div>
                                     <br></br>
                                     
-                                    <br></br>{canMegaPokemons.includes(props.id) ?
+                                    <br></br>
+                                    {canMegaPokemons.includes(props.id) ?
                                         <>
-                                        <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
-                                            <Button className='glow-on-hover' variant="primary" onClick={() => {
-                                                
+                                            <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
+                                                <Button className='glow-on-hover' variant="primary" onClick={() => {
+                                                    
 
-                                                GetMegaPokemon();
-                                                setModalShow(true);
-                                                setTimeout(()=> {
-                                                    window.location.reload()
-                                                }, 10000);
+                                                    GetMegaPokemon();
+                                                    setModalShow(true);
+                                                    setTimeout(()=> {
+                                                        window.location.reload()
+                                                    }, 10000);
 
-                                                }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
-                                        </OverlayTrigger>
+                                                    }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
+                                            </OverlayTrigger>
 
-                                        <MegaPoke
-                                        show={modalShow}
-                                        id={props.id}
-                                        onHide={() => setModalShow(false)}
-                                        />
+                                            <MegaPoke
+                                            show={modalShow}
+                                            id={props.id}
+                                            onHide={() => setModalShow(false)}
+                                            />
                                         </>
-                                    :
-                                        null
+                                        :
+                                            null
                                     }
                                 </Card.Body>
                             </Card>
@@ -195,7 +201,7 @@ export default function CardPokemon(props) {
                         
                         :
                         // SI LE POKEMON N'EST PAS LEGENDAIRE
-                        <>
+                        
                             <Card {...props} text={props.text} border="dark" className={props.type} style={{width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} className={isShiny}/>
 
@@ -242,6 +248,7 @@ export default function CardPokemon(props) {
                                         show={modalShow}
                                         id={props.id}
                                         onHide={() => setModalShow(false)}
+                                        night={props.night}
                                         />
                                         </>
                                     :
@@ -250,13 +257,8 @@ export default function CardPokemon(props) {
                                     <br></br>
                                 </Card.Body>
                             </Card>
-                        </>
                         }
-                    
-                    
-                            
                 </>
-                
             }
         </>
     )

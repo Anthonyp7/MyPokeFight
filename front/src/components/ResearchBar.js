@@ -1,69 +1,10 @@
-import React, { useState } from "react";
-import CardPokemon from "./Card";
+import React, { useState, useEffect } from "react";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import '../styles/Liste.css';
 
 export default function ResearchBar () {
-    // const [searchValue, setSearchValue] = useState();
-    // const [datas, setDatas] = useState([]);
-
-    // const handleSearchChange = event => {
-    //     setSearchValue(event.target.value);
-    //     fetch(`https://pokeapi.co/api/v2/pokemon/${event.target.value}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         setDatas(data)
-            
-    //         // mettre a jour l'etat avec les données récupérées
-    //     })
-    //     .catch(error => console.error(error));
-    // }
-
-    // const handleSearchSubmit = event => {
-    //     event.preventDefault();
-    //     // fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}`)
-    //     // .then(response => response.json())
-    //     // .then(data => {
-    //     //     setDatas(data)
-    //     //     console.log(data)
-            
-    //     //     // mettre a jour l'etat avec les données récupérées
-    //     // })
-    //     // .catch(error => console.error(error));
-    // }
-
-    // return (
-    //     <form onSubmit={handleSearchSubmit}>
-    //         <input type="text" value={searchValue} onChange={handleSearchChange} placeholder="Search for a Pokemon" />
-    //         <button type="submit">Search</button>
-            
-    //         {console.log("datas test2", datas)}
-            
-    //         {datas && <div>{datas.name}
-    //         {console.log(searchValue)}
-    //         {console.log("datas test", datas)}
-
-            
-
-    //         {/* {searchValue === undefined ? null : */}
-    //         <CardPokemon
-    //         img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${datas.id}.png`}
-    //         img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${datas.id}.png`}
-    //         isShiny={0}
-    //         name={datas.name}
-            
-    //         pokeheight={datas.height / 10}
-    //         pokeweight={datas.weight / 10}
-    //         fight={false}
-    //       />
-    //       {/* } */}
-
-            
-    //         </div>}
-    //     </form>
-    // );
-
 
   const [searchTerm, setSearchTerm] = useState('');
   const [pokemon, setPokemon] = useState([]);
@@ -72,6 +13,16 @@ export default function ResearchBar () {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`);
     setPokemon(response.data);
   }
+
+  useEffect(() => {
+    async function fetchData() {
+        if(searchTerm !==''){
+          const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`);
+          setPokemon(response.data);
+        }
+    }
+    fetchData();
+  }, [searchTerm]);
 
   return (
     <div>
@@ -91,23 +42,19 @@ export default function ResearchBar () {
       
       {pokemon.name && (
         <div>
-
-        {/* <CardPokemon
-            img={pokemon.sprites.front_default}
-            img2={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`}
-            isShiny={0}
-            name={pokemon.name}
-            text={"black"}
-            pokeheight={pokemon.height / 10}
-            pokeweight={pokemon.weight / 10}
-            fight={false}
-        /> */}
-
             <br></br>
-
-
+            
             <Card className={pokemon.types[0].type.name} border="dark" text="white" style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: "5%", marginBottom: '40px' }}>
+              {pokemon.sprites.front_default === null ?
+              <>
+                <Card.Img variant="top" src={pokemon.sprites.other["official-artwork"].front_default} /><br></br>
+                </>
+                :
+                <>
                 <Card.Img variant="top" src={pokemon.sprites.front_default} /><br></br>
+                </>
+                
+              }
 
 
                 <Card.Title>{pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}</Card.Title>
@@ -118,17 +65,17 @@ export default function ResearchBar () {
                     </div>
                     <div className='progress-stats'>
 
-                        {/* <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
-                        <ProgressBar animated variant='success' now={props.pokehp} label={`${props.pokehp}`} />
+                        <img src='https://cdn-icons-png.flaticon.com/512/7037/7037210.png' alt='' /><br></br>
+                        <ProgressBar animated variant='success' now={pokemon.stats[0].base_stat} label={`${pokemon.stats[0].base_stat}`} />
 
                         <br></br>
 
                         <img src='https://cdn-icons-png.flaticon.com/512/2746/2746914.png' alt='' /><br></br>
-                        <ProgressBar animated variant='danger' now={props.pokeattack} label={`${props.pokeattack}`} />
+                        <ProgressBar animated variant='danger' now={pokemon.stats[1].base_stat} label={`${pokemon.stats[1].base_stat}`} />
                         <br></br>
 
                         <img src='https://cdn-icons-png.flaticon.com/512/7154/7154506.png' alt='' /><br></br>
-                        <ProgressBar animated variant='info' now={props.pokespeed} label={`${props.pokespeed}`} /> */}
+                        <ProgressBar animated variant='info' now={pokemon.stats[5].base_stat} label={`${pokemon.stats[5].base_stat}`} />
                     </div>
                     
                     

@@ -20,7 +20,7 @@ export default function MegaPoke(props) {
     const isLargeNumber = (element) => element === props.id;
     
     // audio.load();
-    audio.play();
+    // audio.play();
 
     
 
@@ -40,10 +40,18 @@ export default function MegaPoke(props) {
         <div class="orb"></div>
 
 
-
+        
         <img className="pokemon1" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${canMegaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
         <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
         
+        {props.night === true && props.id === "6" ?
+            <>
+                <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
+            </>
+            :
+            <>
+                <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
+            </>}
         
         <audio>
           <source src="../../public//megaEvolution.mp3"></source>

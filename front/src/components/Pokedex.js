@@ -12,6 +12,9 @@ import CardPokemon from './Card';
 export default function Pokedex() {
 
   const ls = localStorage;
+  const date = new Date();
+  const time = date.getHours();
+  
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
 
@@ -23,6 +26,8 @@ export default function Pokedex() {
   const [tab2, setTab2] = useState([]);
 
   const [datas, setDatas] = useState([]);
+
+  const [isNight, setIsNight] = useState(false);
 
 
   const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
@@ -64,6 +69,10 @@ export default function Pokedex() {
         });
 
       })
+
+      if(time > 19 || time < 7){
+        setIsNight(true);
+      }
 
 
 
@@ -158,7 +167,7 @@ export default function Pokedex() {
 
   return (
     <div>
-      <h1 className="load-h1">Mon Pokedex</h1>
+      <h1 className="load-h1">Mon Pokedex {time}</h1>
 
 
 
@@ -210,6 +219,7 @@ export default function Pokedex() {
                 pokeweight={pokeWeight[index] / 10}
                 fight={false}
                 text={"white"}
+                night={isNight}
               />
 
               {/* {canMegaPokemons.includes(pokemon) ?
