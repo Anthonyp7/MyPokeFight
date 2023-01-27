@@ -14,7 +14,7 @@ export default function CanvaProfile(props) {
     <>
       <Offcanvas show={props.show} scroll="true" {...props}>
         <Offcanvas.Header closeButton >
-          <Offcanvas.Title as="h1"><img src={ls.getItem("Poké-Avatar")}/>{ls.getItem("Username")}</Offcanvas.Title>
+          <Offcanvas.Title as="h1"><img src={ls.getItem("Poké-Avatar")} alt=""/>{ls.getItem("Username")}</Offcanvas.Title>
         </Offcanvas.Header>
         <hr></hr>
         <Offcanvas.Body as='h5'>

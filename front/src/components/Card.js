@@ -40,7 +40,7 @@ export default function CardPokemon(props) {
         setShiny(data.order);
 
         if (shiny % 10 === 0){
-            // setIsShiny(props.type + "e");
+            setIsShiny("shiny");
             setImg(props.img2);
         }
 
@@ -197,11 +197,11 @@ export default function CardPokemon(props) {
                         // SI LE POKEMON N'EST PAS LEGENDAIRE
                         <>
                             <Card {...props} text={props.text} border="dark" className={props.type} style={{width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
-                                <Card.Img variant="top" src={img} />
+                                <Card.Img variant="top" src={img} className={isShiny}/>
 
 
-                                <Card.Title>{props.name}</Card.Title>
-                                <Card.Body>
+                                <Card.Title className={isShiny}>{props.name}</Card.Title>
+                                <Card.Body className={isShiny}>
                                     <div>
                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
                                             Poids: {props.pokeweight} kg</p>
