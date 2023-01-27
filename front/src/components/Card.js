@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import '../styles/Card.css';
 import '../styles/PokemonColors.css';
+import '../styles/Shiny.css';
 import MegaPoke from './MegaPokemon';
 
 
@@ -39,14 +40,9 @@ export default function CardPokemon(props) {
         setShiny(data.order);
 
         if (shiny % 10 === 0){
-            setIsShiny("shiny");
+            // setIsShiny(props.type + "e");
             setImg(props.img2);
         }
-
-        // else{
-        //     setIsShiny(false);
-        //     setImg(props.img);
-        // }
 
         
 
@@ -143,7 +139,7 @@ export default function CardPokemon(props) {
                         <>
                         
                         
-                            <Card {...props} className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
+                            <Card {...props} text="black" className={props.type + "legendary"} border="warning"  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} />
 
 
@@ -200,12 +196,12 @@ export default function CardPokemon(props) {
                         :
                         // SI LE POKEMON N'EST PAS LEGENDAIRE
                         <>
-                            <Card {...props} text={props.text} border="dark" className={props.type}  style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
+                            <Card {...props} text={props.text} border="dark" className={props.type} style={{width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
                                 <Card.Img variant="top" src={img} />
 
 
                                 <Card.Title>{props.name}</Card.Title>
-                                <Card.Body className={isShiny}>
+                                <Card.Body>
                                     <div>
                                         <p className="card-text">Taille: {props.pokeheight} m <br></br>
                                             Poids: {props.pokeweight} kg</p>

@@ -259,6 +259,7 @@
 .c-form__toggle::before {
   font-size: 1em;
   content: attr(data-title);
+  padding-right: 152px;
 }
 
 .c-form__input,
