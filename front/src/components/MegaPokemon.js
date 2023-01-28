@@ -37,20 +37,21 @@ export default function MegaPoke(props) {
       
       <Modal.Body style={{backgroundImage: "url(https://cdn.wallpapersafari.com/95/72/eKFOgU.jpg)", backgroundSize: "cover"}}>
         <h1>Mega Evolution</h1>
-        <div class="orb"></div>
+        <div className="orb"></div>
 
 
         
         <img className="pokemon1" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${canMegaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
-        <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
+        {/* <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/> */}
         
+        {/* SI IL FAIT NUIT ET QUE LE POKEMON EST UN DRCAUFEU */}
         {props.night === true && props.id === "6" ?
             <>
-                <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
+              <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
             </>
             :
             <>
-                <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
+              <img className="pokemon2" style={{width:"15%", marginLeft:"42%", position:"absolute", top:"35%"}} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[canMegaPokemons.findIndex(isLargeNumber) ]}.png`} alt=""/>
             </>}
         
         <audio>

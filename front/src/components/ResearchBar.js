@@ -27,14 +27,14 @@ export default function ResearchBar () {
   return (
     <div>
 
-      <input class="c-checkbox" type="checkbox" id="checkbox"/>
-      <div class="c-formContainer">
-          <form class="c-form" action="">
-              <input class="c-form__input" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required type="text" placeholder="Entrer le nom ou l'id d'un Pokemon" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
-              <label class="c-form__buttonLabel" for="checkbox">
-                <button class="c-form__button" type="button" onClick={handleSearch}>Rechercher</button>
+      <input className="c-checkbox" type="checkbox" id="checkbox"/>
+      <div className="c-formContainer">
+          <form className="c-form" action="">
+              <input className="c-form__input" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required type="text" placeholder="Entrer le nom ou l'id d'un Pokemon" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+              <label className="c-form__buttonLabel" for="checkbox">
+                <button className="c-form__button" type="button" onClick={handleSearch}>Rechercher</button>
               </label>
-              <label class="c-form__toggle" for="checkbox" data-title="Rechercher"></label>
+              <label className="c-form__toggle" for="checkbox" data-title="Rechercher"></label>
           </form>
     </div>
 

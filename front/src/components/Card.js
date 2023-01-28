@@ -13,11 +13,13 @@ import MegaPoke from './MegaPokemon';
 
 export default function CardPokemon(props) {
     const ls = localStorage;
+    const date = new Date();
+    const minute = date.getMinutes();
+
 
     const [widths, setWidths] = useState(window.innerWidth);
 
     const [legendary, setLengedary] = useState(false);
-    const [shiny, setShiny] = useState(Math.floor(Math.random() * 3) + 1);
     const [isShiny, setIsShiny] = useState("");
 
     const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6","9","15","18","65","80","94","115","127","130","142","150","181","208","212","214","229","248","254","257","260", "282", 
@@ -35,9 +37,8 @@ export default function CardPokemon(props) {
 
         
         setLengedary(data.is_legendary);
-        setShiny(data.order);
 
-        if (shiny % 10 === 0){
+        if ((data.order + (ls.getItem("Username").length)) % 10 === 0){//
             setIsShiny("shiny");
             setImg(props.img2);
         }
@@ -62,22 +63,6 @@ export default function CardPokemon(props) {
 
         if (props.night === true && props.id === "6")
         {
-            lspokemon[(lspokemon).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
-
-            // MODIFICATION POKEID POKEMON
-            axios.patch('http://localhost:3080/pokemon',
-            {
-                mode: 'no-cors',
-                username: ls.getItem("Username"),
-                pokeid: props.id,
-                newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
-            })
-            .then(res => {
-
-            })
-        }
-
-        else{
             lspokemon[(lspokemon).indexOf(`${props.id}`)] = "10035";
 
             // MODIFICATION POKEID POKEMON
@@ -87,6 +72,22 @@ export default function CardPokemon(props) {
                 username: ls.getItem("Username"),
                 pokeid: props.id,
                 newpokeid: "10035"
+            })
+            .then(res => {
+
+            })
+        }
+
+        else{
+            lspokemon[(lspokemon).indexOf(`${props.id}`)] = megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)];
+
+            // MODIFICATION POKEID POKEMON
+            axios.patch('http://localhost:3080/pokemon',
+            {
+                mode: 'no-cors',
+                username: ls.getItem("Username"),
+                pokeid: props.id,
+                newpokeid: megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]
             })
             .then(res => {
 
@@ -115,13 +116,15 @@ export default function CardPokemon(props) {
         <Popover id="popover-basic">
           <Popover.Header as="h3">Méga Evolution</Popover.Header>
           <Popover.Body>
+            {/* SI IL FAIT NUIT ET QUE LE POKEMON EST UN DRCAUFEU */}
             {props.night === true && props.id === "6" ?
             <>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]}.png`} alt=""/>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
+                
             </>
             :
             <>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10035.png`} alt=""/>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${props.id}`)]}.png`} alt=""/>
             </>}
             
           </Popover.Body>
@@ -133,7 +136,8 @@ export default function CardPokemon(props) {
     return (
         <>
             {props.fight === true ?
-                    <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '200px', marginLeft: '150px', marginTop: '80px' }}>
+                    <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/8, marginTop: '80px' }}>
+                        {/*  */}
                         <Card.Img variant="top" src={img} />
                         <Card.Body>
                         </Card.Body>
@@ -145,7 +149,7 @@ export default function CardPokemon(props) {
                     {legendary === true ?
                         <>
                             <Card {...props} text="black" className={props.type + "legendary"} border="warning" style={{ width: '17rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/12, marginBottom: '40px' }}>
-                                <Card.Img variant="top" src={img} />
+                                <Card.Img variant="top" src={img} className={isShiny}/>
 
 
                                 <Card.Title className={isShiny}>{props.name}</Card.Title>
@@ -170,9 +174,10 @@ export default function CardPokemon(props) {
                                     </div>
                                     <br></br>
                                     
-                                    <br></br>
+                                    
                                     {canMegaPokemons.includes(props.id) ?
                                         <>
+                                        <br></br>
                                             <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
                                                 <Button className='glow-on-hover' variant="primary" onClick={() => {
                                                     
@@ -228,9 +233,10 @@ export default function CardPokemon(props) {
                                     </div>
                                     
                                     
-                                    <br></br>
+                                    
                                     {canMegaPokemons.includes(props.id) ?
                                         <>
+                                        <br></br>
                                         <OverlayTrigger trigger={['hover', 'focus']} placement="top" overlay={popover}>
                                             <Button className='glow-on-hover' variant="primary" onClick={() => {
                                                 

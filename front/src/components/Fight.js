@@ -89,7 +89,7 @@ export default function Fight(props) {
             <Row>
                 <Col xs={6}>
                     <ToastContainer position="bottom-end">
-                        <Toast onClose={() => setShowError(false)} show={showError} delay={3000} autohide>
+                        <Toast bg="danger" onClose={() => setShowError(false)} show={showError} delay={3000} autohide>
                             <Toast.Header>
                                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
                                 <strong className="me-auto">MyPokéFight</strong>
