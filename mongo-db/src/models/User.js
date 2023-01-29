@@ -6,6 +6,7 @@ const User = new Schema({
     pokeavatar:String,
     pokecoin:String,
     pokeid:[String],
+    ready:Boolean,
     createdAt: {
         type: Date,
         default: Date.now,

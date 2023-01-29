@@ -9,6 +9,7 @@ const CreateUser = async (req,res) =>{
         const pokeavatar = req.body.pokeavatar;
         const password = req.body.password;
         const pokeid = req.body.pokeid;
+        const ready = false;
         const pokecoin = 4;
 
         const saltRounds = 3;
@@ -21,6 +22,7 @@ const CreateUser = async (req,res) =>{
         newUser.password = hashpassword; 
         newUser.pokecoin = pokecoin;
         newUser.pokeid = pokeid;
+        newUser.ready = ready
 
         await newUser.save();
         
@@ -34,6 +36,7 @@ const CreateUser = async (req,res) =>{
         req.password = password;
         req.pokecoin = pokecoin;
         req.pokeid = pokeid;
+        req.ready = ready;
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
@@ -107,6 +110,50 @@ const PatchUserPokemon = (req, res) => {
                 pokemonid: newPokeid
             })
         })
+
+    } 
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
+
+
+/////////////////////////////////////////////
+
+
+
+
+const PatchUserReady = (req, res) => {
+    try {
+        const username = req.body.username;
+
+        User.updateOne({username: username}, {
+            ready: true
+        })
+        .then(result => {
+            res.send({
+                code: 201,
+                ready: ready
+            })
+        })
+
+    } 
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
+
+const CreateFight = (req, res) => {
+    try {
+        const username = req.body.username;
+
+        const user1 = User.findOne({username: username})
+        const user2 = User.findOne({ready: true, username: {$ne : username}})
+
 
     } 
     catch (error) {
