@@ -21,7 +21,7 @@ export default function Fight(props) {
     const [heights, setHeights] = useState(window.innerHeight - 116 + "px");
     const [widths, setWidths] = useState(window.innerWidth + "px");
 
-
+    //############### AFFICHAGE LISTE POKEMON #################
     const test = JSON.stringify(ls.getItem("PokeId"));
     // REMPLACEMENT DES CROCHETS
     const test2 = test.replace(/[\[\]]/g, "");
@@ -29,7 +29,7 @@ export default function Fight(props) {
     const lspokemon = test2.replace(/["]/g, "").split(",");
 
 
-
+    //############### AFFICHAGE LISTE POKEMON FIGHT #################
     const test3 = JSON.stringify(ls.getItem("Order"));
     // REMPLACEMENT DES CROCHETS
     const test4 = test3.replace(/[\[\]]/g, "");
@@ -38,6 +38,7 @@ export default function Fight(props) {
     // REMPLACEMENT DES BACK-SLASH
     const lsorder = retest.replace(/\\/g, "").split(",");
 
+    
 
     // SI LE JOUEUR EST PRET
     const GetReady = () => {
@@ -51,12 +52,13 @@ export default function Fight(props) {
         .catch(err => {
             console.log(err)
         })
-
+        
         axios.post('http://localhost:3080/fight',
-            {
-                username: ls.getItem("Username")
-            })
+        {
+            username: ls.getItem("Username")
+        })
         .then(res => {
+            console.log("Player1", res.data.pokeplayer1, "Player2", res.data.pokeplayer2);
         })
         .catch(err => {
             console.log(err)

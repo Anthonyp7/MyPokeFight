@@ -5,9 +5,6 @@ const { FifoMatchmaker } = require('matchmaking');
 
 
 
-// let mm = new FifoMatchmaker(runGame, { checkInterval: 2000 });
-
-
 const CreateUser = async (req,res) =>{
     try {
         const username = req.body.username;
@@ -173,11 +170,11 @@ const CreateFight = async (req, res) => {
 
 
         let mm = new FifoMatchmaker(runGame, getPlayerKey, { checkInterval: 2000 });
-        let player1 = user1;
-        let player2 = user2;
+        // let player1 = user1;
+        // let player2 = user2;
 
-        mm.push(player1);
-        mm.push(player2);
+        mm.push(user1);// PLAYER1
+        mm.push(user2);// PLAYER2
         console.log(mm);
         
 
@@ -187,15 +184,22 @@ const CreateFight = async (req, res) => {
         // LANCEMENT FIGHT
         function runGame(players) {
             console.log("Game started with:");
-            console.log(players[0].username, players[1].username);
+            const player1 = players[1];
+            const player2 = players[0];
+            console.log(player1.username, player2.username);
 
 
-            let pokePlayer1 = players[1].order;
-            let pokePlayer2 = players[0].order;
+            // LISTE POKEMON CHOISI PAR PLAYERS
+            let pokePlayer1 = player1.order;
+            let pokePlayer2 = player2.order;
 
             console.log(pokePlayer1, pokePlayer2)
 
-
+            res.send({
+                code: 200,
+                pokeplayer1: pokePlayer1,
+                pokeplayer2: pokePlayer2
+            })
         }
 
     } 
