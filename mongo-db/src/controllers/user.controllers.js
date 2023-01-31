@@ -4,6 +4,10 @@ const jwt = require("jsonwebtoken");
 const { FifoMatchmaker } = require('matchmaking');
 
 
+
+// let mm = new FifoMatchmaker(runGame, { checkInterval: 2000 });
+
+
 const CreateUser = async (req,res) =>{
     try {
         const username = req.body.username;
@@ -148,32 +152,44 @@ const PatchUserReady = (req, res) => {
 }
 
 
-const CreateFight = (req, res) => {
+const CreateFight = async (req, res) => {
     try {
         const username = req.body.username;
-        // const username2 = "";
 
-        const user1 = User.findOne({username: username})
+        // USER 1 ET USER2
+        const user1 = await User.findOne({username: username})
+        const user2 = await User.findOne({ready: true, username: {$ne : username}})
+
+
+        function getPlayerKey(player) {
+            // return player.username;
+            return player;
+        }
+
+
+        let mm = new FifoMatchmaker(runGame, getPlayerKey, { checkInterval: 2000 });
+        let player1 = user1;
+        let player2 = user2;
+
+        mm.push(player1);
+        mm.push(player2);
+        console.log(mm);
         
-        const user2 = User.findOne({ready: true, username: {$ne : username}})
-        .then(result => {
-            const username2 = result.username;
-            console.log("username2", username2);
-        })
-
-        console.log(username);
-
-        // function runGame(players) {
-        //     console.log("Game started with:");
-        //     console.log(players);
-        // }
 
 
-        // let mm = new FifoMatchmaker(runGame, { checkInterval: 2000 });
 
-        // let player1 = { id:1 }
-        // let player2 = { id:2 }
+        
+        // LANCEMENT FIGHT
+        function runGame(players) {
+            console.log("Game started with:");
+            console.log(players[0].username, players[1].username);
 
+
+            let pokePlayer1 = [];
+            let pokePlayer2 = [];
+
+
+        }
 
     } 
     catch (error) {
