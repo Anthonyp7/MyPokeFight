@@ -65,6 +65,7 @@ app.post(
 
 app.post(
     '/fight',
+    dto.dtoCreateFight,
     controllers.CreateFight
 )
 

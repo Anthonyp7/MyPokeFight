@@ -7,6 +7,7 @@ const User = new Schema({
     pokecoin:String,
     pokeid:[String],
     ready:Boolean,
+    order:[String],
     createdAt: {
         type: Date,
         default: Date.now,

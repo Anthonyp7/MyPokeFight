@@ -73,7 +73,32 @@ const dtoGetUser = async (req, res, next) => {
     }
 }
 
+
+const dtoCreateFight = async (req, res, next) => {
+    try {
+        const username = req.body.username;
+
+        // USER 1 ET USER2
+        const user2 = await User.findOne({ready: true, username: {$ne : username}})
+
+        if (!user2){
+            res.send({
+                code: 402, 
+                message: " Aucun autre joueurs n'est prêt pour le combat!"
+            })
+            return;
+        }
+
+        next();
+
+    } 
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log("error", error);
+    }
+}
 module.exports= {
     dtoCreateUser,
-    dtoGetUser
+    dtoGetUser,
+    dtoCreateFight
 }

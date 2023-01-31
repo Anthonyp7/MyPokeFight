@@ -16,6 +16,7 @@ const CreateUser = async (req,res) =>{
         const pokeid = req.body.pokeid;
         const ready = false;
         const pokecoin = 4;
+        const order = [];
 
         const saltRounds = 3;
         const hashpassword = bcrypt.hashSync(password, saltRounds);
@@ -27,7 +28,8 @@ const CreateUser = async (req,res) =>{
         newUser.password = hashpassword; 
         newUser.pokecoin = pokecoin;
         newUser.pokeid = pokeid;
-        newUser.ready = ready
+        newUser.ready = ready;
+        newUser.order = order;
 
         await newUser.save();
         
@@ -42,6 +44,7 @@ const CreateUser = async (req,res) =>{
         req.pokecoin = pokecoin;
         req.pokeid = pokeid;
         req.ready = ready;
+        req.order = order;
     }
     catch (error) {
         res.status(500).send("Une erreur est survenue");
@@ -133,9 +136,11 @@ const PatchUserPokemon = (req, res) => {
 const PatchUserReady = (req, res) => {
     try {
         const username = req.body.username;
+        order = req.body.pokemonfight;
 
-        User.updateOne({username: username}, {
-            ready: true
+        User.updateMany({username: username}, {
+            ready: true,
+            order: order
         })
         .then(result => {
             res.send({
@@ -185,8 +190,10 @@ const CreateFight = async (req, res) => {
             console.log(players[0].username, players[1].username);
 
 
-            let pokePlayer1 = [];
-            let pokePlayer2 = [];
+            let pokePlayer1 = players[1].order;
+            let pokePlayer2 = players[0].order;
+
+            console.log(pokePlayer1, pokePlayer2)
 
 
         }

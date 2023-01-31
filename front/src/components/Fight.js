@@ -29,10 +29,22 @@ export default function Fight(props) {
     const lspokemon = test2.replace(/["]/g, "").split(",");
 
 
+
+    const test3 = JSON.stringify(ls.getItem("Order"));
+    // REMPLACEMENT DES CROCHETS
+    const test4 = test3.replace(/[\[\]]/g, "");
+    // REMPLACEMENT DES GUILLEMETS
+    const retest = test4.replace(/["]/g, "");
+    // REMPLACEMENT DES BACK-SLASH
+    const lsorder = retest.replace(/\\/g, "").split(",");
+
+
+    // SI LE JOUEUR EST PRET
     const GetReady = () => {
         axios.patch('http://localhost:3080/ready',
             {
-                username: ls.getItem("Username")
+                username: ls.getItem("Username"),
+                pokemonfight: lsorder
             })
         .then(res => {
         })
