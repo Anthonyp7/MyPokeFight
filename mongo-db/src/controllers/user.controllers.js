@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+const { FifoMatchmaker } = require('matchmaking');
 
 
 const CreateUser = async (req,res) =>{
@@ -124,7 +125,7 @@ const PatchUserPokemon = (req, res) => {
 
 
 
-
+// SI LE USER EST PRET POUR LE COMBAT   
 const PatchUserReady = (req, res) => {
     try {
         const username = req.body.username;
@@ -135,7 +136,7 @@ const PatchUserReady = (req, res) => {
         .then(result => {
             res.send({
                 code: 201,
-                ready: ready
+                // ready: ready
             })
         })
 
@@ -150,9 +151,28 @@ const PatchUserReady = (req, res) => {
 const CreateFight = (req, res) => {
     try {
         const username = req.body.username;
+        // const username2 = "";
 
         const user1 = User.findOne({username: username})
+        
         const user2 = User.findOne({ready: true, username: {$ne : username}})
+        .then(result => {
+            const username2 = result.username;
+            console.log("username2", username2);
+        })
+
+        console.log(username);
+
+        // function runGame(players) {
+        //     console.log("Game started with:");
+        //     console.log(players);
+        // }
+
+
+        // let mm = new FifoMatchmaker(runGame, { checkInterval: 2000 });
+
+        // let player1 = { id:1 }
+        // let player2 = { id:2 }
 
 
     } 
@@ -166,5 +186,7 @@ module.exports= {
     CreateUser,
     GetUser,
     PatchUser,
-    PatchUserPokemon
+    PatchUserPokemon,
+    PatchUserReady,
+    CreateFight
 }

@@ -34,6 +34,11 @@ app.patch(
     controllers.PatchUserPokemon
 );
 
+app.patch(
+    '/ready',
+    controllers.PatchUserReady
+);
+
 
 // POKEMON
 app.post(
@@ -58,10 +63,10 @@ app.post(
 );
 
 
-// app.post(
-//     './fight',
-//     controllers
-// )
+app.post(
+    '/fight',
+    controllers.CreateFight
+)
 
 
 

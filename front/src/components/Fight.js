@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import CardPokemon from "./Card";
@@ -28,10 +29,35 @@ export default function Fight(props) {
     const lspokemon = test2.replace(/["]/g, "").split(",");
 
 
+    const GetReady = () => {
+        axios.patch('http://localhost:3080/ready',
+            {
+                username: ls.getItem("Username")
+            })
+        .then(res => {
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+        axios.post('http://localhost:3080/fight',
+            {
+                username: ls.getItem("Username")
+            })
+        .then(res => {
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+
     return (
         <div style={{ backgroundImage: "url(https://wallpapercave.com/wp/wp11053803.jpg)", height:`${heights}`, width:`${widths}`, backgroundSize:"cover" }}>
             <h1 className="load-h1">Fight</h1>
             <br></br>
+
+            {/* AFFICHAGE DES POKEMONS CHOISIS */}
             {order.map((pokemon, index) => (
 
                 <div style={{ marginLeft: "", display: "inline-block", backgroundColor: "#00000070", border: "1px solid black " }}>
@@ -41,7 +67,7 @@ export default function Fight(props) {
             ))}
             <br></br>
 
-
+            {/* AFFICHAGE DE TOUS LES POKEMONS */}
             {lspokemon.reverse().map((pokemon, index) => (
                 <>
                     <CardPokemon
@@ -76,7 +102,7 @@ export default function Fight(props) {
 
             {/* SI 4 POKEMONS SONT SELECTIONNES */}
             {order.length === 4 ?
-                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg">Fight</Button>
+                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" onClick={GetReady}>Fight</Button>
                 :
                 <>
                     <Button style={{ marginLeft: "48%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
