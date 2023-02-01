@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function WaitingScreen(props) {
 
-  const [screen, setScreen] = useState(["https://win.gg/wp-content/uploads/2021/10/Pokemon-Unite.jpg", "https://objectifsmartphone.fr/wp-content/uploads/2021/07/pokemon-unite-lucario-and-team.jpg", "https://images2.alphacoders.com/116/1160159.png", ""]);
+  // const [screen, setScreen] = useState(["https://win.gg/wp-content/uploads/2021/10/Pokemon-Unite.jpg", "https://objectifsmartphone.fr/wp-content/uploads/2021/07/pokemon-unite-lucario-and-team.jpg", "https://images2.alphacoders.com/116/1160159.png", "https://wallpapercave.com/wp/wp10659112.jpg"]);
   
 
   return (
@@ -16,12 +16,13 @@ export default function WaitingScreen(props) {
         centered
       >
 
+
       
 
       
       <Modal.Body className="screen" style={{backgroundImage:"url(https://images2.alphacoders.com/116/1160159.png)", backgroundSize: "cover"}}>
 
-        
+      <h1 className='load-h1'>MyPokéFight</h1>
       </Modal.Body>
 
       
