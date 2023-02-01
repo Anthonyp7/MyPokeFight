@@ -188,7 +188,7 @@ export default function CardPokemon(props) {
                                                         window.location.reload()
                                                     }, 10000);
 
-                                                    }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}}/></Button>
+                                                    }} style={{width: "30%"}}><img src='https://www.pokebip.com/pages/general/images/mega-evolution.png' style={{width: "70%"}} alt=""/></Button>
                                             </OverlayTrigger>
 
                                             <MegaPoke

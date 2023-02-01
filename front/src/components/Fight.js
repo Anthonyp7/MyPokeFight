@@ -1,17 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState} from 'react';
+
+
 import Button from 'react-bootstrap/Button';
 import CardPokemon from "./Card";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
 import { ToastContainer } from "react-bootstrap";
+import WaitingScreen from "./WaitingScreen";
 
 
 
 export default function Fight(props) {
 
     const ls = localStorage;
+    const navigate = useNavigate();
     const [order, setOrder] = useState([]);
     const [tab, setTab] = useState([]);
 
@@ -20,6 +25,8 @@ export default function Fight(props) {
 
     const [heights, setHeights] = useState(window.innerHeight - 116 + "px");
     const [widths, setWidths] = useState(window.innerWidth + "px");
+
+    const [modalShow, setModalShow] = React.useState(false);
 
     //############### AFFICHAGE LISTE POKEMON #################
     const test = JSON.stringify(ls.getItem("PokeId"));
@@ -59,10 +66,21 @@ export default function Fight(props) {
         })
         .then(res => {
             console.log("Player1", res.data.pokeplayer1, "Player2", res.data.pokeplayer2);
+            ls.setItem("Pokeuser1", res.data.pokeplayer1);
+            ls.setItem("Pokeuser2", res.data.pokeplayer2);
         })
         .catch(err => {
             console.log(err)
         })
+
+
+        setTimeout(()=> {
+            navigate('/match');
+        }, 6000);
+
+        
+
+        
     }
 
 
@@ -116,12 +134,27 @@ export default function Fight(props) {
 
             {/* SI 4 POKEMONS SONT SELECTIONNES */}
             {order.length === 4 ?
-                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" onClick={GetReady}>Fight</Button>
+            <>
+                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" onClick={() => {
+                    GetReady();
+                    setModalShow(true);
+                    }}>Fight
+                </Button>
+
+                
+            </>
                 :
                 <>
                     <Button style={{ marginLeft: "48%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
                 </>
             }
+
+
+
+                <WaitingScreen
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
 
 
 
