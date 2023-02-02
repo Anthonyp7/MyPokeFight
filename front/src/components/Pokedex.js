@@ -117,6 +117,12 @@ export default function Pokedex() {
 
         setTab2(ids.unshift(data.id));
 
+        console.log("pokeSpeed5", pokeSpeed[0]);
+        console.log("pokeSpeed6", pokeSpeed[i]);
+        console.log("pokeSpeed7", pokeSpeed[1]);
+        console.log("pokeSpeed8", pokeSpeed);
+        console.log("pokeid2", ids);
+
       })
       .catch((err) => console.log(err));
 
