@@ -133,7 +133,7 @@ const PatchUserPokemon = (req, res) => {
 const PatchUserReady = (req, res) => {
     try {
         const username = req.body.username;
-        order = req.body.pokemonfight;
+        const order = req.body.pokemonfight;
 
         User.updateMany({username: username}, {
             ready: true,
@@ -200,6 +200,9 @@ const CreateFight = async (req, res) => {
                 pokeplayer1: pokePlayer1,
                 pokeplayer2: pokePlayer2
             })
+
+
+            
         }
 
     } 

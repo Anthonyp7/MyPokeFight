@@ -24,6 +24,7 @@ export default function Pokedex() {
 
   const [ids, setIds] = useState([]);
   const [tab2, setTab2] = useState([]);
+  const [i, setI] = useState(0);
 
   const [datas, setDatas] = useState([]);
 
@@ -125,6 +126,12 @@ export default function Pokedex() {
 
   const TestPoke = () => {
 
+    console.log("pokeSpeed", pokeSpeed[0]);
+    console.log("pokeSpeed2", pokeSpeed[i]);
+    console.log("pokeSpeed3", pokeSpeed[1]);
+    console.log("pokeSpeed4", pokeSpeed);
+    console.log("pokeid", ids);
+
     // CREATION POKEMON UTILISATEUR
     axios.post('http://localhost:3080/pokemon',
       {
@@ -132,6 +139,10 @@ export default function Pokedex() {
         username: username,
         pokeid: ids[0]
       })
+    
+      
+
+      setI(i+1);
 
 
     ls.setItem("Poké-Coin", pokecoin - 1);

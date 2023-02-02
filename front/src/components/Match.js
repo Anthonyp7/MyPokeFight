@@ -24,14 +24,14 @@ export default function Match() {
             {lspokemon.map((pokemon, index) => (
                 <div style={{ margin: "20px", display: "inline-block"}}>
                     {/* <p>{pokemon}</p> */}
-                    <img style={{ width: "120%" }}  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon}.png`} alt="" />
+                    <img style={{ width: "120%" }} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon}.png`} alt="" />
                 </div>
             ))}
 
             {lspokemon2.map((pokemon, index) => (
                 <div style={{ margin: "20px", display: "inline-block"}}>
                     {/* <p>{pokemon}</p> */}
-                    <img style={{ width: "120%" }}  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`} alt="" />
+                    <img style={{ width: "120%" }} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`} alt="" />
 
                 </div>
             ))}
