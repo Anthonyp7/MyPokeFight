@@ -18,7 +18,7 @@ export default function Pokedex() {
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
 
-
+  const [test, setTest] = useState();
 
   const [pokemons, setPokemons] = useState([]);
 
@@ -26,25 +26,17 @@ export default function Pokedex() {
   const [tab2, setTab2] = useState([]);
   const [i, setI] = useState(0);
 
-  const [datas, setDatas] = useState([]);
-
   const [isNight, setIsNight] = useState(false);
-
-
-  const [canMegaPokemons, setCanMegaPokemons] = useState(["3","6",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
-  const [megaPokemons, setMegaPokemons] = useState(["10033","10034",9,15,18,65,80,94,115,127,130,142,150,181,208,212,214,229,248,254,257,260]);
-
-
   const [showError, setShowError] = useState(false);
 
-  // INFO POKEMON Card
+  // INFO POKEMON CARD
   const [pokeName, setPokeName] = useState("");
   const [pokeHeight, setPokeHeight] = useState("");
   const [pokeWeight, setPokeWeight] = useState("");
   const [type, setType] = useState([]);
 
 
-  // INFO STATS POKEMON Card
+  // INFO STATS POKEMON CARD
   const [pokeHp, setPokeHp] = useState("");
   const [pokeAttack, setPokeAttack] = useState("");
   const [pokeSpeed, setPokeSpeed] = useState("");
@@ -71,9 +63,28 @@ export default function Pokedex() {
 
       })
 
-      if(time > 19 || time < 7){
-        setIsNight(true);
-      }
+    if(time > 19 || time < 7){
+      setIsNight(true);
+    }
+
+
+
+    // console.log(pokecoin);
+
+    // if (pokecoin === "0"){
+
+    //   setTest(true);
+    //   if(test === true){
+    //     setTest(false);
+    //     console.log(test);
+    //     window.location.reload();
+    //     console.log("reload");
+    //   }
+
+      
+    //   console.log("test2", test);
+    //   setTest(true);
+    // }
 
 
 
@@ -89,7 +100,17 @@ export default function Pokedex() {
         
 
     }
+    // else if (pokecoin === "1"){
+    //   const rand = (Math.floor(Math.random() * 905) + 1);
+    //   GetPokemon(rand)
+    //     .then(() => TestPoke())
+
+    //   setTimeout(()=> {
+    //     window.location.reload()
+    //   }, 1000);
+    // }
     else {
+      
       setShowError(true);
     }
   }
@@ -100,8 +121,6 @@ export default function Pokedex() {
     await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
       .then((result) => result.json())
       .then((data) => {
-
-        setDatas(data);
 
 
         // SET INFO
@@ -117,13 +136,18 @@ export default function Pokedex() {
 
         setTab2(ids.unshift(data.id));
 
-        console.log("pokeSpeed5", pokeSpeed[0]);
-        console.log("pokeSpeed6", pokeSpeed[i]);
-        console.log("pokeSpeed7", pokeSpeed[1]);
-        console.log("pokeSpeed8", pokeSpeed);
-        console.log("pokeid2", ids);
 
-      })
+        // MODIFICATION STATS POKEMONS POUR LE FIGHT
+        axios.patch('http://localhost:3080/pokestats',
+          {
+            username: username,
+            pokeid: data.id,
+            pokehp: data.stats[0].base_stat,
+            pokeattack: data.stats[1].base_stat,
+            pokespeed: data.stats[5].base_stat
+          })
+
+        })
       .catch((err) => console.log(err));
 
   }
@@ -132,18 +156,12 @@ export default function Pokedex() {
 
   const TestPoke = () => {
 
-    console.log("pokeSpeed", pokeSpeed[0]);
-    console.log("pokeSpeed2", pokeSpeed[i]);
-    console.log("pokeSpeed3", pokeSpeed[1]);
-    console.log("pokeSpeed4", pokeSpeed);
-    console.log("pokeid", ids);
-
     // CREATION POKEMON UTILISATEUR
     axios.post('http://localhost:3080/pokemon',
       {
         mode: 'no-cors',
         username: username,
-        pokeid: ids[0]
+        pokeid: ids[0],
       })
     
       
@@ -238,16 +256,6 @@ export default function Pokedex() {
                 text={"white"}
                 night={isNight}
               />
-
-              {/* {canMegaPokemons.includes(pokemon) ?
-              <>
-                <Button style={{ }} variant="primary"> Méga Evolution</Button>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaPokemons[(canMegaPokemons).indexOf(`${pokemon}`)]}.png`} alt=""/>
-                
-              </>
-              :
-              null
-              } */}
 
             </>
             

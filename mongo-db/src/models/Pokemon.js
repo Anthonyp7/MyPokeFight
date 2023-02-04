@@ -4,6 +4,9 @@ const Pokemon = new Schema({
     username:String,
     name:String,
     pokeid: String,
+    pokehp: String,
+    pokeattack: String,
+    pokespeed: String,
     getAt: {
         type: Date,
         default: Date.now,

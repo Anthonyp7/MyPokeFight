@@ -38,7 +38,7 @@ export default function CardPokemon(props) {
         
         setLengedary(data.is_legendary);
 
-        if ((data.order + (ls.getItem("Username").length)) % 10 === 0){//
+        if ((data.order + (ls.getItem("Username").length)) % 10 === 0){
             setIsShiny("shiny");
             setImg(props.img2);
         }

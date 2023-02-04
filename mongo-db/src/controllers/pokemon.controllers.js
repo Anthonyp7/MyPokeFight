@@ -6,10 +6,16 @@ const CreatePokemon = async (req, res) => {
     try {
         const username = req.body.username;
         const pokeid = req.body.pokeid;
+        const pokehp = "";
+        const pokeattack = "";
+        const pokespeed = "";
 
         const newPokemon = new Pokemon();
         newPokemon.username = username;
         newPokemon.pokeid = pokeid;
+        newPokemon.pokehp = pokehp;
+        newPokemon.pokeattack = pokeattack;
+        newPokemon.pokespeed = pokespeed;
 
         await newPokemon.save();
 
@@ -62,7 +68,7 @@ const GetPokemon = async (req, res) => {
     }
 }
 
-const PatchPokemon = (req, res, next) => {
+const PatchPokemon = (req, res) => {
     try {
         const newPokeid = req.body.newpokeid;
         Pokemon.updateOne({username: req.body.username, pokeid: req.body.pokeid}, {
@@ -84,10 +90,46 @@ const PatchPokemon = (req, res, next) => {
     }
 }
 
+
+const PatchPokeStats = async (req, res) => {
+    try {
+        const pokeid = req.body.pokeid;
+        const username = req.body.username;
+        const pokehp = req.body.pokehp;
+        const pokeattack = req.body.pokeattack;
+        const pokespeed = req.body.pokespeed;
+
+        console.log("pokeid", pokeid);
+
+        console.log("pokehp", pokehp);
+        
+        await Pokemon.updateOne({username: username, pokeid: pokeid}, {
+            pokehp: pokehp,
+            pokeattack: pokeattack,
+            pokespeed: pokespeed
+
+        })
+        .then(result => {
+
+            console.log(username);
+            res.send({
+                code: 201
+            })
+        })
+
+
+    }
+    catch (error) {
+        res.status(500).send("Une erreur est survenue");
+        console.log('error', error);
+    }
+}
+
 module.exports = {
     CreatePokemon,
     GetPokemon,
-    PatchPokemon
+    PatchPokemon,
+    PatchPokeStats
 }
 
 

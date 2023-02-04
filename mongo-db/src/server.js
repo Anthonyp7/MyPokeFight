@@ -17,23 +17,19 @@ app.post(
     controllers.CreateUser
 
 );
-
 app.post(
     '/signin',
     dto.dtoGetUser,
     controllers.GetUser
 );
-
 app.patch(
     '/login',
     controllers.PatchUser
 );
-
 app.patch(
     '/userpokemon',
     controllers.PatchUserPokemon
 );
-
 app.patch(
     '/ready',
     controllers.PatchUserReady
@@ -45,16 +41,20 @@ app.post(
     '/pokemon',
     controllers2.CreatePokemon
 );
-
 app.post(
     '/pokemons',
     controllers2.GetPokemon
 );
-
 app.patch(
     '/pokemon',
     controllers2.PatchPokemon
 );
+app.patch(
+    '/pokestats',
+    controllers2.PatchPokeStats
+);
+
+
 
 // MATCH
 app.post(
@@ -68,6 +68,11 @@ app.post(
     dto.dtoCreateFight,
     controllers.CreateFight
 )
+
+
+
+
+
 
 
 
