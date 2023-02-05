@@ -76,7 +76,7 @@ export default function Fight(props) {
 
         setTimeout(()=> {
             navigate('/match');
-        }, 6000);
+        }, 6010);
 
         
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import '../styles/WaitScreen.css';
 
 
 export default function WaitingScreen(props) {
@@ -17,12 +18,19 @@ export default function WaitingScreen(props) {
       >
 
 
-      
+
 
       
       <Modal.Body className="screen" style={{backgroundImage:"url(https://images2.alphacoders.com/116/1160159.png)", backgroundSize: "cover"}}>
 
-      <h1 className='load-h1'>MyPokéFight</h1>
+        <h1 className='load-h1'>MyPokéFight</h1>
+
+        <div className="prog-bar">
+          <span class="bar">
+            <span class="prog"></span>
+          </span>
+        </div>
+
       </Modal.Body>
 
       

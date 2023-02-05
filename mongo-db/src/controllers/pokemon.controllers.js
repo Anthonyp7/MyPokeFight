@@ -111,7 +111,6 @@ const PatchPokeStats = async (req, res) => {
         })
         .then(result => {
 
-            console.log(username);
             res.send({
                 code: 201
             })

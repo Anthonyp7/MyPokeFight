@@ -1,8 +1,94 @@
-/* .screen {
-    background-image: url(https://win.gg/wp-content/uploads/2021/10/Pokemon-Unite.jpg);
-} */
+@-webkit-keyframes loader {
+    0% {
+        width: 0;
+    }
+    20% {
+        width: 10%;
+    }
+    25% {
+        width: 24%;
+    }
+    43% {
+        width: 41%;
+    }
+    56% {
+        width: 50%;
+    }
+    66% {
+        width: 52%;
+    }
+    71% {
+        width: 60%;
+    }
+    75% {
+        width: 76%;
+    }
+    94% {
+        width: 86%;
+    }
+    100% {
+        width: 100%;
+    }
+}
 
-/* .modal-content {
-    background-image: url(https://win.gg/wp-content/uploads/2021/10/Pokemon-Unite.jpg);
-    background-size: cover;
-} */
+@keyframes loader {
+    0% {
+        width: 0;
+    }
+    20% {
+        width: 10%;
+    }
+    25% {
+        width: 24%;
+    }
+    43% {
+        width: 41%;
+    }
+    56% {
+        width: 50%;
+    }
+    66% {
+        width: 52%;
+    }
+    71% {
+        width: 60%;
+    }
+    75% {
+        width: 76%;
+    }
+    94% {
+        width: 86%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+.prog-bar {
+    border-radius: 60px;
+    overflow: hidden;
+    width: 100%;
+}
+.prog-bar span {
+    display: block;
+}
+
+.bar {
+    background: #002fff;
+}
+
+.prog {
+    -webkit-animation: loader 6s ease infinite;
+            animation: loader 6s ease infinite;
+    background: rgb(219, 187, 2);
+    color: #fff;
+    padding: 5px;
+    width: 0;
+}
+
+.prog-bar {
+    left: 50%;
+    max-width: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}

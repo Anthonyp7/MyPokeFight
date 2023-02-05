@@ -18,8 +18,6 @@ export default function Pokedex() {
   const pokecoin = ls.getItem("Poké-Coin");
   const username = ls.getItem("Username");
 
-  const [test, setTest] = useState();
-
   const [pokemons, setPokemons] = useState([]);
 
   const [ids, setIds] = useState([]);
@@ -40,6 +38,9 @@ export default function Pokedex() {
   const [pokeHp, setPokeHp] = useState("");
   const [pokeAttack, setPokeAttack] = useState("");
   const [pokeSpeed, setPokeSpeed] = useState("");
+
+
+  
 
 
   useEffect(() => {
@@ -67,32 +68,11 @@ export default function Pokedex() {
       setIsNight(true);
     }
 
-
-
-    // console.log(pokecoin);
-
-    // if (pokecoin === "0"){
-
-    //   setTest(true);
-    //   if(test === true){
-    //     setTest(false);
-    //     console.log(test);
-    //     window.location.reload();
-    //     console.log("reload");
-    //   }
-
-      
-    //   console.log("test2", test);
-    //   setTest(true);
-    // }
-
-
-
   }, []);
 
 
   const GetRandomPokemon = () => {
-    if (pokecoin > 0) {
+    if (pokecoin > 1) {
       const rand = (Math.floor(Math.random() * 905) + 1);
       GetPokemon(rand)
         .then(() => TestPoke())
@@ -100,19 +80,25 @@ export default function Pokedex() {
         
 
     }
-    // else if (pokecoin === "1"){
-    //   const rand = (Math.floor(Math.random() * 905) + 1);
-    //   GetPokemon(rand)
-    //     .then(() => TestPoke())
-
-    //   setTimeout(()=> {
-    //     window.location.reload()
-    //   }, 1000);
-    // }
     else {
       
       setShowError(true);
     }
+
+    // RECHARGEMENT POUR POUVOIR PATCH LES STATS POUR LE FIGHT
+    if (pokecoin === "1"){
+
+      const rand = (Math.floor(Math.random() * 905) + 1);
+      GetPokemon(rand)
+        .then(() => TestPoke())
+
+      // window.location.reload()
+
+      setTimeout(()=> {
+        window.location.reload()
+      }, 500);
+    }
+    
   }
 
   const GetPokemon = async (id) => {
