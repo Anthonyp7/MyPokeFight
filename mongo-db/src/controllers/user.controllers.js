@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const { FifoMatchmaker } = require('matchmaking');
+const Pokemon = require('../models/Pokemon');
 
 
 
@@ -202,7 +203,16 @@ const CreateFight = async (req, res) => {
             })
 
 
-            
+            // console.log("HP1", );
+
+
+            // const pokeid = req.body.pokeid;
+
+            // COMPTEUR POKEMON ID
+            // let i = 0;
+            // for (i; ...)
+
+            // const pokestats1 = Pokemon.find({ username: username, pokeid: pokeid[i]})
 
 
             

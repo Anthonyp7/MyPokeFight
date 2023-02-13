@@ -59,7 +59,9 @@ export default function Fight(props) {
         .catch(err => {
             console.log(err)
         })
-        
+
+
+        // CREATION FIGHT
         axios.post('http://localhost:3080/fight',
         {
             username: ls.getItem("Username")
