@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# MyPokeFight
+![MyPokefight Logo](https://github.com/Anthonyp7/PokeAPI/assets/94532574/0b172010-1d71-41bf-9da3-aada30849cb6)
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,3 +71,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Contact :
+[https://www.linkedin.com/in/anthony-perozeni-b6840a233/](https://www.linkedin.com/in/anthony-perozeni-b6840a233/)
+
+
+_Anthony & Carlos_
