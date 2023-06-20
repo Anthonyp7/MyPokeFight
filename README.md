@@ -93,6 +93,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
+## Libs
+| Lib | Column 2 | Column 3 |
+|:-------- |:--------:| --------:|
+| React     |  thing   |     nice |
+| Axios     |   Text   |     Text |
+| React-Bootstrap     |   Text   |     Text |
+| Router Dom     |   Text   |     Text |
+
+
+
+
+
+<img src="https://github.com/Anthonyp7/PokeAPI/assets/94532574/a08ebb43-1edb-4a14-bc91-37add1cb8e4f" width="150">
+
+
+
+
 Contact :
 [https://www.linkedin.com/in/anthony-perozeni-b6840a233/](https://www.linkedin.com/in/anthony-perozeni-b6840a233/)
 
