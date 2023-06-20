@@ -14,93 +14,53 @@ This project is heading for the Pokemon World ! Its objective is create an CRA w
 We also used the PokeAPI [PokeAPI](https://pokeapi.co/)
 
 
+
+```mermaid
+graph LR
+
+PokeAPI ---> MyPokeFight <-- CRUD Pokedex ---> NodeJS <-- DB CRUD ---> DataBase-MongoDB
+```
+
+<p align="center">
+  <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/c7e190b6-69da-47e9-8fd7-d7345142e290">
+</p>
+
 ## Features
 
 - Pokedex → A list of all **Pokemons** from the 1<sup>st</sup> Generation to the latest with Pagination
   - `Details` : Shows stats about **Pokemons** such as `attack`, `speed`, `health`, `height`, etc
   - `Nav Bar` : Enter the name or the number of a **Pokemons** in order to find It
 
-- User Account → You will be able to create an account with an username and a password. This gives the possibility to get 4 **Pokemons** randomly
+- User Account :accessibility: → You will be able to create an account with an username and a password. This gives the possibility to get 4 **Pokemons** randomly
+  - `PokeAvatar` : Every users have a PokeAvatar that is given randomly and which will be the avatar of the account. This can't be modified.
   - `PokeCoins` : Earn 4 _PokeCoins_ at the creation of your account. One _PokeCoin_ gives you the chance to get 1 **Pokemons** randomly
-  - `Shiny` : **Pokemons** can be into their Shiny's form (only **Pokemons** that have Shiny's form)
+  - `Shiny ✨` : **Pokemons** can be into their Shiny's form (only **Pokemons** that have Shiny's form)
   - `Mega-Evolution` : **Pokemons** can Mega-Evolve which causes stats boosts
-- Battle Page → Once you have at least 4 **Pokemons**, you can go fight with other users
-  - `Team` : Your team Fight has to have 4 **Pokemons**
-  - `Earn` : Every win you earn 1 _PokeCoin_ you can use to get a new **Pokemon**
+    
+- Battle Page 🆚 → Once you have at least 4 **Pokemons**, you can go fight with other users
+  - `Team ⚔️` : Your team Fight has to have 4 **Pokemons**
+  - `Earn 🥇` : Every win you earn 1 _PokeCoin_ you can use to get a new **Pokemon**
+<br/><br/>
 
-> **Note**
-> For Mega-Evolution, only those **Pokemons** are available :
+> **Note** <br/>
+> For `Mega-Evolution`, only those **Pokemons** id are available :<br/>
 > 3, 6, 9, 15, 18, 65, 80, 94, 115, 127, 130, 142, 150, 181, 208, 212, 214, 229, 248, 254, 257, 260, 282, 
     302, 303, 306, 308, 310, 319, 323, 334, 354, 359, 362, 373, 376, 380, 381, 384, 428, 445, 448, 460, 475, 531, 719
 
+<br/><br/>
 
 
-## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center">
+  <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/84f284b5-577c-46e7-bbed-28cf60b6db89">
+  <br>Example of a Card → On mouse over there is the Shiny's form ✨<br>
+</p>
+<br>
+<p>
+  <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/86194b6f-f22b-4b8c-9968-e9bf89b0eea3" width="100">
+  <br>Pokemon that is able to Mega-Evolve<br>
+</p>
+<br>
 
 
 
@@ -117,9 +77,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 <img src="https://github.com/Anthonyp7/PokeAPI/assets/94532574/a08ebb43-1edb-4a14-bc91-37add1cb8e4f" width="150">
+<img src="https://download.logo.wine/logo/Node.js/Node.js-Logo.wine.png" width="150">
 
 
-
+<br/><br/>
 
 
 _[Anthony](https://www.linkedin.com/in/anthony-perozeni-b6840a233/) & [Carlos](https://www.linkedin.com/in/carlos-cancino-9a41a1224/)_
