@@ -5,6 +5,25 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Informations
+
+This project is heading for the Pokemon World ! Its objective is create an CRA which will have many features.
+
+## Features
+
+- Pokedex → A list of all **Pokemons** from the 1<sup>st</sup> Generation to the latest
+  - Details : See stats of **Pokemons** such as attack, speed, health, height, etc
+  - Nav Bar : Enter the name or the number of a **Pokemons** to the It
+
+- User Account → You will be able to create an account with an username and a password. This gives the possibility to get 4 Pokemons randomly
+  - PokeCoins : Earn 4 _PokeCoins_ at the creation of your account. One _PokeCoin_ gives you the chance to get 1 **Pokemons** randomly
+  - Shiny : **Pokemons** can be into their Shiny's form (only **Pokemons** that have Shiny's form)
+  - Mega-Evolution : **Pokemons** can Mega-Evolve which causes stats boosts
+- Battle Page → Once you have at least 4 Pokemons, you can go fight with other users
+  - Team : Your team Fight has to have 4 **Pokemons**
+  - Earn : Every win you earn 1 _PokeCoin_ you can use to get a new **Pokemon**
+
+
 ## Available Scripts
 
 In the project directory, you can run:
