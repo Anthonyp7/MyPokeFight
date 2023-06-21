@@ -55,12 +55,13 @@ PokeAPI ---> MyPokeFight <-- CRUD Pokedex ---> NodeJS <-- DB CRUD ---> DataBase-
   <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/84f284b5-577c-46e7-bbed-28cf60b6db89">
   <br>Example of a Card → On mouse over there is the Shiny's form ✨<br>
 </p>
-<br>
-<p>
-  <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/86194b6f-f22b-4b8c-9968-e9bf89b0eea3" width="100">
-  <br>Pokemon capable of Mega-Evolve<br>
+<br><br><br>
+
+<p align="center">
+  <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/fc9e2285-ffb4-414b-b31f-11a4101fffbd">
+  <br>User and his starter Pokemons<br>
 </p>
-<br>
+<br><br>
 
 
 
