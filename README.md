@@ -58,7 +58,7 @@ PokeAPI ---> MyPokeFight <-- CRUD Pokedex ---> NodeJS <-- DB CRUD ---> DataBase-
 <br>
 <p>
   <img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/86194b6f-f22b-4b8c-9968-e9bf89b0eea3" width="100">
-  <br>Pokemon that is able to Mega-Evolve<br>
+  <br>Pokemon capable of Mega-Evolve<br>
 </p>
 <br>
 
@@ -81,6 +81,12 @@ PokeAPI ---> MyPokeFight <-- CRUD Pokedex ---> NodeJS <-- DB CRUD ---> DataBase-
 
 
 <br/><br/>
+
+
+
+<p align="right">
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/491.gif">
+</p>
 
 
 _[Anthony](https://www.linkedin.com/in/anthony-perozeni-b6840a233/) & [Carlos](https://www.linkedin.com/in/carlos-cancino-9a41a1224/)_
