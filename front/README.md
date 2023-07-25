@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+## Mega-Evolution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br><br>
 
-## Available Scripts
+<img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/86194b6f-f22b-4b8c-9968-e9bf89b0eea3" width="200">
+  
+<img src="https://github.com/Anthonyp7/MyPokeFight/assets/94532574/5a148421-b7a5-4ac3-8b0c-d84488536352" width="210.7">
 
-In the project directory, you can run:
+<br><br>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### List of Pokemons
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Pokemon | Mega-Evolution |
+|:-------- | :-------- |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png">| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10033.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10034.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10036.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10090.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10073.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10037.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10071.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10038.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"> |<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10039.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10040.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10041.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10042.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10044.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10045.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/208.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10072.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10046.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/214.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10047.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/229.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10048.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10049.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10065.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10050.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10064.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10051.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10066.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/303.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10052.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/306.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10053.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/308.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10054.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/310.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10055.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10070.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10087.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10067.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/354.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10056.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png"> |<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10057.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10074.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10089.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10076.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/380.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10062.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/381.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10063.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10079.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/428.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10088.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10058.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png"> |<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10059.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/460.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10060.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/475.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10068.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/531.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10069.png"> |
+| <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/719.png"> | <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10075.png"> |
