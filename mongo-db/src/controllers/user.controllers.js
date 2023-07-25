@@ -158,10 +158,32 @@ const PatchUserReady = (req, res) => {
 const CreateFight = async (req, res) => {
     try {
         const username = req.body.username;
+        
 
         // USER 1 ET USER2
-        const user1 = await User.findOne({username: username})
-        const user2 = await User.findOne({ready: true, username: {$ne : username}})
+        const user1 = await User.findOne({username: username});
+        const user2 = await User.findOne({ready: true, username: {$ne : username}});
+        const username2 = user2.username;
+
+
+
+        // POKE STATS USER1 ET USER2
+        const pokeuser1 = await Pokemon.find({username: username});
+        const pokeuser2 = await Pokemon.find({username: username2});
+
+
+        ////
+        // IT WORK
+        // for (let i = 0; i < 4; i ++){
+        //     console.log("pokeuser1 attack : ", pokeuser1[i].pokeattack);
+        //     console.log("pokeuser2 attack : ", pokeuser2[i].pokeattack);
+
+        // }
+        // const user1poke1speed = pokeuser1[0].pokespeed;
+        //console.log("user1poke1speed : ", user1poke1speed);
+        ////
+
+
 
 
         function getPlayerKey(player) {
@@ -183,7 +205,7 @@ const CreateFight = async (req, res) => {
 
         
         // LANCEMENT FIGHT
-        function runGame(players) {
+        async function runGame(players) {
             console.log("Game started with:");
             const player1 = players[1];
             const player2 = players[0];
@@ -202,18 +224,120 @@ const CreateFight = async (req, res) => {
                 pokeplayer2: pokePlayer2
             })
 
+                                                                        //########################### DEBUT COMBAT #############################//
 
-            // console.log("HP1", );
+            // VERIFICATION POKEMON QUI ATTAQUE EN PREMIER
+        
+            // POKE STATS USER1 ET USER2
+            const poke1user1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
+            const poke1user2 = await Pokemon.findOne({username: username2, pokeid: pokePlayer2[0]});
 
 
-            // const pokeid = req.body.pokeid;
+            const pokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
+            const pokeuser2 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
 
-            // COMPTEUR POKEMON ID
-            // let i = 0;
-            // for (i; ...)
+            console.log("len", pokePlayer1.length);
 
-            // const pokestats1 = Pokemon.find({ username: username, pokeid: pokeid[i]})
+            //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
+            if (pokeuser1.pokespeed >= pokeuser2.pokespeed){
+                console.log("C'est au tour du user1 de commencer");
+            }
+            else{
+                console.log("C'est au tour du user2 de commencer");
+            }
+            //while(pokePlayer1.length > 0 || pokePlayer2.length > 0){
 
+            for (let k = 0; k < 3; k ++){
+                while(pokeuser1.pokehp > 0 && pokeuser2.pokehp > 0){
+
+                    console.log("USER1 : Pokemon1 HP = ", pokeuser1.pokehp);
+                    console.log("USER2 : Pokemon1 ATTACK = ", pokeuser2.pokeattack);
+
+                    console.log("USER1 : Pokemon1 HP : ", pokeuser1.pokehp, " - ", pokeuser2.pokeattack);
+
+                    pokeuser1.pokehp -= pokeuser2.pokeattack;
+        
+                    console.log("USER1 : Pokemon1 HP = ", pokeuser1.pokehp);
+                }
+
+                // RETRAIT DES POKEMONS VAINCUS DES LISTES
+                if (pokeuser1.pokehp <= 0){
+                    pokePlayer1.shift();
+                }
+                else{
+                    pokePlayer2.shift();
+                }
+                console.log("K.O! Nouveau Pokemon");
+
+                // NOUVELLE VARIABLES POKEMONS (DANS LA BOUCLE CETTE FOIS-CI)
+                const newPokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
+                const newPokeuser2 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
+
+                console.log("len", pokePlayer1.length);
+                console.log("pokePlayer1", pokePlayer1);
+                //console.log("Pokeuser1 next : ", pokeuser1);
+                console.log("Pokeuser1 next : ", newPokeuser1);
+
+                console.log("pokePlayer1[0]", pokePlayer1[0]);
+            }
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // //while(pokePlayer1 > 0 || pokePlayer2 > 0){
+
+            //     while(poke1user1.pokehp > 0 && poke1user2.pokehp > 0){// CHECK
+
+            //         //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
+            //         if (poke1user1.pokespeed >= poke1user2.pokespeed){
+            //             console.log("C'est au tour du user1 de commencer");
+            //         }
+            //         else{
+            //             console.log("C'est au tour du user2 de commencer");
+        
+        
+            //             console.log("hp pokeuser1 pre", poke1user1.pokehp);
+            //             poke1user1.pokehp -= poke1user2.pokeattack;
+        
+            //             console.log("hp pokeuser1 post", poke1user1.pokehp);
+            //         }
+            //     }
+            // //}
 
             
         }

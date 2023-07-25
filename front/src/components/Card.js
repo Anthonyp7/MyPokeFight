@@ -136,11 +136,36 @@ export default function CardPokemon(props) {
     return (
         <>
             {props.fight === true ?
-                    <Card {...props} bg="light" style={{ width: '12rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/8, marginTop: '80px' }}>
+                    // <Card {...props} bg="dark" style={{ width: '12rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/8, marginTop: '80px' }}>
+                    //     {/*  */}
+                    //     <div className='card-container'>
+                    //         <div className='card'>
+                    //             <div className='card-image'>
+                    //             <Card.Img  variant="top" src={img} />
+
+                    //             </div>
+                    //             <div className='card-content'>
+                    //                 <p>Test</p>
+                    //             </div>
+                    //         </div>
+                    //     </div>
+                    //     <Card.Body>
+                    //     </Card.Body>
+                    // </Card>
+
+
+
+
+                    <Card {...props} className='card-container' bg="dark" style={{ width: '15rem', display: 'inline-block', marginRight: '0 px', marginLeft: widths/6, marginTop: '80px' }}>
                         {/*  */}
-                        <Card.Img variant="top" src={img} />
-                        <Card.Body>
-                        </Card.Body>
+                            
+                            <Card.Body className='card'>
+                                <Card.Img className='card-image' variant="top" src={img} />
+
+                                <Card.Text className='card-content'>
+                                    {props.id}
+                                </Card.Text>
+                            </Card.Body>
                     </Card>
                 :
 

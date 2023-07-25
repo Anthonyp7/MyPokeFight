@@ -76,6 +76,7 @@ export default function Fight(props) {
         })
 
 
+        // REDIRECTION PAGE FIGHT AVEC UN DELAI DE 6 SECONDES 10 (CHARGEMENT)
         setTimeout(()=> {
             navigate('/match');
         }, 6010);
