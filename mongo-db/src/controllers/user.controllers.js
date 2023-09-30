@@ -324,21 +324,18 @@ const CreateFight = async (req, res) => {
                 const newPokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
                 const newPokeuser2 = await Pokemon.findOne({username: username2, pokeid: pokePlayer2[0]});
 
-                // var is_alive1 = true;// 
-                // var is_alive2 = true;// 
 
                 
-
+                // BOUCLE 1 FOIS 
                 while(l < 1){
                     console.log("On recommence", l);
-                    var is_alive1 = true;// 
-                    var is_alive2 = true;// 
+                    var is_alive1 = true;
+                    var is_alive2 = true;
                     var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
                     var newPokeuser2hp = parseInt(newPokeuser2.pokehp);
                     l += 1;
                 }
 
-                //while(newPokeuser1.pokehp > 0)
 
                 if (is_alive1 == false){
                     var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
@@ -357,7 +354,7 @@ const CreateFight = async (req, res) => {
 
                 console.log("FIN", pokePlayer1, pokePlayer2);
 
-                while(newPokeuser1.pokehp > 0 && newPokeuser2.pokehp > 0){
+                while(newPokeuser1hp > 0 && newPokeuser2hp > 0){
                     if(startuser == 0){
 
                         //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
@@ -382,10 +379,10 @@ const CreateFight = async (req, res) => {
                             console.log("USER1 : Pokemon1 HP : ", newPokeuser1hp, " - ", newPokeuser2.pokeattack);
         
                             //newPokeuser1hp -= newPokeuser2at;
-                            newPokeuser1.pokehp -= newPokeuser2.pokeattack;
+                            newPokeuser1hp -= newPokeuser2.pokeattack;
 
-                            if(newPokeuser1.pokehp > 0){
-                                newPokeuser1hp =  newPokeuser1.pokehp;
+                            if(newPokeuser1hp > 0){
+                                // newPokeuser1hp =  newPokeuser1.pokehp;
                                 console.log("USER1 : Pokemon1 HP = ", newPokeuser1hp);
                                 is_alive1 = true;
                             }
@@ -394,7 +391,7 @@ const CreateFight = async (req, res) => {
 
                             }
 
-                            console.log("USER1 : Pokemon1 HP = ", newPokeuser1.pokehp);
+                            console.log("USER1 : Pokemon1 HP = ", newPokeuser1hp);
                         }
 
                         // SINON, TOUR DE USER1
@@ -404,10 +401,10 @@ const CreateFight = async (req, res) => {
         
                             console.log("USER2 : Pokemon1 HP : ", newPokeuser2hp, " - ", newPokeuser1.pokeattack);
         
-                            newPokeuser2.pokehp -= newPokeuser1.pokeattack;
+                            newPokeuser2hp -= newPokeuser1.pokeattack;
 
-                            if(newPokeuser2.pokehp > 0){
-                                newPokeuser2hp =  newPokeuser2.pokehp;
+                            if(newPokeuser2hp > 0){
+                                // newPokeuser2hp =  newPokeuser2.pokehp;
                                 console.log("changement new poke2 hp");
                                 console.log("USER2 : Pokemon1 HP = ", newPokeuser2hp);
                                 is_alive2 = true;
@@ -417,7 +414,7 @@ const CreateFight = async (req, res) => {
 
                             }
                 
-                            console.log("USER2 : Pokemon1 HP = ", newPokeuser2.pokehp);
+                            console.log("USER2 : Pokemon1 HP = ", newPokeuser2hp);
                         }
                         
                         console.log("Tour suivant");
@@ -447,7 +444,7 @@ const CreateFight = async (req, res) => {
 
                 // }
 
-                if (newPokeuser1.pokehp <= 0){
+                if (newPokeuser1hp <= 0){
                     pokePlayer1.shift();
                 }
                 else{
