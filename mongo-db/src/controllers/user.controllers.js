@@ -224,70 +224,11 @@ const CreateFight = async (req, res) => {
                 pokeplayer2: pokePlayer2
             })
 
-            //                                                             //########################### DEBUT COMBAT #############################//
-
-            // // VERIFICATION POKEMON QUI ATTAQUE EN PREMIER
-        
-            // // POKE STATS USER1 ET USER2
-            // const poke1user1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
-            // const poke1user2 = await Pokemon.findOne({username: username2, pokeid: pokePlayer2[0]});
-
-
-            // const pokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
-            // const pokeuser2 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
-
-            // console.log("len", pokePlayer1.length);
-
-            // //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
-            // if (pokeuser1.pokespeed >= pokeuser2.pokespeed){
-            //     console.log("C'est au tour du user1 de commencer");
-            // }
-            // else{
-            //     console.log("C'est au tour du user2 de commencer");
-            // }
-            // //while(pokePlayer1.length > 0 || pokePlayer2.length > 0){
-
-            // for (let k = 0; k < 3; k ++){
-            //     while(pokeuser1.pokehp > 0 && pokeuser2.pokehp > 0){
-
-            //         console.log("USER1 : Pokemon1 HP = ", pokeuser1.pokehp);
-            //         console.log("USER2 : Pokemon1 ATTACK = ", pokeuser2.pokeattack);
-
-            //         console.log("USER1 : Pokemon1 HP : ", pokeuser1.pokehp, " - ", pokeuser2.pokeattack);
-
-            //         pokeuser1.pokehp -= pokeuser2.pokeattack;
-        
-            //         console.log("USER1 : Pokemon1 HP = ", pokeuser1.pokehp);
-            //     }
-
-            //     // RETRAIT DES POKEMONS VAINCUS DES LISTES
-            //     if (pokeuser1.pokehp <= 0){
-            //         pokePlayer1.shift();
-            //     }
-            //     else{
-            //         pokePlayer2.shift();
-            //     }
-            //     console.log("K.O! Nouveau Pokemon");
-
-            //     // NOUVELLE VARIABLES POKEMONS (DANS LA BOUCLE CETTE FOIS-CI)
-            //     const newPokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
-            //     const newPokeuser2 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
-
-            //     console.log("len", pokePlayer1.length);
-            //     console.log("pokePlayer1", pokePlayer1);
-            //     //console.log("Pokeuser1 next : ", pokeuser1);
-            //     console.log("Pokeuser1 next : ", newPokeuser1);
-
-            //     console.log("pokePlayer1[0]", pokePlayer1[0]);
-            // }
-            // //}
-
-
-
+            
 
                                                                         //########################### DEBUT COMBAT #############################//
 
-            // VERIFICATION POKEMON QUI ATTAQUE EN PREMIER
+            
             
 
             // PREMIERS POKEMONS DES 2 USERS UNIQUEMENT
@@ -296,23 +237,17 @@ const CreateFight = async (req, res) => {
 
             //COMPTEUR TOUR (POUR SAVOIR QUI COMMENCE)
             let startuser = 0;
+
             //COMPTEUR BOUCLE DEBUT
             let j = 0;
-
-
-            // console.log("len", pokePlayer1.length);
-
-            // console.log("pokeuser1", pokeuser1);
-            // console.log("pokeuser2", pokeuser2);
+            let l = 0;
 
             
 
 
             while(pokePlayer1.length > 0 && pokePlayer2.length > 0){
-            //for (let k = 0; k < 3; k ++){
 
                 while(j < 1){
-                //for (let j = 0; j < 3; j ++){
                     
                     // TANT QUES LES POKEMONS ONT DE L'HP - TOUR COMBAT
                     while(pokeuser1.pokehp > 0 && pokeuser2.pokehp > 0){
@@ -344,7 +279,6 @@ const CreateFight = async (req, res) => {
                                 pokeuser1.pokehp -= pokeuser2.pokeattack;
                     
                                 console.log("USER1 : Pokemon1 HP = ", pokeuser1.pokehp);
-                                console.log("Tour suivant");
                             }
 
                             // SINON, TOUR DE USER1
@@ -357,9 +291,9 @@ const CreateFight = async (req, res) => {
                                 pokeuser2.pokehp -= pokeuser1.pokeattack;
                     
                                 console.log("USER2 : Pokemon1 HP = ", pokeuser2.pokehp);
-                                console.log("Tour suivant");
                             }
-                        
+
+                            console.log("Tour suivant");
                             startuser += 1;
                         }
                     }
@@ -390,16 +324,38 @@ const CreateFight = async (req, res) => {
                 const newPokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
                 const newPokeuser2 = await Pokemon.findOne({username: username2, pokeid: pokePlayer2[0]});
 
-                // console.log("len 1", pokePlayer1.length);
-                // console.log("len 2", pokePlayer2.length);
-                // console.log("pokePlayer1", pokePlayer1);
-                // console.log("pokePlayer2", pokePlayer2);
+                // var is_alive1 = true;// 
+                // var is_alive2 = true;// 
+
+                
+
+                while(l < 1){
+                    console.log("On recommence", l);
+                    var is_alive1 = true;// 
+                    var is_alive2 = true;// 
+                    var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
+                    var newPokeuser2hp = parseInt(newPokeuser2.pokehp);
+                    l += 1;
+                }
+
+                //while(newPokeuser1.pokehp > 0)
+
+                if (is_alive1 == false){
+                    var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
+                    console.log("Is_alive1 false");
+                }
+                if (is_alive2 == false){
+                    var newPokeuser2hp = parseInt(newPokeuser2.pokehp);
+                    console.log("Is_alive2 false");
+                }
+                
+                // var newPokeuser1at = parseInt(newPokeuser1.pokeattack);
+                // var newPokeuser2at = parseInt(newPokeuser2.pokeattack);
+
 
 
 
                 console.log("FIN", pokePlayer1, pokePlayer2);
-                console.log("type of newpoke.hp", typeof newPokeuser1.pokehp)
-
 
                 while(newPokeuser1.pokehp > 0 && newPokeuser2.pokehp > 0){
                     if(startuser == 0){
@@ -420,42 +376,84 @@ const CreateFight = async (req, res) => {
 
                         // SI OUI, TOUR DE USER2
                         if(startuser % 2 == 0){
-                            console.log("USER1.0 : Pokemon1 HP = ", newPokeuser1.pokehp);
+                            console.log("USER1.0 : Pokemon1 HP = ", newPokeuser1hp);
                             console.log("USER2 : Pokemon1 ATTACK = ", newPokeuser2.pokeattack);
         
-                            console.log("USER1 : Pokemon1 HP : ", newPokeuser1.pokehp, " - ", newPokeuser2.pokeattack);
+                            console.log("USER1 : Pokemon1 HP : ", newPokeuser1hp, " - ", newPokeuser2.pokeattack);
         
+                            //newPokeuser1hp -= newPokeuser2at;
                             newPokeuser1.pokehp -= newPokeuser2.pokeattack;
-                
+
+                            if(newPokeuser1.pokehp > 0){
+                                newPokeuser1hp =  newPokeuser1.pokehp;
+                                console.log("USER1 : Pokemon1 HP = ", newPokeuser1hp);
+                                is_alive1 = true;
+                            }
+                            else{
+                                is_alive1 = false;
+
+                            }
+
                             console.log("USER1 : Pokemon1 HP = ", newPokeuser1.pokehp);
-                            console.log("Tour suivant");
                         }
 
                         // SINON, TOUR DE USER1
                         else{
-                            console.log("USER2.0 : Pokemon1 HP = ", newPokeuser2.pokehp);
+                            console.log("USER2.0 : Pokemon1 HP = ", newPokeuser2hp);
                             console.log("USER1 : Pokemon1 ATTACK = ", newPokeuser1.pokeattack);
         
-                            console.log("USER2 : Pokemon1 HP : ", newPokeuser2.pokehp, " - ", newPokeuser1.pokeattack);
+                            console.log("USER2 : Pokemon1 HP : ", newPokeuser2hp, " - ", newPokeuser1.pokeattack);
         
                             newPokeuser2.pokehp -= newPokeuser1.pokeattack;
+
+                            if(newPokeuser2.pokehp > 0){
+                                newPokeuser2hp =  newPokeuser2.pokehp;
+                                console.log("changement new poke2 hp");
+                                console.log("USER2 : Pokemon1 HP = ", newPokeuser2hp);
+                                is_alive2 = true;
+                            }
+                            else{
+                                is_alive2 = false;
+
+                            }
                 
                             console.log("USER2 : Pokemon1 HP = ", newPokeuser2.pokehp);
-                            console.log("Tour suivant");
                         }
-
+                        
+                        console.log("Tour suivant");
                         startuser += 1;
                     }
+                    //newPokeuser1hp =  newPokeuser1.pokehp;
+                    
+
+                    console.log("new poke 1 hp", newPokeuser1hp);
+                    console.log("new poke 2 hp", newPokeuser2hp);
                 }
                 // FIN DU TOUR
 
                 // RETRAIT DES POKEMONS VAINCUS DES LISTES
+                // if (newPokeuser1.pokehp <= 0){
+                //     pokePlayer1.shift();
+                // }
+                // else if(newPokeuser1.pokehp > 0){
+                    
+                // }
+
+
+                // else if(newPokeuser2.pokehp <= 0){
+                //     pokePlayer2.shift();
+                // }
+                // else{
+
+                // }
+
                 if (newPokeuser1.pokehp <= 0){
                     pokePlayer1.shift();
                 }
                 else{
                     pokePlayer2.shift();
                 }
+
                 console.log("K.O 2.0! Nouveau Pokemon");
             }
             console.log("FIN 2, pokePlayer1, pokePlayer2", pokePlayer1, pokePlayer2);
@@ -492,25 +490,123 @@ const CreateFight = async (req, res) => {
 
 
 
-            // //while(pokePlayer1 > 0 || pokePlayer2 > 0){
+        //     // NOUVELLE VARIABLES POKEMONS (DANS LA BOUCLE CETTE FOIS-CI)
+        //     const newPokeuser1 = await Pokemon.findOne({username: username, pokeid: pokePlayer1[0]});
+        //     const newPokeuser2 = await Pokemon.findOne({username: username2, pokeid: pokePlayer2[0]});
 
-            //     while(poke1user1.pokehp > 0 && poke1user2.pokehp > 0){// CHECK
+        //     var is_alive1 = true;// 
+        //     var is_alive2 = true;// 
 
-            //         //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
-            //         if (poke1user1.pokespeed >= poke1user2.pokespeed){
-            //             console.log("C'est au tour du user1 de commencer");
-            //         }
-            //         else{
-            //             console.log("C'est au tour du user2 de commencer");
-        
-        
-            //             console.log("hp pokeuser1 pre", poke1user1.pokehp);
-            //             poke1user1.pokehp -= poke1user2.pokeattack;
-        
-            //             console.log("hp pokeuser1 post", poke1user1.pokehp);
-            //         }
-            //     }
-            // //}
+            
+
+        //     while(l < 1){
+        //         console.log("On recommence", l);
+        //         var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
+        //         var newPokeuser2hp = parseInt(newPokeuser2.pokehp);
+        //         l += 1;
+        //     }
+
+        //     //while(newPokeuser1.pokehp > 0)
+
+        //     if (is_alive1 == false){
+        //         var newPokeuser1hp = parseInt(newPokeuser1.pokehp);
+        //         echo("Is_alive1 false");
+        //     }
+        //     if (is_alive2 == false){
+        //         var newPokeuser2hp = parseInt(newPokeuser2.pokehp);
+        //         echo("Is_alive2 false");
+        //     }
+            
+        //     var newPokeuser1at = parseInt(newPokeuser1.pokeattack);
+        //     var newPokeuser2at = parseInt(newPokeuser2.pokeattack);
+
+
+
+
+        //     console.log("FIN", pokePlayer1, pokePlayer2);
+
+        //     while(newPokeuser1.pokehp > 0 && newPokeuser2.pokehp > 0){
+        //         if(startuser == 0){
+
+        //             //SI LA SPEED DES PREMIERS POKEMONS A SE BATTRENT EST SUPERIEUR A L'AUTRE
+        //             if (Number(newPokeuser1.pokespeed) >= Number(newPokeuser2.pokespeed)){
+        //                 console.log("C'est au tour du user1 de commencer 1.0");
+        //                 startuser = 1;
+        //             }
+        //             else{
+        //                 console.log("C'est au tour du user2 de commencer 2.0");
+        //                 startuser = 2;
+        //             }
+        //         }
+
+        //         else{
+        //             // SI STARTUSER EST PAIR C'EST AU USER2, S'IL EST IMPAIR C'EST AU USER1
+
+        //             // SI OUI, TOUR DE USER2
+        //             if(startuser % 2 == 0){
+        //                 console.log("USER1.0 : Pokemon1 HP = ", newPokeuser1hp);
+        //                 console.log("USER2 : Pokemon1 ATTACK = ", newPokeuser2.pokeattack);
+    
+        //                 console.log("USER1 : Pokemon1 HP : ", newPokeuser1hp, " - ", newPokeuser2.pokeattack);
+    
+        //                 //newPokeuser1hp -= newPokeuser2at;
+        //                 newPokeuser1.pokehp -= newPokeuser2.pokeattack;
+
+        //                 if(newPokeuser1.pokehp > 0){
+        //                     newPokeuser1hp =  newPokeuser1.pokehp;
+        //                     console.log("USER1 : Pokemon1 HP = ", newPokeuser1hp);
+        //                 }
+        //                 else{
+        //                     is_alive1 = false;
+
+        //                 }
+
+        //                 console.log("USER1 : Pokemon1 HP = ", newPokeuser1.pokehp);
+        //             }
+
+        //             // SINON, TOUR DE USER1
+        //             else{
+        //                 console.log("USER2.0 : Pokemon1 HP = ", newPokeuser2hp);
+        //                 console.log("USER1 : Pokemon1 ATTACK = ", newPokeuser1.pokeattack);
+    
+        //                 console.log("USER2 : Pokemon1 HP : ", newPokeuser2hp, " - ", newPokeuser1.pokeattack);
+    
+        //                 newPokeuser2.pokehp -= newPokeuser1.pokeattack;
+
+        //                 if(newPokeuser2.pokehp > 0){
+        //                     newPokeuser2hp =  newPokeuser2.pokehp;
+        //                     console.log("changement new poke2 hp");
+        //                     console.log("USER2 : Pokemon1 HP = ", newPokeuser2hp);
+        //                 }
+        //                 else{
+        //                     is_alive2 = false;
+
+        //                 }
+            
+        //                 console.log("USER2 : Pokemon1 HP = ", newPokeuser2.pokehp);
+        //             }
+                    
+        //             console.log("Tour suivant");
+        //             startuser += 1;
+        //         }
+        //         //newPokeuser1hp =  newPokeuser1.pokehp;
+                
+
+        //         console.log("new poke 1 hp", newPokeuser1hp);
+        //         console.log("new poke 2 hp", newPokeuser2hp);
+        //     }
+        //     // FIN DU TOUR
+
+        //     // RETRAIT DES POKEMONS VAINCUS DES LISTES
+        //     if (newPokeuser1.pokehp <= 0){
+        //         pokePlayer1.shift();
+        //     }
+        //     else{
+        //         pokePlayer2.shift();
+        //     }
+        //     console.log("K.O 2.0! Nouveau Pokemon");
+        // }
+        // console.log("FIN 2, pokePlayer1, pokePlayer2", pokePlayer1, pokePlayer2);
 
             
         }
