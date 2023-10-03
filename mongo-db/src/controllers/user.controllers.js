@@ -458,7 +458,13 @@ const CreateFight = async (req, res) => {
 
 
 
-
+            if(pokePlayer1.length == 0){
+                console.log("Le gagnant du combat est", player2.username);
+                
+            }
+            else{
+                console.log("Le gagnant du combat est", player1.username);
+            }
 
 
 
