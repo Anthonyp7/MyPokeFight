@@ -58,7 +58,7 @@ export default function Login() {
                 pokeid: []
             })
             .then(res => {
-                console.log("data", res.data)
+                console.log("data", res.data);
 
 
                 // VERIFICATION CREATE SUCCESS OU ERROR

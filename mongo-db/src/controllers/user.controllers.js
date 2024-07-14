@@ -302,9 +302,20 @@ const CreateFight = async (req, res) => {
 
                     // RETRAIT DES POKEMONS VAINCUS DES LISTES
                     if (pokeuser1.pokehp <= 0){
+                        // res.send({
+                        //     code: 201,
+                        //     message: "Pokémon K.O!",
+                        //     pokemon: pokePlayer1[0]
+                        // })
                         pokePlayer1.shift();
+                        
                     }
                     else{
+                        // res.send({
+                        //     code: 201,
+                        //     message: "Pokémon K.O!",
+                        //     pokemon: pokePlayer2[0]
+                        // })
                         pokePlayer2.shift();
                     }
                     console.log("K.O! Nouveau Pokemon");

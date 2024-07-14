@@ -68,6 +68,8 @@ export default function Fight(props) {
         })
         .then(res => {
             console.log("Player1", res.data.pokeplayer1, "Player2", res.data.pokeplayer2);
+            console.log("Pokémon :", res.data.pokemon);
+            console.log("data", res.data);
             ls.setItem("Pokeuser1", res.data.pokeplayer1);
             ls.setItem("Pokeuser2", res.data.pokeplayer2);
         })
