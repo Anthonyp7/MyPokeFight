@@ -22,11 +22,16 @@ export default function Fight(props) {
 
     const [showError, setShowError] = useState(false);
     const [showError2, setShowError2] = useState(false);
+    const [showError3, setShowError3] = useState(false);
 
     const [heights, setHeights] = useState(window.innerHeight - 116 + "px");
     const [widths, setWidths] = useState(window.innerWidth + "px");
 
     const [modalShow, setModalShow] = React.useState(false);
+    
+    // CODE PERMETTANT DE SAVOIR SI DES JOUEURS SONT PRÊTS OU PAS
+    ls.setItem("Code", 402);
+
 
     //############### AFFICHAGE LISTE POKEMON #################
     const test = JSON.stringify(ls.getItem("PokeId"));
@@ -72,16 +77,21 @@ export default function Fight(props) {
             console.log("data", res.data);
             ls.setItem("Pokeuser1", res.data.pokeplayer1);
             ls.setItem("Pokeuser2", res.data.pokeplayer2);
+            ls.setItem("Code", res.data.code);
         })
         .catch(err => {
             console.log(err)
         })
 
 
-        // REDIRECTION PAGE FIGHT AVEC UN DELAI DE 6 SECONDES 10 (CHARGEMENT)
-        setTimeout(()=> {
-            navigate('/match');
-        }, 6010);
+
+        // S'IL N'Y A PAS D'AUTRE JOUEURS PRÊTS ON RESTE SUR LA PAGE DE FIGHT
+        if(ls.getItem("Code") == 200){
+            // REDIRECTION PAGE FIGHT AVEC UN DELAI DE 6 SECONDES 10 (CHARGEMENT)
+            setTimeout(()=> {
+                navigate('/match');
+            }, 6010);
+        }
 
         
 
@@ -129,7 +139,7 @@ export default function Fight(props) {
                             setTab(order.push(pokemon));
                             ls.setItem("Order", JSON.stringify(order));
                         }
-
+                        
                     }}>Ajouter au combat </Button>
 
 
@@ -139,15 +149,20 @@ export default function Fight(props) {
 
             {/* SI 4 POKEMONS SONT SELECTIONNES */}
             {order.length === 4 ?
-            <>
-                <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" onClick={() => {
-                    GetReady();
-                    setModalShow(true);
-                    }}>Fight
-                </Button>
+                <>
+                    <Button style={{ marginLeft: "48%" , marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" onClick={() => {
+                        GetReady();
+                        setModalShow(true);
+                        // CONDITION PAS D'AUTRES JOUEURS PRÊTS POUR LE COMBAT
+                        if (ls.getItem("Code") == 402) {
+                            setShowError3(true);
+                        }
 
-                
-            </>
+                        }}>Fight
+                    </Button>
+
+                    
+                </>
                 :
                 <>
                     <Button style={{ marginLeft: "48%", marginTop: "20px", display: "inline-flex", textAlign: "center" }} variant="danger" size="lg" disabled>Fight</Button>
@@ -156,10 +171,33 @@ export default function Fight(props) {
 
 
 
-                <WaitingScreen
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                />
+            {/* AFFICHAGE S'IL N'Y A PAS D'AUTRES JOUEURS PRÊTS POUR LE COMBAT */}
+            {ls.getItem("Code") == 200 ?
+                <>
+                    
+                    <WaitingScreen
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
+                </>
+                : 
+                <>
+                    <Row>
+                        <Col xs={6}>
+                            <ToastContainer position="bottom-end">
+                                <Toast bg="danger" onClose={() => setShowError3(false)} show={showError3} delay={3000} autohide>
+                                    <Toast.Header>
+                                        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                                        <strong className="me-auto">MyPokéFight</strong>
+                                        <small>Erreur</small>
+                                    </Toast.Header>
+                                    <Toast.Body>Nous sommes désolé, aucun autre joueurs n'est prêt pour le combat!</Toast.Body>
+                                </Toast>
+                            </ToastContainer>
+                        </Col>
+                    </Row>
+                </>
+            }
 
 
 
